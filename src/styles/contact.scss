@@ -1,0 +1,20 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    color: var(--mantine-color-black);
+    text-decoration: none;
+  }
+  
+  .icon {
+    margin-right: var(--mantine-spacing-md);
+    //  background-color: blue;
+  }
+  
+  .title {
+    color: var(--mantine-color-black);
+   
+  }
+  
+  .description {
+    color: var(--mantine-color-black);   
+  }

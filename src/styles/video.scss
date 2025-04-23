@@ -1,0 +1,22 @@
+.video-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.responsive-video {
+  width: 100%; //video neemt de volledige breedte in van de card
+  height: auto;
+  border-radius: 8px; //afgeronde hoeken
+}
+
+/* Horizontal videos (aspect ratio wider than 1:1) */
+.video-container.horizontal {
+  width: 100%; // Full width for horizontal videos
+}
+
+/* Vertical videos (aspect ratio narrower than 1:1) */
+.video-container.vertical {
+  width: 50%; // Adjust width for vertical videos
+}
