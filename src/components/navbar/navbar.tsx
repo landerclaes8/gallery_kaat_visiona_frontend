@@ -43,7 +43,7 @@ export const Navbar = () => {
 
           <Group h="100%" gap={0} visibleFrom="sm" className="centered-links">
             <Box component={Link} className="link" to="/home">
-              Home
+              Aanbod
             </Box>
             <Box component={Link} to="/video" className="link">
               <Box component="span" mr={5}>
