@@ -5,7 +5,7 @@ import {
   Divider,
   Drawer,
   Group,
-  ScrollArea
+  ScrollArea,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconBrandInstagram, IconBrandWhatsapp } from "@tabler/icons-react";
@@ -43,7 +43,7 @@ export const Navbar = () => {
 
           <Group h="100%" gap={0} visibleFrom="sm" className="centered-links">
             <Box component={Link} className="link" to="/home">
-              Aanbod
+              Over Visiona
             </Box>
             <Box component={Link} to="/video" className="link">
               <Box component="span" mr={5}>
@@ -53,6 +53,9 @@ export const Navbar = () => {
 
             <Box component={Link} to="/photo" className="link">
               Photo
+            </Box>
+            <Box component={Link} to="/contact" className="link">
+              Aanbod
             </Box>
             <Box component={Link} to="/contact" className="link">
               Contact
