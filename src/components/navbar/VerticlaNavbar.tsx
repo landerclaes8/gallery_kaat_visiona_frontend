@@ -21,7 +21,7 @@ const isSmallScreen = useMediaQuery("(max-width: 768px)");
         height: "100vh", // Laat het de volledige hoogte van de viewport innemen
         width: "50px", // Stel de breedte van de navbar in
         zIndex: 900, // Zorgt ervoor dat het boven andere elementen wordt weergegeven
-        color: "black", // Tekstkleur
+        color: "black", 
       }}
     >
       <Center>

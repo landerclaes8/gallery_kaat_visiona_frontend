@@ -43,11 +43,11 @@ export const VideoPage = () => {
     <>
       <Flex justify="center" direction="column" p={isSmallScreen ? 5 : 75}>
         <Center>
-        <Title p="md" mb="md">
-          Videography
-        </Title>
+          <Title p="md" mb="md">
+            Explore all our video services
+          </Title>
         </Center>
-        <CategorySelector type="video"categories={data} />
+        <CategorySelector type="video" categories={data} />
         <VideoOverview />
       </Flex>
     </>

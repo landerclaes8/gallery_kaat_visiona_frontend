@@ -43,9 +43,9 @@ export const Photopage = () => {
     <>
       <Flex justify="center" direction="column" p={isSmallScreen ? 5 : 75}>
         <Center>
-        <Title p="md" mb="md">
-          Photography
-        </Title>
+          <Title p="md" mb="md">
+            Explore all our photo services
+          </Title>
         </Center>
         <CategorySelector type="photo" categories={data} />
         <PhotoOverview />

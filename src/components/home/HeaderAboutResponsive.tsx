@@ -49,10 +49,10 @@ const HeaderAboutResponsive = () => {
                 transition: "transform 0.3s ease",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "scale(1.05)"; // Zoom in bij hover
+                e.currentTarget.style.transform = "scale(1.05)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "scale(1)"; // Reset zoom bij hover verlaten
+                e.currentTarget.style.transform = "scale(1)";
               }}
             >
               <Title order={3}>Video</Title>

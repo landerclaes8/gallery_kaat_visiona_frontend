@@ -1,9 +1,10 @@
-import HeaderAboutResponsive from "../components/home/HeaderAboutResponsive"
+
+import OfferGrid from "../components/offers/OfferGrid"
 
 
 const OfferPage = () => {
   return (
-    <HeaderAboutResponsive />
+    <OfferGrid/>
   )
 }
 

@@ -6,18 +6,20 @@ import {
   Drawer,
   Group,
   ScrollArea,
+  Button
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconBrandInstagram, IconBrandWhatsapp } from "@tabler/icons-react";
 import { Link } from "react-router";
 import "../../styles/navbar.scss";
+import SideNavBar from "./SideNavBar";
 
 export const Navbar = () => {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
     useDisclosure(false);
 
   return (
-    <Box style={{ backgroundColor: "white" }}>
+    <Box style={{ backgroundColor: "#5EDFFF" }}>
       <header className="header">
         <Group justify="space-between" h="100%">
           <Burger
@@ -51,6 +53,8 @@ export const Navbar = () => {
               </Box>
             </Box>
 
+           
+
             <Box component={Link} to="/photo" className="link">
               Photo
             </Box>
@@ -63,6 +67,7 @@ export const Navbar = () => {
           </Group>
 
           <Group visibleFrom="sm">
+          <SideNavBar />
             <Box component={Link} to="/admin">
               Admin
             </Box>
