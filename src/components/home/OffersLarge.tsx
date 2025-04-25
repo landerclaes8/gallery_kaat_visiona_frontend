@@ -1,24 +1,43 @@
 import {
-    Box,
-    Card,
-    Center,
-    Group,
-    SimpleGrid,
-    Text,
-    Title
+  Box,
+  Card,
+  Center,
+  Group,
+  SimpleGrid,
+  Text,
+  Title,
 } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 
 const OffersLarge = () => {
+  const isSmallScreen = useMediaQuery("(max-width: 768px)");
+
   return (
     <Box>
       <Center>
-        <Title p={60} size={100}>
+        <Title pt={isSmallScreen ? 10 : 60} size={isSmallScreen ? 37 : 100}>
           What we offer
         </Title>
       </Center>
       <Center>
-        <SimpleGrid cols={{ md: 2, lg: 3 }} spacing={60} pb={25}>
-          <Card radius="md" p="md" w={500}>
+        <SimpleGrid
+          cols={{ sm: 1, md: 2, lg: 3 }}
+          spacing={isSmallScreen ? 0 : 60}
+          pb={25}
+          m={50}
+        >
+          <Card
+            radius="md"
+            p={isSmallScreen ? "xs" : "md"}
+            w="100%"
+            style={{ transition: "transform 0.3s ease" }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "scale(1.05)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "scale(1)";
+            }}
+          >
             <Card.Section>
               <video
                 id={`video-${1}`}
@@ -49,7 +68,7 @@ const OffersLarge = () => {
 
             <Card.Section>
               <Group justify="center" align="center">
-                <Text>
+                <Text p={25}>
                   Visiona is Kaat Verrycken's creative video and photo
                   production house, specialising in cinematic videos and
                   atmospheric photography for brands, events and hospitality.
@@ -62,7 +81,18 @@ const OffersLarge = () => {
               </Group>
             </Card.Section>
           </Card>
-          <Card radius="md" p="md" w={500}>
+          <Card
+            radius="md"
+            p="md"
+            w="100%"
+            style={{ transition: "transform 0.3s ease" }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "scale(1.05)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "scale(1)";
+            }}
+          >
             <Card.Section>
               <video
                 id={`video-${1}`}
@@ -92,7 +122,7 @@ const OffersLarge = () => {
             </Card.Section>
             <Card.Section>
               <Group justify="center" align="center">
-                <Text>
+                <Text p={25}>
                   Visiona is Kaat Verrycken's creative video and photo
                   production house, specialising in cinematic videos and
                   atmospheric photography for brands, events and hospitality.
@@ -106,7 +136,18 @@ const OffersLarge = () => {
             </Card.Section>
           </Card>
 
-          <Card radius="md" p="md" w={500}>
+          <Card
+            radius="md"
+            p="md"
+            w="100%"
+            style={{ transition: "transform 0.3s ease" }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "scale(1.05)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "scale(1)";
+            }}
+          >
             <Card.Section>
               <video
                 id={`video-${1}`}
@@ -136,7 +177,7 @@ const OffersLarge = () => {
             </Card.Section>
             <Card.Section>
               <Group justify="center" align="center">
-                <Text>
+                <Text p={25}>
                   Visiona is Kaat Verrycken's creative video and photo
                   production house, specialising in cinematic videos and
                   atmospheric photography for brands, events and hospitality.

@@ -31,7 +31,7 @@ const HeaderHomeLarge = () => {
           Visiona
         </Title>
         <Space h="xl"></Space>
-        <Title size={35} style={{ color: kleur }}>
+        <Title size={35} style={{ color: kleur }} p={25}>
           Creative video and photo production house
         </Title>
         <Space h="70"></Space>

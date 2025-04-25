@@ -11,6 +11,7 @@ import { AdminDashboard } from "./pages/admin/AdminDashboard";
 import { AuthProvider } from "./lib/context/auth";
 import PhotoAdmin from "./components/admin/PhotoAdmin";
 import VideoAdmin from "./components/admin/VideoAdmin";
+import OfferPage from "./pages/Offer.Page";
 
 export const Router = () => {
   return (
@@ -25,6 +26,8 @@ export const Router = () => {
         <Route path="video" element={<VideoPage />} />
 
         <Route path="photo" element={<Photopage />} />
+
+        <Route path="offer" element={<OfferPage />} />
 
         <Route path="contact" element={<ContactPage />} />
 

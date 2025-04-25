@@ -54,7 +54,7 @@ export const Navbar = () => {
             <Box component={Link} to="/photo" className="link">
               Photo
             </Box>
-            <Box component={Link} to="/contact" className="link">
+            <Box component={Link} to="/offer" className="link">
               Aanbod
             </Box>
             <Box component={Link} to="/contact" className="link">
