@@ -7,8 +7,8 @@ export const AdminDashboard = () => {
 
   return (
     <>
-      <Title p={10}>Admin Dashboard</Title>
-      <Flex gap={10}>
+      <Title pt={60}>Admin Dashboard</Title>
+      <Flex gap={10} pt={20}>
         <Button onClick={() => logout()}>
           Logout
         </Button>

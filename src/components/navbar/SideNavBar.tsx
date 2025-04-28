@@ -1,19 +1,13 @@
-import {
-  ActionIcon,
-  Box,
-  Burger,
-  Drawer,
-  Flex,
-  Group,
-  Text,
-} from "@mantine/core";
-import { useRef, useState } from "react";
-import { Link } from "react-router";
+import { ActionIcon, Box, Burger, Drawer, Flex, Text } from "@mantine/core";
 import {
   IconBrandInstagram,
   IconBrandTwitter,
   IconBrandYoutube,
 } from "@tabler/icons-react";
+import { useRef, useState } from "react";
+import { Link } from "react-router";
+import { useEffect } from "react";
+import { useMediaQuery } from "@mantine/hooks";
 
 const navbarData = [
   {
@@ -39,23 +33,31 @@ const navbarData = [
 ];
 
 const SideNavBar = () => {
+  const isSmallScreen = useMediaQuery("(max-width: 768px)");
   const [drawerOpened, setDrawerOpened] = useState(false);
   const drawerRef = useRef<HTMLDivElement>(null);
-  const closeTimeout = useRef<NodeJS.Timeout | null>(null);
-
+  const [isTop, setIsTop] = useState(true);
   const openDrawer = () => setDrawerOpened(true);
   const closeDrawer = () => setDrawerOpened(false);
 
   const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
     const drawerRect = drawerRef.current?.getBoundingClientRect();
-    const mouseX = e.clientX;
-
-    if (drawerRect && mouseX < drawerRect.left) {
-      closeTimeout.current = setTimeout(() => {
-        closeDrawer();
-      }, 300);
+    if (drawerRect && e.clientX < drawerRect.left) {
+      closeDrawer();
     }
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsTop(window.scrollY === 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <>
@@ -72,67 +74,111 @@ const SideNavBar = () => {
         }}
         style={{ zIndex: 9999, position: "fixed" }}
       >
-        <div
-          ref={drawerRef}
-          onMouseLeave={handleMouseLeave}
-          style={{ height: "100%", width: "100%" }}
-        >
-          <Flex direction="column" justify="center" pt={150}>
-            {navbarData.map((element, index) => (
-              <Box
-                key={index}
-                component={Link}
-                to={element.link}
-                onClick={closeDrawer}
-                p={10}
-                style={{
-                  textDecoration: "none",
-                  textDecorationColor: "black",
-                  transition: "text-decoration 0.5s ease",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.textDecoration = "underline";
-                  e.currentTarget.style.textDecorationColor = "black";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.textDecoration = "none";
-                }}
-              >
-                <Text
-                  fw={700}
+        <div ref={drawerRef} onMouseLeave={handleMouseLeave}>
+          <Flex
+            direction="column"
+            justify="space-between"
+            style={{ height: "95vh" }}
+          >
+            <Flex direction="column" justify="center" pt={150}>
+              {navbarData.map((element, index) => (
+                <Box
+                  key={index}
+                  component={Link}
+                  to={element.link}
+                  onClick={closeDrawer}
+                  p={10}
                   style={{
-                    fontSize: "2rem",
-                    color: "black",
+                    textDecoration: "none",
+                    textDecorationColor: "black",
+                    transition: "text-decoration 0.5s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.textDecoration = "underline";
+                    e.currentTarget.style.textDecorationColor = "black";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.textDecoration = "none";
                   }}
                 >
-                  {element.title}
-                </Text>
-              </Box>
-            ))}
-          </Flex>
+                  <Text
+                    fw={700}
+                    style={{
+                      fontSize: "2rem",
+                      color: "black",
+                    }}
+                  >
+                    {element.title}
+                  </Text>
+                </Box>
+              ))}
+            </Flex>
 
-          
+            <Flex align="center">
+              <ActionIcon size="lg" variant="default" radius="xl">
+                <IconBrandTwitter size={18} stroke={1.5} />
+              </ActionIcon>
+              <ActionIcon
+                component="a"
+                href="https://www.youtube.com"
+                size="lg"
+                variant="default"
+                radius="xl"
+                target="_blank"
+              >
+                <IconBrandYoutube size={18} stroke={1.5} />
+              </ActionIcon>
+              <ActionIcon
+                component="a"
+                href="https://www.instagram.com/visiona.productions?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                target="_blank"
+                rel="noopener noreferrer"
+                size="lg"
+                variant="default"
+                radius="xl"
+              >
+                <IconBrandInstagram size={18} stroke={1.5} />
+              </ActionIcon>
+            </Flex>
+          </Flex>
         </div>
       </Drawer>
 
       <Box
         style={{
+          backgroundColor: isTop ? "transparent" : "green",
           position: "fixed",
-          top: "30px",
-          right: "30px",
-          zIndex: 10000,
-          backgroundColor: "transparent",
+          top: "0px",
+          right: "0px",
+          width: "100%",
+          height: "80px",
+          zIndex: 10001,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          transition: "background-color 0.3s ease",
         }}
       >
-        <Burger
-          opened={drawerOpened}
-          onClick={drawerOpened ? closeDrawer : openDrawer}
-          onMouseEnter={openDrawer}
+        <Box style={{ color: "black", fontSize: "20px", fontWeight: "bold" }}>
+          Logo
+        </Box>
+
+        <Box
+          m={isSmallScreen ? 10 : 30}
+          p={10} //ruimte rond burger
           style={{
-            backgroundColor: "transparent",
+            backgroundColor: drawerOpened ? "transparent" : "black",
             border: "none",
+            borderRadius: "100px",
           }}
-        />
+        >
+          <Burger
+            color={drawerOpened ? "black" : "white"}
+            opened={drawerOpened}
+            onClick={drawerOpened ? closeDrawer : openDrawer}
+            onMouseEnter={openDrawer}
+          />
+        </Box>
       </Box>
     </>
   );

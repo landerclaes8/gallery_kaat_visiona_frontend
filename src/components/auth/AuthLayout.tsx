@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from "react-router";
-import { Navbar } from "../navbar/navbar";
 import { useAuth } from "../../lib/context/auth";
+import SideNavBar from "../navbar/SideNavBar";
 
 export const AuthLayout = () => {
   const { user } = useAuth();
@@ -9,7 +9,7 @@ export const AuthLayout = () => {
   }
   return (
     <>
-      <Navbar />
+      <SideNavBar />
       <Outlet />
     </>
   );

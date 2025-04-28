@@ -41,7 +41,7 @@ export const VideoPage = () => {
 
   return (
     <>
-      <Flex justify="center" direction="column" p={isSmallScreen ? 5 : 75}>
+      <Flex justify="center" direction="column" p={isSmallScreen ? 5 : 75} pt={isSmallScreen ? 60 : 100}>
         <Center>
           <Title p="md" mb="md">
             Explore all our video services

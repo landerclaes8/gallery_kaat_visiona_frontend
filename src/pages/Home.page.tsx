@@ -1,16 +1,17 @@
 import HeaderAboutLarge from "../components/home/HeaderAboutResponsive";
 import HeaderHomeLarge from "../components/home/HeaderHomeResponsive";
+import LogoGrid from "../components/home/LogoGrid";
 import OffersLarge from "../components/home/OffersLarge";
 import VisionaInformationLarge from "../components/home/VisionaInformationLarge";
-
 
 export function HomePage() {
   return (
     <>
-      <HeaderHomeLarge/>
-      <HeaderAboutLarge/>
-      <VisionaInformationLarge/>
-      <OffersLarge/>
+      <HeaderHomeLarge />
+      <HeaderAboutLarge />
+      <VisionaInformationLarge />
+      <OffersLarge />
+      <LogoGrid />
     </>
   );
 }

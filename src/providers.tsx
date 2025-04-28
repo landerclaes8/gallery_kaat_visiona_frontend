@@ -1,14 +1,12 @@
-import { PropsWithChildren } from "react";
 import { MantineProvider } from "@mantine/core";
-import { ModalsProvider } from "@mantine/modals";
-import { Notifications } from "@mantine/notifications";
-import { BrowserRouter } from "react-router";
-
 import "@mantine/core/styles.css";
+import { ModalsProvider } from "@mantine/modals";
 import "@mantine/notifications/styles.css";
-import { theme } from "./lib/theme";
+import { PropsWithChildren } from "react";
+import { BrowserRouter } from "react-router";
 import { SWRConfig } from "swr";
 import { fetcher } from "./lib/api";
+import { theme } from "./lib/theme";
 
 export const Providers = ({ children }: PropsWithChildren) => (
   <SWRConfig
@@ -18,10 +16,7 @@ export const Providers = ({ children }: PropsWithChildren) => (
   >
     <MantineProvider theme={theme}>
       <ModalsProvider>
-        <BrowserRouter>
-          <Notifications />
-          {children}
-        </BrowserRouter>
+        <BrowserRouter>{children}</BrowserRouter>
       </ModalsProvider>
     </MantineProvider>
   </SWRConfig>
