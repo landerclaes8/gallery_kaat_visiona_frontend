@@ -1,11 +1,11 @@
+import { Box, SimpleGrid, Stack, Text } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 import {
   IconAt,
   IconBrandWhatsapp,
   IconPhone,
   IconSun,
 } from "@tabler/icons-react";
-import { Box, SimpleGrid, Stack, Text } from "@mantine/core";
-import { useMediaQuery } from "@mantine/hooks";
 import "../../styles/contact.scss";
 
 interface ContactIconProps
@@ -22,10 +22,9 @@ function ContactIcon({
   description,
   link,
 }: ContactIconProps) {
-
-   const isSmallScreen = useMediaQuery("(max-width: 768px)");
+  const isSmallScreen = useMediaQuery("(max-width: 768px)");
   return (
-    <SimpleGrid cols={isSmallScreen ? 1: 4} spacing="md" verticalSpacing="lg">
+    <SimpleGrid cols={isSmallScreen ? 1 : 4} spacing="md" verticalSpacing="lg">
       <Box
         className="wrapper"
         ml="lg"
@@ -66,7 +65,6 @@ const MOCKDATA = [
     icon: IconPhone,
     link: "tel:+32468108158",
   },
-  //{ title: 'Working hours', description: '8 a.m. – 11 p.m.', icon: IconSun },
 ];
 
 export function ContactIconsList() {

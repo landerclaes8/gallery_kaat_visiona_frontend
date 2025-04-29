@@ -1,4 +1,4 @@
-import { Box, Flex, Paper, Text, Title } from "@mantine/core";
+import { Box, Flex, Paper, Text } from "@mantine/core";
 import { ReactNode } from "react";
 
 interface Props {

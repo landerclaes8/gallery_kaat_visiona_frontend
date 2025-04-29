@@ -5,8 +5,7 @@ import {
   Divider,
   Drawer,
   Group,
-  ScrollArea,
-  Button
+  ScrollArea
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconBrandInstagram, IconBrandWhatsapp } from "@tabler/icons-react";

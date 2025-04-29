@@ -1,5 +1,4 @@
-import ContactCards from "../components/contactComponents/ContactCards";
-import "../styles/contact.scss";
+import { ActionIcon } from "@mantine/core";
 import {
   IconBrandWhatsapp,
   IconBrandInstagram,
@@ -9,7 +8,12 @@ import {
   IconPhone,
 } from "@tabler/icons-react";
 
-export const contactData = [
+interface Props {
+  margin: number;
+  color: string;
+}
+
+const navbarLinkData = [
   {
     title: "WhatsApp",
     description: "Contacteer ons nu",
@@ -48,6 +52,30 @@ export const contactData = [
   },
 ];
 
-export const ContactPage = () => {
-  return <ContactCards data={contactData} />;
+const Socials = ({ margin, color }: Props) => {
+  return (
+    <>
+      {navbarLinkData.map(({ link, icon }, index) => (
+        <ActionIcon
+          m={margin}
+          key={index}
+          component="a"
+          href={link}
+          target="_blank"
+          variant="default"
+          radius={"xl"}
+          color={"green"}
+          style={{
+            backgroundColor: "transparent",
+            border: "none",
+            color: `${color}`,
+          }}
+        >
+          {icon}
+        </ActionIcon>
+      ))}
+    </>
+  );
 };
+
+export default Socials;

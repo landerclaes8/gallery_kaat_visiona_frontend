@@ -1,11 +1,8 @@
-import {
-  IconBrandInstagram,
-  IconBrandTwitter,
-  IconBrandYoutube,
-} from "@tabler/icons-react";
-import { ActionIcon, Group, Box } from "@mantine/core";
-import classes from "../styles/footer.module.scss";
+import { Box, Group } from "@mantine/core";
+import { IconBrandInstagram } from "@tabler/icons-react";
 import { Link } from "react-router";
+import classes from "../styles/footer.module.scss";
+import Socials from "./contactComponents/Socials";
 
 const links = [
   { id: 1, link: "/home", label: "Home" },
@@ -18,7 +15,7 @@ const links = [
 const Footer = () => {
   const items = links.map((link) => (
     <Box
-    key={link.id}
+      key={link.id}
       component={Link}
       to={link.link}
       style={{
@@ -34,37 +31,17 @@ const Footer = () => {
   ));
 
   return (
-    <div className={classes.footer} style={{position:"relative", zIndex:1000}}>
+    <div
+      className={classes.footer}
+      style={{ position: "relative", zIndex: 1000 }}
+    >
       <div className={classes.inner}>
         <IconBrandInstagram size={28} />
 
         <Group>{items}</Group>
 
         <Group gap="xs" justify="flex-end" wrap="nowrap">
-          <ActionIcon size="lg" variant="default" radius="xl">
-            <IconBrandTwitter size={18} stroke={1.5} />
-          </ActionIcon>
-          <ActionIcon
-            component="a"
-            href="https://www.youtube.com"
-            size="lg"
-            variant="default"
-            radius="xl"
-            target="_blank"
-          >
-            <IconBrandYoutube size={18} stroke={1.5} />
-          </ActionIcon>
-          <ActionIcon
-            component="a"
-            href="https://www.instagram.com/visiona.productions?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-            target="_blank"
-            rel="noopener noreferrer"
-            size="lg"
-            variant="default"
-            radius="xl"
-          >
-            <IconBrandInstagram size={18} stroke={1.5} />
-          </ActionIcon>
+          <Socials margin={5} color="black" />
         </Group>
       </div>
     </div>

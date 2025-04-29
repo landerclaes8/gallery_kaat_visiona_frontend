@@ -1,13 +1,8 @@
-import { ActionIcon, Box, Burger, Drawer, Flex, Text } from "@mantine/core";
-import {
-  IconBrandInstagram,
-  IconBrandTwitter,
-  IconBrandYoutube,
-} from "@tabler/icons-react";
-import { useRef, useState } from "react";
-import { Link } from "react-router";
-import { useEffect } from "react";
+import { Box, Burger, Drawer, Flex, Text, Group } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
+import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router";
+import Socials from "../contactComponents/Socials";
 
 const navbarData = [
   {
@@ -69,7 +64,7 @@ const SideNavBar = () => {
         h={"100vh"}
         transitionProps={{
           transition: "slide-down",
-          duration: 150,
+          duration: 300,
           timingFunction: "linear",
         }}
         style={{ zIndex: 9999, position: "fixed" }}
@@ -115,30 +110,7 @@ const SideNavBar = () => {
             </Flex>
 
             <Flex align="center">
-              <ActionIcon size="lg" variant="default" radius="xl">
-                <IconBrandTwitter size={18} stroke={1.5} />
-              </ActionIcon>
-              <ActionIcon
-                component="a"
-                href="https://www.youtube.com"
-                size="lg"
-                variant="default"
-                radius="xl"
-                target="_blank"
-              >
-                <IconBrandYoutube size={18} stroke={1.5} />
-              </ActionIcon>
-              <ActionIcon
-                component="a"
-                href="https://www.instagram.com/visiona.productions?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-                target="_blank"
-                rel="noopener noreferrer"
-                size="lg"
-                variant="default"
-                radius="xl"
-              >
-                <IconBrandInstagram size={18} stroke={1.5} />
-              </ActionIcon>
+              <Socials margin={5} color="black" />
             </Flex>
           </Flex>
         </div>
@@ -163,22 +135,28 @@ const SideNavBar = () => {
           Logo
         </Box>
 
-        <Box
-          m={isSmallScreen ? 10 : 30}
-          p={10} //ruimte rond burger
-          style={{
-            backgroundColor: drawerOpened ? "transparent" : "black",
-            border: "none",
-            borderRadius: "100px",
-          }}
-        >
-          <Burger
-            color={drawerOpened ? "black" : "white"}
-            opened={drawerOpened}
-            onClick={drawerOpened ? closeDrawer : openDrawer}
-            onMouseEnter={openDrawer}
-          />
-        </Box>
+        <Group>
+          {isSmallScreen ? null : drawerOpened ? null : (
+            <Socials margin={0} color="white" />
+          )}
+
+          <Box
+            m={isSmallScreen ? 10 : 30}
+            p={10} //ruimte rond burger
+            style={{
+              backgroundColor: drawerOpened ? "transparent" : "black",
+              border: "none",
+              borderRadius: "100px",
+            }}
+          >
+            <Burger
+              color={drawerOpened ? "black" : "white"}
+              opened={drawerOpened}
+              onClick={drawerOpened ? closeDrawer : openDrawer}
+              onMouseEnter={openDrawer}
+            />
+          </Box>
+        </Group>
       </Box>
     </>
   );

@@ -1,4 +1,4 @@
-import { AspectRatio, Card, Center, Space, Text, Title } from "@mantine/core";
+import { AspectRatio, Card, Center, Text, Title } from "@mantine/core";
 import VideoPlayer from "./videoPlayer";
 
 interface Props {
@@ -12,7 +12,7 @@ const Video = ({ id, title, description }: Props) => {
     <Card padding="lg" radius="md" w="100%" mb="md">
       <Card.Section inheritPadding>
         <Center>
-        <Title size={25}>{title}</Title>
+          <Title size={25}>{title}</Title>
         </Center>
       </Card.Section>
 
@@ -25,7 +25,7 @@ const Video = ({ id, title, description }: Props) => {
       </Card.Section>
       <Card.Section inheritPadding py="xs">
         <Center>
-        <Text>{description}</Text>
+          <Text>{description}</Text>
         </Center>
       </Card.Section>
     </Card>

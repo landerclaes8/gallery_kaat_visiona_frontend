@@ -1,16 +1,15 @@
 import {
   Box,
   Button,
+  Card,
   Center,
   Flex,
-  Paper,
   SimpleGrid,
   Space,
-  Title,
-  Card,
+  Title
 } from "@mantine/core";
-import { Link } from "react-router";
 import { useMediaQuery } from "@mantine/hooks";
+import { Link } from "react-router";
 
 const HeaderAboutResponsive = () => {
   const isSmallScreen = useMediaQuery("(max-width: 768px)");
