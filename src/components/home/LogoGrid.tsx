@@ -3,47 +3,47 @@ import { Box, Center, Flex, SimpleGrid, Title } from "@mantine/core";
 const logoData = [
   {
     titel: "Corendon",
-    src: "/public/images/logos/corendon.webp",
+    src: "/images/logos/corendon.webp",
   },
   {
     titel: "Jupiler Pro Leaque",
-    src: "/public/images/logos/jupilerProLeaque.webp",
+    src: "/images/logos/jupilerProLeaque.webp",
   },
   {
     titel: "Jongeren travel",
-    src: "/public/images/logos/jt.webp",
+    src: "/images/logos/jt.webp",
   },
   {
     titel: "Jbc",
-    src: "/public/images/logos/jbc.webp",
+    src: "/images/logos/jbc.webp",
   },
   {
     titel: "Team Belguim",
-    src: "/public/images/logos/boic.webp",
+    src: "/images/logos/boic.webp",
   },
   {
     titel: "Hello Fresh",
-    src: "/public/images/logos/helloFresh.webp",
+    src: "/images/logos/helloFresh.webp",
   },
   {
     titel: "Anderlecht",
-    src: "/public/images/logos/anderlecht.webp",
+    src: "/images/logos/anderlecht.webp",
   },
   {
     titel: "Kastaars",
-    src: "/public/images/logos/kastaars.webp",
+    src: "/images/logos/kastaars.webp",
   },
   {
     titel: "Gimber",
-    src: "/public/images/logos/gimber.webp",
+    src: "/images/logos/gimber.webp",
   },
   {
     titel: "Maanrock",
-    src: "/public/images/logos/maanrock.webp",
+    src: "/images/logos/maanrock.webp",
   },
   {
     titel: "Studio 100",
-    src: "/public/images/logos/studio100.webp",
+    src: "/images/logos/studio100.webp",
   },
 ];
 

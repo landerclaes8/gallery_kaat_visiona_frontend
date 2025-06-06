@@ -7,6 +7,7 @@ import { VideoOverview } from "../components/video/VideoOverview";
 import { fetcher } from "../lib/api";
 import { categoryProps } from "../types/category";
 import { useMediaQuery } from "@mantine/hooks";
+import "../styles/content.page.scss";
 
 export const VideoPage = () => {
   const isSmallScreen = useMediaQuery("(max-width: 768px)");
@@ -40,16 +41,20 @@ export const VideoPage = () => {
   }
 
   return (
-    <>
-      <Flex justify="center" direction="column" p={isSmallScreen ? 5 : 75} pt={isSmallScreen ? 60 : 100}>
+      <Flex
+        className="background-color-text font-family-text"
+        justify="center"
+        direction="column"
+        p={isSmallScreen ? 5 : 75}
+        pt={isSmallScreen ? 60 : 100}
+      >
         <Center>
-          <Title p="md" mb="md">
+          <Title className="title font-family-text" p="md" mb="md">
             Explore all our video services
           </Title>
         </Center>
         <CategorySelector type="video" categories={data} />
         <VideoOverview />
       </Flex>
-    </>
   );
 };

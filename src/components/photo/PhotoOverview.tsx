@@ -53,7 +53,7 @@ export const PhotoOverview = () => {
   }
 
   return isSmallScreen ? (
-    <Center style={{ padding: "1.5rem", flexDirection: "column" }}>
+    <Center>
       {filteredPhotos?.map((photo) => (
         <Box key={photo.id}>
           {photo.fileName}
@@ -66,7 +66,7 @@ export const PhotoOverview = () => {
       ))}
     </Center>
   ) : (
-    <Grid gutter="lg">
+    <Grid>
       {filteredPhotos?.map((photo) => (
         <Grid.Col span={4} key={photo.id}>
           <Photo

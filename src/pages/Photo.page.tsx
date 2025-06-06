@@ -7,6 +7,7 @@ import { PhotoOverview } from "../components/photo/PhotoOverview";
 import { fetcher } from "../lib/api";
 import { categoryProps } from "../types/category";
 import { useMediaQuery } from "@mantine/hooks";
+import "../styles/content.page.scss";
 
 export const Photopage = () => {
   const isSmallScreen = useMediaQuery("(max-width: 768px)");
@@ -42,13 +43,14 @@ export const Photopage = () => {
   return (
     <>
       <Flex
+        className="background-color-text font-family-text"
         justify="center"
         direction="column"
         p={isSmallScreen ? 5 : 75}
         pt={isSmallScreen ? 60 : 100}
       >
         <Center>
-          <Title p="md" mb="md">
+          <Title className="title font-family-text" p="md" mb="md">
             Explore all our photo services
           </Title>
         </Center>

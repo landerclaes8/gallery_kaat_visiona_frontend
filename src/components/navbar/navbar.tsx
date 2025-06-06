@@ -40,7 +40,7 @@ export const Navbar = () => {
               </Box>
             </Box>
           </Center>
-          <Box>Logo</Box>
+          <Box></Box>
 
           <Group h="100%" gap={0} visibleFrom="sm" className="centered-links">
             <Box component={Link} className="link" to="/home">

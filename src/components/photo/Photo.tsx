@@ -16,9 +16,11 @@ interface Props {
 
 const Photo = ({ id, title, description }: Props) => {
   return (
-    <Card padding="lg" radius="md" w="100%" mb="md">
-      <Card.Section inheritPadding>
-        <Title size={25}>{title}</Title>
+    <Card className="background-color-text" radius="md" w="100%" mb="md">
+      <Card.Section>
+        <Title className="font-family-text" size={25}>
+          {title}
+        </Title>
         <Space h="lg" />
       </Card.Section>
 
@@ -29,9 +31,9 @@ const Photo = ({ id, title, description }: Props) => {
           </Center>
         </AspectRatio>
       </Card.Section>
-      <Card.Section inheritPadding py="xs">
+      <Card.Section>
         <Center>
-          <Text>{description}</Text>
+          <Text className="font-family-text">{description}</Text>
         </Center>
       </Card.Section>
     </Card>

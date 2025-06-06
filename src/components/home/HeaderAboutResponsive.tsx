@@ -6,7 +6,7 @@ import {
   Flex,
   SimpleGrid,
   Space,
-  Title
+  Title,
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { Link } from "react-router";
@@ -39,7 +39,7 @@ const HeaderAboutResponsive = () => {
               radius="md"
               style={{
                 cursor: "pointer",
-                backgroundImage: `url('/public/images/backgrounds/backgroundContact.jpg')`,
+                backgroundImage: `url("/public/images/backgrounds/backgroundContact.jpg")`,
                 backgroundPosition: "center",
                 backgroundSize: "cover",
                 display: "flex",
@@ -68,7 +68,7 @@ const HeaderAboutResponsive = () => {
               p="xl"
               radius="md"
               style={{
-                backgroundImage: `url('/public/images/backgrounds/backgroundContact.jpg')`,
+                backgroundImage: `url("/public/images/backgrounds/backgroundContact.jpg")`,
                 backgroundPosition: "center",
                 backgroundSize: "cover",
                 display: "flex",

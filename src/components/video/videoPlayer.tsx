@@ -6,7 +6,7 @@ interface Props {
   videoId: number;
 }
 
-const VideoPlayer: React.FC<Props> = ({ videoId  }) => {
+const VideoPlayer: React.FC<Props> = ({ videoId }) => {
   const isSmallScreen = useMediaQuery("(max-width: 768px)");
   const [isVertical, setIsVertical] = useState(false);
 
@@ -39,7 +39,7 @@ const VideoPlayer: React.FC<Props> = ({ videoId  }) => {
     </div>
   ) : (
     <div
-      className={`video-container ${isVertical ? "vertical" : "horizontal"}`}
+      className={`video-container ${isVertical ? "vertical" : "horizontal"} `}
     >
       <video
         id={`video-${videoId}`}

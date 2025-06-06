@@ -53,7 +53,7 @@ export const VideoOverview = () => {
   }
 
   return  isSmallScreen ? (
-    <Center style={{ padding: "1.5rem", flexDirection: "column" }}>
+    <Center>
       {filteredVideos?.map((video) => (
         <Box key={video.id}>
           <Video
@@ -65,7 +65,7 @@ export const VideoOverview = () => {
       ))}
     </Center>
   ) : (
-    <Grid gutter="lg">
+    <Grid>
       {filteredVideos?.map((video) => (
         <Grid.Col span={6} key={video.id}>
           <Video

@@ -9,10 +9,12 @@ interface Props {
 
 const Video = ({ id, title, description }: Props) => {
   return (
-    <Card padding="lg" radius="md" w="100%" mb="md">
-      <Card.Section inheritPadding>
+    <Card className="background-color-text" radius="md" w="100%" mb="md">
+      <Card.Section>
         <Center>
-          <Title size={25}>{title}</Title>
+          <Title className="font-family-text" size={25}>
+            {title}
+          </Title>
         </Center>
       </Card.Section>
 
@@ -23,9 +25,9 @@ const Video = ({ id, title, description }: Props) => {
           </Center>
         </AspectRatio>
       </Card.Section>
-      <Card.Section inheritPadding py="xs">
+      <Card.Section>
         <Center>
-          <Text>{description}</Text>
+          <Text className="font-family-text">{description}</Text>
         </Center>
       </Card.Section>
     </Card>

@@ -118,7 +118,7 @@ const SideNavBar = () => {
 
       <Box
         style={{
-          backgroundColor: isTop ? "transparent" : "green",
+          backgroundColor: isTop ? "transparent" : "lightskyblue",
           position: "fixed",
           top: "0px",
           right: "0px",
@@ -132,7 +132,7 @@ const SideNavBar = () => {
         }}
       >
         <Box style={{ color: "black", fontSize: "20px", fontWeight: "bold" }}>
-          Logo
+          
         </Box>
 
         <Group>
