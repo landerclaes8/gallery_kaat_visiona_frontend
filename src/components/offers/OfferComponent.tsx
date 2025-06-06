@@ -39,11 +39,11 @@ const OfferComponent = ({ title, icon, description, imageUrl }: Props) => {
         direction="column"
         wrap="wrap"
       >
-        <Box style={{ fontSize: "3rem", color: "white" }}>{icon}</Box>
-        <Text fw={700} style={{ color: "white", fontSize: "1.5rem" }}>
+        <Box style={{ fontSize: "3rem" }}>{icon}</Box>
+        <Text fw={700} style={{ fontSize: "1.5rem" }}>
           {title}
         </Text>
-        <Text style={{ color: "white" }}>{description}</Text>
+        <Text>{description}</Text>
       </Flex>
     </Paper>
   );

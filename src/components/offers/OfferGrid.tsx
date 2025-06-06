@@ -9,6 +9,7 @@ import {
   MdSportsHandball,
 } from "react-icons/md";
 import OfferComponent from "./OfferComponent";
+import '../../styles/general.scss'
 
 const offerData = [
   {
@@ -65,9 +66,9 @@ const offerData = [
 
 const OfferGrid = () => {
   return (
-    <Box style={{ backgroundColor: "black" }} h={{xs:"100%", lg: "100vh"}}>
+    <Box className="background-color-text font-family-text" h={{xs:"100%", lg: "100vh"}}>
       <Center>
-        <Title pt={50} style={{ color: "white" }}>
+        <Title pt={50}>
           Our Services
         </Title>
       </Center>
@@ -82,7 +83,7 @@ const OfferGrid = () => {
           />
         ))}
       </SimpleGrid>
-      <Box>hallo</Box>
+  
     </Box>
   );
 };

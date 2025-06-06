@@ -1,7 +1,6 @@
 import { Box, Button, Flex, Space, Title, Text } from "@mantine/core";
 
 const HeaderHomeLarge = () => {
-  const kleur = "white";
   return (
     <Box
       pt="150px"
@@ -26,28 +25,28 @@ const HeaderHomeLarge = () => {
         <source src={`http://localhost:4000/api/videos/4`} type="video/mp4" />
         Je browser ondersteunt geen HTML5 video.
       </video>
-      <Flex direction="column" justify="center" align="center">
-        <Title size={100} style={{ color: kleur }}>
+      <Flex
+        className="text-color font-family-text"
+        direction="column"
+        justify="center"
+        align="center"
+      >
+        <Title className="font-family-text" size={100}>
           Visiona
         </Title>
         <Space h="xl"></Space>
-        <Title size={35} style={{ color: kleur }} p={25}>
+        <Title className="font-family-text" size={35} p={25}>
           Creative video and photo production house
         </Title>
         <Space h="70"></Space>
-        <Button
-          variant="transparent"
-          style={{ border: "solid white 1px", color: kleur }}
-        >
+        <Button variant="transparent" style={{ border: "solid white 1px" }}>
           <Text
+            className="text-color font-family-text"
             component="a"
             href="https://wa.me/32468108158"
             target="_blank"
             rel="noopener noreferrer"
             fw={700}
-            style={{
-              color: kleur,
-            }}
           >
             Ask anything
           </Text>

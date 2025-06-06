@@ -1,0 +1,31 @@
+.background-text-color {
+    background-color: black;
+    color: white ;
+}
+
+//Visiona en creative video and photo producten house
+.text-color {
+  color:white
+}
+
+.font-family-text {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+.aboutVisionaButton {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  font-weight: 700;
+
+  &:hover {
+    background-color: black;
+    color: white;
+
+    * {
+      color: white;
+    }
+  }
+
+}

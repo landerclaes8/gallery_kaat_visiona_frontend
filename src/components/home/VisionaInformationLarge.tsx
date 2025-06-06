@@ -14,17 +14,16 @@ const VisionaInformationLarge = () => {
   const isSmallScreen = useMediaQuery("(max-width: 768px)");
 
   return (
-    <SimpleGrid cols={{ sm: 1, md: 1, lg: 2 }} spacing={0} pb={25}>
+    <SimpleGrid className="background-text-color" cols={{ sm: 1, md: 1, lg: 2 }} spacing={0} pb={25}>
       <Flex
         direction="column"
         justify="center"
         align="center"
-        style={{ backgroundColor: isSmallScreen ? "#DDABFF" : "#FF9CFF" }}
         h={isSmallScreen ? "" : "100vh"}
       >
         {isSmallScreen && (
           <>
-            <Title size={50} pl={25} pr={5} mt={isSmallScreen ? 75 : 150}>
+            <Title className="text-color" size={50} pl={25} pr={5} mt={isSmallScreen ? 75 : 150}>
               Storytelling
             </Title>
             <Title size={50} pl={25} pr={5}>
@@ -63,20 +62,20 @@ const VisionaInformationLarge = () => {
           {isSmallScreen ? (
             <Center>
               <Button
+                className="aboutVisionaButton"
                 variant="transparent"
                 mt={25}
                 mb={25}
-                style={{ border: "solid black 1px", color: "black" }}
               >
                 <Text fw={700}>More about Visiona</Text>
               </Button>
             </Center>
           ) : (
             <Button
+              className="aboutVisionaButton"
               variant="transparent"
               mt={50}
               mb={50}
-              style={{ border: "solid black 1px", color: "black" }}
             >
               <Text fw={700}>More about Visiona</Text>
             </Button>
@@ -89,7 +88,6 @@ const VisionaInformationLarge = () => {
         justify="start"
         align="end"
         pr={isSmallScreen ? 0 : 100}
-        style={{ backgroundColor: "#DDABFF" }}
         h={isSmallScreen ? "" : "100vh"}
       >
         {!isSmallScreen && (

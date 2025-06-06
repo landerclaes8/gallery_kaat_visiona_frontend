@@ -7,7 +7,7 @@ import { PhotoOverview } from "../components/photo/PhotoOverview";
 import { fetcher } from "../lib/api";
 import { categoryProps } from "../types/category";
 import { useMediaQuery } from "@mantine/hooks";
-import "../styles/content.page.scss";
+import "../styles/general.scss";
 
 export const Photopage = () => {
   const isSmallScreen = useMediaQuery("(max-width: 768px)");

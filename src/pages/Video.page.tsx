@@ -7,7 +7,7 @@ import { VideoOverview } from "../components/video/VideoOverview";
 import { fetcher } from "../lib/api";
 import { categoryProps } from "../types/category";
 import { useMediaQuery } from "@mantine/hooks";
-import "../styles/content.page.scss";
+import "../styles/general.scss";
 
 export const VideoPage = () => {
   const isSmallScreen = useMediaQuery("(max-width: 768px)");

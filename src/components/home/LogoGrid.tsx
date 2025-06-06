@@ -50,13 +50,13 @@ const logoData = [
 const LogoGrid = () => {
   return (
     <Box
+    className="background-text-color"
       pt={50}
       pb={50}
       h={{ lg: "100vh" }}
-      style={{ backgroundColor: "lightpink" }}
     >
       <Center>
-        <Title>Brands we have worked with</Title>
+        <Title pb={50}>Brands we have worked with</Title>
       </Center>
       <Center>
         <SimpleGrid cols={{ xs: 2, sm: 4, md: 6, lg: 6 }}>
