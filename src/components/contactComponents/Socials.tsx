@@ -1,4 +1,4 @@
-import { ActionIcon } from "@mantine/core";
+import { ActionIcon, Flex, Box } from "@mantine/core";
 import {
   IconBrandWhatsapp,
   IconBrandInstagram,
@@ -7,6 +7,7 @@ import {
   IconBrandLinkedin,
   IconPhone,
 } from "@tabler/icons-react";
+import React from "react";
 
 interface Props {
   margin: number;
@@ -55,25 +56,33 @@ const navbarLinkData = [
 const Socials = ({ margin, color }: Props) => {
   return (
     <>
-      {navbarLinkData.map(({ link, icon }, index) => (
-        <ActionIcon
-          m={margin}
-          key={index}
-          component="a"
-          href={link}
-          target="_blank"
-          variant="default"
-          radius={"xl"}
-          color={"green"}
-          style={{
-            backgroundColor: "transparent",
-            border: "none",
-            color: `${color}`,
+      <Flex align="center" gap={20}>
+        {navbarLinkData.map(({ link, icon }, index) => (
+          <Box
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = "scale(1.10)";
           }}
-        >
-          {icon}
-        </ActionIcon>
-      ))}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = "scale(1)";
+          }}
+          >
+            <ActionIcon
+              m={margin}
+              key={index}
+              component="a"
+              href={link}
+              target="_blank"
+              style={{
+                backgroundColor: "transparent",
+                border: "none",
+                color: `${color}`,
+              }}
+            >
+              {React.cloneElement(icon, { size: 150 })}
+            </ActionIcon>
+          </Box>
+        ))}
+      </Flex>
     </>
   );
 };

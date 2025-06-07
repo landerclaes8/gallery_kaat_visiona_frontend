@@ -3,6 +3,8 @@ import { useMediaQuery } from "@mantine/hooks";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router";
 import Socials from "../contactComponents/Socials";
+import "../../styles/general.scss";
+import "../../styles/animations/underlineLR.scss";
 
 const navbarData = [
   {
@@ -57,11 +59,12 @@ const SideNavBar = () => {
   return (
     <>
       <Drawer
+        padding={0}
+        className="font-family-text"
         withCloseButton={false}
         position="right"
         opened={drawerOpened}
         onClose={closeDrawer}
-        h={"100vh"}
         transitionProps={{
           transition: "slide-down",
           duration: 300,
@@ -71,36 +74,31 @@ const SideNavBar = () => {
       >
         <div ref={drawerRef} onMouseLeave={handleMouseLeave}>
           <Flex
+            p={50}
+            className="background-color-text"
             direction="column"
             justify="space-between"
-            style={{ height: "95vh" }}
+            style={{ height: "100vh" }}
           >
-            <Flex direction="column" justify="center" pt={150}>
+            <Flex
+              direction="column"
+              justify="center"
+              pt={isSmallScreen ? 75 : 150}
+            >
               {navbarData.map((element, index) => (
                 <Box
+                  
                   key={index}
                   component={Link}
                   to={element.link}
                   onClick={closeDrawer}
                   p={10}
-                  style={{
-                    textDecoration: "none",
-                    textDecorationColor: "black",
-                    transition: "text-decoration 0.5s ease",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.textDecoration = "underline";
-                    e.currentTarget.style.textDecorationColor = "black";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.textDecoration = "none";
-                  }}
                 >
                   <Text
+                    className="title-text-navbar animated-underline"
                     fw={700}
                     style={{
                       fontSize: "2rem",
-                      color: "black",
                     }}
                   >
                     {element.title}
@@ -109,15 +107,14 @@ const SideNavBar = () => {
               ))}
             </Flex>
 
-            <Flex align="center">
-              <Socials margin={5} color="black" />
-            </Flex>
+            <Socials margin={5} color="white" />
           </Flex>
         </div>
       </Drawer>
 
       <Box
         style={{
+          //dit is de balk die je ziet vanaf je naar beneden scrollt
           backgroundColor: isTop ? "transparent" : "lightskyblue",
           position: "fixed",
           top: "0px",
@@ -131,9 +128,9 @@ const SideNavBar = () => {
           transition: "background-color 0.3s ease",
         }}
       >
-        <Box style={{ color: "black", fontSize: "20px", fontWeight: "bold" }}>
-          
-        </Box>
+        <Box
+          style={{ color: "black", fontSize: "20px", fontWeight: "bold" }}
+        ></Box>
 
         <Group>
           {isSmallScreen ? null : drawerOpened ? null : (
@@ -150,7 +147,7 @@ const SideNavBar = () => {
             }}
           >
             <Burger
-              color={drawerOpened ? "black" : "white"}
+              color={"white"}
               opened={drawerOpened}
               onClick={drawerOpened ? closeDrawer : openDrawer}
               onMouseEnter={openDrawer}

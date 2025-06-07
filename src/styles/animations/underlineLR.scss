@@ -1,0 +1,24 @@
+//Deze scss file wordt gebruikt in SideNavBar.tsx om titles te onderlijnen
+.animated-underline {
+  position: relative;
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+}
+
+.animated-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background-color: lightskyblue;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.animated-underline:hover::after {
+  transform: scaleX(1);
+}

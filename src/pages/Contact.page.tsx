@@ -1,53 +1,6 @@
 import ContactCards from "../components/contactComponents/ContactCards";
-import "../styles/contact.scss";
-import {
-  IconBrandWhatsapp,
-  IconBrandInstagram,
-  IconBrandTiktok,
-  IconAt,
-  IconBrandLinkedin,
-  IconPhone,
-} from "@tabler/icons-react";
-
-export const contactData = [
-  {
-    title: "WhatsApp",
-    description: "Contacteer ons nu",
-    link: "",
-    icon: <IconBrandWhatsapp />,
-  },
-  {
-    title: "Instagram",
-    description: "Contacteer ons nu",
-    link: "",
-    icon: <IconBrandInstagram />,
-  },
-  {
-    title: "Tiktok",
-    description: "Contacteer ons nu",
-    link: "",
-    icon: <IconBrandTiktok />,
-  },
-  {
-    title: "Mail",
-    description: "Contacteer ons nu",
-    link: "",
-    icon: <IconAt />,
-  },
-  {
-    title: "Linked In",
-    description: "Contacteer ons nu",
-    link: "",
-    icon: <IconBrandLinkedin />,
-  },
-  {
-    title: "Call us",
-    description: "Contacteer ons nu",
-    link: "",
-    icon: <IconPhone />,
-  },
-];
+import "../styles/general.scss";
 
 export const ContactPage = () => {
-  return <ContactCards data={contactData} />;
+  return <ContactCards />;
 };
