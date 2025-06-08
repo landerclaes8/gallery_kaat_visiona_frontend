@@ -55,8 +55,7 @@ export const PhotoOverview = () => {
   return isSmallScreen ? (
     <Center>
       {filteredPhotos?.map((photo) => (
-        <Box key={photo.id}>
-          {photo.fileName}
+        <Box pt={20} p={3} key={photo.id}>
           <Photo
             id={photo.id}
             title={photo.title}

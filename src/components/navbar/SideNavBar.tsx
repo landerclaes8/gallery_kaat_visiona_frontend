@@ -87,7 +87,6 @@ const SideNavBar = () => {
             >
               {navbarData.map((element, index) => (
                 <Box
-                  
                   key={index}
                   component={Link}
                   to={element.link}
@@ -107,7 +106,7 @@ const SideNavBar = () => {
               ))}
             </Flex>
 
-            <Socials margin={5} color="white" />
+            <Socials margin={5} color="white" gap={0} />
           </Flex>
         </div>
       </Drawer>
@@ -134,7 +133,7 @@ const SideNavBar = () => {
 
         <Group>
           {isSmallScreen ? null : drawerOpened ? null : (
-            <Socials margin={0} color="white" />
+            <Socials margin={5} color="white" gap={0} />
           )}
 
           <Box

@@ -1,4 +1,4 @@
-import { Box, Center, Flex, SimpleGrid, Title } from "@mantine/core";
+import { Box, Center, SimpleGrid, Title } from "@mantine/core";
 
 const logoData = [
   {
@@ -49,33 +49,26 @@ const logoData = [
 
 const LogoGrid = () => {
   return (
-    <Box
-    className="background-text-color"
-      pt={50}
-      pb={50}
-      h={{ lg: "100vh" }}
-    >
+    <Box className="background-text-color" pt={50} pb={50} h={{ lg: "100vh" }}>
       <Center>
-        <Title pb={50}>Brands we have worked with</Title>
+        <Title p={50}>Brands we have worked with</Title>
       </Center>
       <Center>
         <SimpleGrid cols={{ xs: 2, sm: 4, md: 6, lg: 6 }}>
           {logoData.map((element, index) => (
-            <Flex direction="column" align="center">
-              <Box
-                m={{ xs: 0, sm: 20, md: 20, lg: 20 }}
-                p={75}
-                key={index}
-                style={{
-                  backgroundImage: `url(${element.src})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  backgroundRepeat: "no-repeat",
-                  backgroundColor: "transparent",
-                  filter: "grayscale(100%)",
-                }}
-              ></Box>
-            </Flex>
+            <Box
+              m={{ xs: 0, sm: 20, md: 20, lg: 20 }}
+              p={75}
+              key={index}
+              style={{
+                backgroundImage: `url(${element.src})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+                backgroundColor: "transparent",
+                filter: "grayscale(100%)",
+              }}
+            ></Box>
           ))}
         </SimpleGrid>
       </Center>

@@ -1,50 +1,67 @@
-import { Box, Group } from "@mantine/core";
+import { Box, Flex } from "@mantine/core";
 import { IconBrandInstagram } from "@tabler/icons-react";
 import { Link } from "react-router";
-import classes from "../styles/footer.module.scss";
 import Socials from "./contactComponents/Socials";
+import "../styles/general.scss";
+import { useMediaQuery } from "@mantine/hooks";
 
 const links = [
   { id: 1, link: "/home", label: "Home" },
   { id: 2, link: "#", label: "Privacy" },
-  { id: 3, link: "#", label: "Blog" },
-  { id: 4, link: "#", label: "Store" },
-  { id: 5, link: "/contact", label: "Contact" },
+  { id: 3, link: "#", label: "About" },
+  { id: 4, link: "/contact", label: "Contact" },
 ];
 
 const Footer = () => {
-  const items = links.map((link) => (
-    <Box
-      key={link.id}
-      component={Link}
-      to={link.link}
-      style={{
-        textDecoration: "none",
-        color: "gray",
-        cursor: "pointer",
-      }}
-      onMouseEnter={(e) => (e.currentTarget.style.textDecoration = "underline")}
-      onMouseLeave={(e) => (e.currentTarget.style.textDecoration = "none")}
-    >
-      {link.label}
-    </Box>
-  ));
-
+  const isSmallScreen = useMediaQuery("(max-width: 768px)");
   return (
-    <div
-      className={classes.footer}
-      style={{ position: "relative", zIndex: 1000 }}
-    >
-      <div className={classes.inner}>
-        <IconBrandInstagram size={28} />
+    <>
+      <Flex
+        direction={isSmallScreen ? "column" : "row"}
+        className="background-color-text"
+        justify={isSmallScreen ? "center" : "space-between"}
+        align={"center"}
+        pt={isSmallScreen ? 10 : 0}
+        style={{ padding: "20px 20px 0px 20px" }}
+      >
+        <Box p={isSmallScreen ? 10 : 0}>
+          <IconBrandInstagram size={28} />
+        </Box>
 
-        <Group>{items}</Group>
+        <Socials margin={isSmallScreen ? 5 : 0} color="white" gap={20} />
+      </Flex>
 
-        <Group gap="xs" justify="flex-end" wrap="nowrap">
-          <Socials margin={5} color="black" />
-        </Group>
-      </div>
-    </div>
+      <Flex
+        className="background-color-text"
+        justify="center"
+        gap={20}
+        pb={20}
+        pt={isSmallScreen ? 20 : 0}
+      >
+        {links.map(({ id, link, label }) => (
+          <Box
+            key={id}
+            component={Link}
+            to={link}
+            style={{
+              textDecoration: "none",
+              color: "gray",
+              transition: "color 0.2s ease, text-decoration 0.2s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.textDecoration = "underline";
+              e.currentTarget.style.color = "white";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.textDecoration = "none";
+              e.currentTarget.style.color = "gray";
+            }}
+          >
+            {label}
+          </Box>
+        ))}
+      </Flex>
+    </>
   );
 };
 

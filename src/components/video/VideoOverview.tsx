@@ -46,16 +46,14 @@ export const VideoOverview = () => {
     return <Navigate to={"/notfound"} />;
   }
 
-  if (id === 0 ){
-    return (
-      <div></div>
-    )
+  if (id === 0) {
+    return <div></div>;
   }
 
-  return  isSmallScreen ? (
+  return isSmallScreen ? (
     <Center>
       {filteredVideos?.map((video) => (
-        <Box key={video.id}>
+        <Box pt={20} key={video.id}>
           <Video
             id={video.id}
             title={video.title}
