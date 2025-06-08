@@ -2,10 +2,10 @@ import { Box, Flex, Paper, Text } from "@mantine/core";
 import { ReactNode } from "react";
 
 interface Props {
-  title: String;
+  title: string;
   icon: ReactNode;
-  description: String;
-  imageUrl: String;
+  description: string;
+  imageUrl: string;
 }
 
 const OfferComponent = ({ title, icon, description, imageUrl }: Props) => {

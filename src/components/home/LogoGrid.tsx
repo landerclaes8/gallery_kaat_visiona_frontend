@@ -4,46 +4,57 @@ const logoData = [
   {
     titel: "Corendon",
     src: "/images/logos/corendon.webp",
+    size: "50vh",
   },
   {
     titel: "Jupiler Pro Leaque",
     src: "/images/logos/jupilerProLeaque.webp",
+    size: "29vh",
   },
   {
     titel: "Jongeren travel",
     src: "/images/logos/jt.webp",
+    size: "15vh",
   },
   {
     titel: "Jbc",
     src: "/images/logos/jbc.webp",
+    size: "18vh",
   },
   {
     titel: "Team Belguim",
     src: "/images/logos/boic.webp",
+    size: "40vh",
   },
   {
     titel: "Hello Fresh",
     src: "/images/logos/helloFresh.webp",
+    size: "50vh",
   },
   {
     titel: "Anderlecht",
     src: "/images/logos/anderlecht.webp",
+    size: "15vh",
   },
   {
     titel: "Kastaars",
     src: "/images/logos/kastaars.webp",
+    size: "15vh",
   },
   {
     titel: "Gimber",
     src: "/images/logos/gimber.webp",
+    size: "17vh",
   },
   {
     titel: "Maanrock",
     src: "/images/logos/maanrock.webp",
+    size: "17vh",
   },
   {
     titel: "Studio 100",
     src: "/images/logos/studio100.webp",
+    size: "18vh",
   },
 ];
 
@@ -62,7 +73,7 @@ const LogoGrid = () => {
               key={index}
               style={{
                 backgroundImage: `url(${element.src})`,
-                backgroundSize: "cover",
+                backgroundSize: `${element.size}`,
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
                 backgroundColor: "transparent",

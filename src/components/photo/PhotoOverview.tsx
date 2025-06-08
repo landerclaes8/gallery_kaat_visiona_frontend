@@ -46,10 +46,8 @@ export const PhotoOverview = () => {
     return <Navigate to={"/notfound"} />;
   }
 
-  if (id === 0 ){
-    return (
-      <div></div>
-    )
+  if (id === 0) {
+    return <div></div>;
   }
 
   return isSmallScreen ? (

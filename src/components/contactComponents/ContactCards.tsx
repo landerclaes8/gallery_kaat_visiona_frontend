@@ -10,46 +10,45 @@ import {
 import { useMediaQuery } from "@mantine/hooks";
 import ContactCardComponent from "./ContactCardComponent";
 
-export const contactData = [
-  {
-    title: "WhatsApp",
-    description: "Ready for business",
-    link: "",
-    icon: <IconBrandWhatsapp />,
-  },
-  {
-    title: "Instagram",
-    description: "Contacteer ons nu",
-    link: "",
-    icon: <IconBrandInstagram />,
-  },
-  {
-    title: "Tiktok",
-    description: "Contacteer ons nu",
-    link: "",
-    icon: <IconBrandTiktok />,
-  },
-  {
-    title: "Mail",
-    description: "Contacteer ons nu",
-    link: "",
-    icon: <IconAt />,
-  },
-  {
-    title: "Linked In",
-    description: "Contacteer ons nu",
-    link: "",
-    icon: <IconBrandLinkedin />,
-  },
-  {
-    title: "Call us",
-    description: "Contacteer ons nu",
-    link: "",
-    icon: <IconPhone />,
-  },
-];
-
 const ContactCards = () => {
+  const contactData = [
+    {
+      title: "WhatsApp",
+      description: "Ready for business",
+      link: "",
+      icon: <IconBrandWhatsapp />,
+    },
+    {
+      title: "Instagram",
+      description: "Contacteer ons nu",
+      link: "",
+      icon: <IconBrandInstagram />,
+    },
+    {
+      title: "Tiktok",
+      description: "Contacteer ons nu",
+      link: "",
+      icon: <IconBrandTiktok />,
+    },
+    {
+      title: "Mail",
+      description: "Contacteer ons nu",
+      link: "",
+      icon: <IconAt />,
+    },
+    {
+      title: "Linked In",
+      description: "Contacteer ons nu",
+      link: "",
+      icon: <IconBrandLinkedin />,
+    },
+    {
+      title: "Call us",
+      description: "Contacteer ons nu",
+      link: "",
+      icon: <IconPhone />,
+    },
+  ];
   const isSmallScreen = useMediaQuery("(max-width: 768px)");
 
   return isSmallScreen ? (

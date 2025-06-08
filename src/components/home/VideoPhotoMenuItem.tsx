@@ -9,8 +9,8 @@ export interface MenuItemProps {
   text: string;
   image: string;
 }
-
-const VideoPhotoMenuItem = ({ link, text, image }: MenuItemProps) => {
+//image kan perfect nog worden toegevoegd
+const VideoPhotoMenuItem = ({ link, text }: MenuItemProps) => {
   const [show, setShow] = useState(false);
   const isSmallScreen = useMediaQuery("(max-width: 768px)");
 
@@ -21,7 +21,7 @@ const VideoPhotoMenuItem = ({ link, text, image }: MenuItemProps) => {
 
   return (
     <Box
-    p={20}
+      p={20}
       className={`background-color-text background-fade-in ${
         show ? "show" : ""
       }`}
