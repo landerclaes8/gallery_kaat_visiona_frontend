@@ -1,29 +1,29 @@
 import VideoPhotoMenuItem from "./VideoPhotoMenuItem";
-import "../../styles/flowingMenu.scss";
+import { Flex } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
+import "../../styles/general.scss";
+
 const items = [
   {
     link: "/video",
-    title: "Video",
-    text: "Explore Video Projects",
+    text: "EXPLORE VIDEO PROJECTS",
     image: "https://picsum.photos/600/400?random=1",
   },
   {
     link: "/photo",
-    title: "Photo",
-    text: "Explore Photo Projects",
+    text: "EXPLORE PHOTO PROJECTS",
     image: "https://picsum.photos/600/400?random=2",
   },
 ];
 
 const VideoPhotoMenu = () => {
+  const isSmallScreen = useMediaQuery("(max-width: 768px)");
   return (
-    <div className="menu-wrap">
-      <nav className="menu">
-        {items.map((item, index) => (
-          <VideoPhotoMenuItem key={index} {...item} />
-        ))}
-      </nav>
-    </div>
+    <Flex direction={isSmallScreen ? "column" : "row"}>
+      {items.map((item, index) => (
+        <VideoPhotoMenuItem key={index} {...item} />
+      ))}
+    </Flex>
   );
 };
 
