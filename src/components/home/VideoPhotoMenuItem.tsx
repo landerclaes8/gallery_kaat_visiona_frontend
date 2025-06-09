@@ -1,4 +1,4 @@
-import { Box, Title } from "@mantine/core";
+import { Box, Text } from "@mantine/core";
 import { Link } from "react-router";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -12,7 +12,7 @@ export interface MenuItemProps {
 //image kan perfect nog worden toegevoegd
 const VideoPhotoMenuItem = ({ link, text }: MenuItemProps) => {
   const [show, setShow] = useState(false);
-  const isSmallScreen = useMediaQuery("(max-width: 768px)");
+  const isSmallScreen = useMediaQuery("(max-width: 700px)");
 
   useEffect(() => {
     const timer = setTimeout(() => setShow(true), 50); // wacht 50ms voor animatie
@@ -21,14 +21,13 @@ const VideoPhotoMenuItem = ({ link, text }: MenuItemProps) => {
 
   return (
     <Box
-      p={20}
       className={`background-color-text background-fade-in ${
         show ? "show" : ""
       }`}
       component={Link}
       to={link}
-      w={isSmallScreen ? "" : "100vh"}
-      h={200}
+      w={isSmallScreen ? "100vh" : "500px"}
+      h={100}
       style={{
         alignContent: "center",
         justifyItems: "center",
@@ -44,7 +43,7 @@ const VideoPhotoMenuItem = ({ link, text }: MenuItemProps) => {
         e.currentTarget.style.color = "white";
       }}
     >
-      <Title>{text}</Title>
+      <Text>{text}</Text>
     </Box>
   );
 };

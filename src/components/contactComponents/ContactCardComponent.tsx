@@ -20,11 +20,11 @@ const ContactCardComponent = ({ data }: ContactCardData) => {
     <>
       {data.map((element, index) => (
         <Card
-          className="title-text font-family-text"
+          className="background-color-text"
           key={index}
           component="a"
           href={element.link}
-          p={isSmallScreen ? 25 : 50}
+          p={isSmallScreen ? 20 : 50}
           style={{
             border: "2px solid transparent",
             transition: "transform 0.3s ease",
@@ -39,14 +39,18 @@ const ContactCardComponent = ({ data }: ContactCardData) => {
         >
           <Flex gap={15} align="center">
             <ActionIcon
-              className="title-text"
-              size={75}
+              className="title-text-navbar"
+              size={isSmallScreen ? 30 : 75}
               variant="default"
               style={{ border: "none", backgroundColor: "transparent" }}
             >
               {React.cloneElement(element.icon, { size: 75 })}
             </ActionIcon>
-            <Text fw={700} style={{ fontSize: 25 }}>
+            <Text
+              className="font-family-text"
+              fw={700}
+              style={{ fontSize: isSmallScreen ? 20 : 25 }}
+            >
               {element.title}
             </Text>
           </Flex>
@@ -57,43 +61,3 @@ const ContactCardComponent = ({ data }: ContactCardData) => {
 };
 
 export default ContactCardComponent;
-
-/*
- <>
-      {data.map((element, index) => (
-        <Card
-          className="title-text font-family-text"
-          key={index}
-          component="a"
-          href={element.link}
-          p={isSmallScreen ? 25 : 50}
-          style={{
-            border: "2px solid transparent",
-            transition: "transform 0.3s ease",
-            backgroundColor: "transparent",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = "scale(1.10)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = "scale(1)";
-          }}
-        >
-          <Flex gap={15} align="center">
-            <ActionIcon
-              className="title-text"
-              size={75}
-              variant="default"
-              style={{ border: "none", backgroundColor: "transparent" }}
-            >
-              {element.icon}
-            </ActionIcon>
-            <Text fw={700} style={{ fontSize: 25 }}>
-              {element.title}
-            </Text>
-          </Flex>
-          <Text>{element.description}</Text>
-        </Card>
-      ))}
-    </>
-    */

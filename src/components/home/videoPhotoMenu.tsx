@@ -1,7 +1,7 @@
 import VideoPhotoMenuItem from "./VideoPhotoMenuItem";
 import { Flex } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
-import "../../styles/general.scss";
+import "../../styles/home.page.scss";
 
 const items = [
   {

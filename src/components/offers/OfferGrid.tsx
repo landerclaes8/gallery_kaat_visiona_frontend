@@ -9,7 +9,7 @@ import {
   MdSportsHandball,
 } from "react-icons/md";
 import OfferComponent from "./OfferComponent";
-import '../../styles/general.scss'
+import "../../styles/general.scss";
 
 const offerData = [
   {
@@ -66,13 +66,19 @@ const offerData = [
 
 const OfferGrid = () => {
   return (
-    <Box className="background-color-text font-family-text" h={{xs:"100%", lg: "100vh"}}>
+    <Box
+      className="background-color-text font-family-text"
+      h={{ xs: "100%", lg: "100vh" }}
+    >
       <Center>
-        <Title pt={50}>
-          Our Services
-        </Title>
+        <Title p={50}>Our Services</Title>
       </Center>
-      <SimpleGrid cols={{ xs: 1, sm: 2, md: 3, lg: 4 }} m={75}>
+      <SimpleGrid
+        cols={{ xs: 1, sm: 2, md: 3, lg: 4 }}
+        spacing={30}
+        ml={10}
+        mr={10}
+      >
         {offerData.map((offer, index) => (
           <OfferComponent
             key={index}
@@ -83,7 +89,6 @@ const OfferGrid = () => {
           />
         ))}
       </SimpleGrid>
-  
     </Box>
   );
 };

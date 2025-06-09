@@ -1,5 +1,6 @@
 import { Box, Flex, Paper, Text } from "@mantine/core";
 import { ReactNode } from "react";
+import { useMediaQuery } from "@mantine/hooks";
 
 interface Props {
   title: string;
@@ -9,26 +10,31 @@ interface Props {
 }
 
 const OfferComponent = ({ title, icon, description, imageUrl }: Props) => {
+  const isSmallScreen = useMediaQuery("(max-width: 768px)");
   return (
     <Paper
-      shadow="xl"
+      //shadow="xl"
       radius="md"
-      p={50}
+      p={isSmallScreen ? 10 : 50}
       h={300}
       style={{
         backgroundImage: `${imageUrl}`,
         backgroundPosition: "center",
         backgroundSize: "cover",
         transition: "transform 0.3s ease, filter 0.3s ease",
-        filter: "grayscale(100%)",
+        filter: isSmallScreen ? "grayscale(0%)" : "grayscale(100%)",
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.transform = "scale(1.05)";
-        e.currentTarget.style.filter = "grayscale(0%)";
+        if (!isSmallScreen) {
+          e.currentTarget.style.filter = "grayscale(0%)";
+        }
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.transform = "scale(1)";
-        e.currentTarget.style.filter = "grayscale(100%)";
+        if (!isSmallScreen) {
+          e.currentTarget.style.filter = "grayscale(100%)";
+        }
       }}
     >
       <Flex

@@ -1,11 +1,4 @@
-import {
-  Box,
-  Card,
-  Center,
-  SimpleGrid,
-  Text,
-  Title,
-} from "@mantine/core";
+import { Box, Card, Center, SimpleGrid, Text, Title } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 
 const offerData = [
@@ -80,7 +73,7 @@ const OffersLarge = () => {
 
               <Card.Section className="background-text-color">
                 <Center>
-                  <Title size={50} p={25}>
+                  <Title size={40} p={25}>
                     {offer.title}
                   </Title>
                 </Center>

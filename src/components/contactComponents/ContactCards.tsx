@@ -51,36 +51,24 @@ const ContactCards = () => {
   ];
   const isSmallScreen = useMediaQuery("(max-width: 768px)");
 
-  return isSmallScreen ? (
-    <Box className="title-text font-family-text">
-      <Center>
-        <Title fz={30} pt={50}>
-          Get in touch
-        </Title>
-      </Center>
+  return (
+    <Box>
       <Center>
         <Flex direction="column">
-          <ContactCardComponent data={contactData} />
-        </Flex>
-      </Center>
-    </Box>
-  ) : (
-    <Box
-      className="title-text font-family-text"
-      h={"100vh"}
-      style={{
-        backgroundImage: `url('/public/images/backgrounds/backgroundContact.jpg')`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
-      <Center>
-        <Flex direction="column">
-          <Title fz={120}>Get in touch</Title>
+          <Title
+            className="font-family-text"
+            fz={isSmallScreen ? 50 : 120}
+            pt={70}
+          >
+            Get in touch
+          </Title>
           <Center>
-            <Text pt={40} fz={25}>
-              U can get in touch through following channels
+            <Text
+              className="font-family-text"
+              pt={40}
+              fz={isSmallScreen ? 15 : 25}
+            >
+              Slide in our dm's, we'll help you within 24 hours. 
             </Text>
           </Center>
         </Flex>

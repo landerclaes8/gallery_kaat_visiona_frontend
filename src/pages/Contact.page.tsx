@@ -1,6 +1,6 @@
-import ContactCards from "../components/contactComponents/ContactCards";
+import ContactOverview from "../components/contactComponents/ContactOverview";
 import "../styles/general.scss";
 
 export const ContactPage = () => {
-  return <ContactCards />;
+  return <ContactOverview />;
 };
