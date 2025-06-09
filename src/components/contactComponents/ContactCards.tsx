@@ -49,17 +49,13 @@ const ContactCards = () => {
       icon: <IconPhone />,
     },
   ];
-  const isSmallScreen = useMediaQuery("(max-width: 768px)");
+  const isSmallScreen = useMediaQuery("(max-width: 1024px)");
 
   return (
     <Box>
       <Center>
-        <Flex direction="column">
-          <Title
-            className="font-family-text"
-            fz={isSmallScreen ? 50 : 120}
-            pt={70}
-          >
+        <Flex direction="column" pl={10}>
+          <Title className="font-family-text" fz={isSmallScreen ? 50 : 120}>
             Get in touch
           </Title>
           <Center>
@@ -68,7 +64,7 @@ const ContactCards = () => {
               pt={40}
               fz={isSmallScreen ? 15 : 25}
             >
-              Slide in our dm's, we'll help you within 24 hours. 
+              Slide in our dm's, we'll help you within 24 hours.
             </Text>
           </Center>
         </Flex>

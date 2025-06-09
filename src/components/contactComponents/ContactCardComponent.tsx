@@ -15,7 +15,7 @@ interface ContactCardData {
 }
 
 const ContactCardComponent = ({ data }: ContactCardData) => {
-  const isSmallScreen = useMediaQuery("(max-width: 768px)");
+  const isSmallScreen = useMediaQuery("(max-width: 1024px)");
   return (
     <>
       {data.map((element, index) => (
@@ -24,7 +24,7 @@ const ContactCardComponent = ({ data }: ContactCardData) => {
           key={index}
           component="a"
           href={element.link}
-          p={isSmallScreen ? 20 : 50}
+          p={isSmallScreen ? 20 : 35}
           style={{
             border: "2px solid transparent",
             transition: "transform 0.3s ease",
