@@ -1,12 +1,4 @@
-import {
-  AspectRatio,
-  Card,
-  Center,
-  Image,
-  Space,
-  Text,
-  Title,
-} from "@mantine/core";
+import { AspectRatio, Card, Center, Space, Text, Title } from "@mantine/core";
 
 interface Props {
   id: number;
@@ -27,7 +19,16 @@ const Photo = ({ id, title, description }: Props) => {
       <Card.Section>
         <AspectRatio ratio={16 / 9}>
           <Center>
-            <Image src={`http://localhost:4000/api/photos/${id}`} />
+            <img
+              style={{
+                width: "100%",
+                maxWidth: "600px", // of een andere maximale waarde
+                height: "auto",
+                borderRadius: "15px",
+              }}
+              src={`/api/photos/${id}`}
+              loading="lazy"
+            ></img>
           </Center>
         </AspectRatio>
       </Card.Section>

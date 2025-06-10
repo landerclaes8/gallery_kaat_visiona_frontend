@@ -64,7 +64,7 @@ const OffersLarge = () => {
                   }}
                 >
                   <source
-                    src={`http://localhost:4000/api/videos/${offer.videoId}`}
+                    src={`/api/videos/${offer.videoId}`}
                     type="video/mp4"
                   />
                   Je browser ondersteunt de video tag niet.

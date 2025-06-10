@@ -67,7 +67,7 @@ const HeaderHomeLarge = () => {
             }}
           >
             <source
-              src={`http://localhost:4000/api/videos/4`}
+              src={`/api/videos/4`}
               type="video/mp4"
             />
             Je browser ondersteunt geen HTML5 video.

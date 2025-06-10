@@ -30,10 +30,7 @@ const VideoPlayer: React.FC<Props> = ({ videoId }) => {
         controls
         controlsList="nodownload"
       >
-        <source
-          src={`http://localhost:4000/api/videos/${videoId}`}
-          type="video/mp4"
-        />
+        <source src={`/api/videos/${videoId}`} type="video/mp4" />
         Je browser ondersteunt de video tag niet.
       </video>
     </div>
@@ -47,10 +44,7 @@ const VideoPlayer: React.FC<Props> = ({ videoId }) => {
         controls
         controlsList="nodownload"
       >
-        <source
-          src={`http://localhost:4000/api/videos/${videoId}`}
-          type="video/mp4"
-        />
+        <source src={`/api/videos/${videoId}`} type="video/mp4" />
         Je browser ondersteunt de video tag niet.
       </video>
     </div>

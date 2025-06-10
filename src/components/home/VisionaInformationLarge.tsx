@@ -46,7 +46,7 @@ const VisionaInformationLarge = () => {
             height: "auto",
           }}
         >
-          <source src={`http://localhost:4000/api/videos/4`} type="video/mp4" />
+          <source src={`/api/videos/4`} type="video/mp4" />
           Je browser ondersteunt de video tag niet.
         </video>
 
