@@ -1,13 +1,8 @@
-import Form from "./Form";
+import VideoForm from "./VideoForm";
 
 const VideoAdmin = () => {
   return (
-    <Form
-      url="/videos"
-      categoryUrl="/videoCategories"
-      title="video"
-      photoTrue={false}
-    />
+    <VideoForm url="/videos" categoryUrl="/videoCategories" title="video" />
   );
 };
 

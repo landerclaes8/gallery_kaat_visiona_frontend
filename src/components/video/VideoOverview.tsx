@@ -2,7 +2,7 @@ import { Box, Button, Card, Center, Grid, Space, Title } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { Link, Navigate } from "react-router";
 import useSWR from "swr";
-import useCategoryIdStore from "../../store";
+import { useCategoryIdStore } from "../../store";
 import { videoProps } from "../../types/video";
 import { LoadingInfo } from "../LoadingInfo";
 import Video from "./Video";

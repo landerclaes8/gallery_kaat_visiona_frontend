@@ -1,15 +1,13 @@
-import Form from "./Form";
+import PhotoForm from "./PhotoForm";
 
 const PhotoAdmin = () => {
   return (
-    <>
-      <Form
-        url="photos"
-        categoryUrl="/photoCategories"
-        title="photo"
-        photoTrue={true}
-      />
-    </>
+    <PhotoForm
+      url="photos"
+      categoryUrl="photoCategories"
+      albumUrl="photoAlbum"
+      title="photo"
+    />
   );
 };
 

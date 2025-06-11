@@ -6,7 +6,7 @@ import {
   Button,
   Modal,
   Title,
-  Flex
+  Flex,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { zodResolver } from "mantine-form-zod-resolver";
@@ -20,27 +20,41 @@ import { useDisclosure } from "@mantine/hooks";
 import CategoryForm from "./CategoryForm";
 import { ActionIcon } from "@mantine/core";
 import UploadFile from "./UploadFile";
+import { albumProps } from "../../types/album";
+import AlbumForm from "./AlbumForm";
 
 interface Props {
   title: string;
   url: string;
   categoryUrl: string;
-  photoTrue: boolean
+  albumUrl: string;
 }
 
-const Form = ({ title, url, categoryUrl, photoTrue }: Props) => {
+const PhotoForm = ({ title, url, categoryUrl, albumUrl }: Props) => {
   const {
     data: categories,
-    error,
-    isLoading,
+    error: categoryError,
+    isLoading: categoryIsLoading,
   } = useSWR<categoryProps[]>(`/api/${categoryUrl}`, fetcher);
+
+  const {
+    data: albums,
+    error: albumError,
+    isLoading: albumIsLoading,
+  } = useSWR<albumProps[]>(`/api/${albumUrl}`, fetcher);
+
   const { trigger: doAddPhoto } = useSWRMutation(`/api/${url}`, post);
-  const [opened, { open, close }] = useDisclosure(false);
+  const [openedCategories, { open: openCategories, close: closeCategories }] =
+    useDisclosure(false);
+
+  const [openedAlbums, { open: openAlbums, close: closeAlbums }] =
+    useDisclosure(false);
 
   const schema = z.object({
-    title: z.string().min(2, { message: "Must be longer." }),
-    description: z.string().min(2, { message: "Must be longer." }),
+    title: z.string(),
+    description: z.string(),
     categoryId: z.string(),
+    albumId: z.string(),
     fileName: z.string().min(2, { message: "Must be longer." }),
   });
 
@@ -50,6 +64,7 @@ const Form = ({ title, url, categoryUrl, photoTrue }: Props) => {
       title: "",
       description: "",
       categoryId: 0,
+      albumId: 0,
       fileName: "",
     },
     validate: zodResolver(schema),
@@ -59,7 +74,7 @@ const Form = ({ title, url, categoryUrl, photoTrue }: Props) => {
     await doAddPhoto({
       title: values.title,
       description: values.description,
-      categoryId: values.categoryId,
+      albumId: values.albumId,
       fileName: values.fileName,
     });
 
@@ -103,24 +118,53 @@ const Form = ({ title, url, categoryUrl, photoTrue }: Props) => {
                 parse: (value: string) => Number(value),
               })}
               data-cy="photo-category"
-              disabled={isLoading || !!error}
+              disabled={categoryIsLoading || !!categoryError}
               style={{ flex: 1 }}
             />
             <ActionIcon
               variant="filled"
               color="blue"
-              onClick={open}
+              onClick={openCategories}
               data-cy="add-category-button"
             >
               +
             </ActionIcon>
+
+            <>
+              <Select
+                label="Album"
+                placeholder="Select an album"
+                data={
+                  albums?.map((album) => ({
+                    value: String(album.id),
+                    label: album.name,
+                  })) || []
+                }
+                key={form.key("albumId")}
+                {...form.getInputProps("albumId", {
+                  parse: (value: string) => Number(value),
+                })}
+                data-cy="album"
+                disabled={albumIsLoading || !!albumError}
+                style={{ flex: 1 }}
+              />
+              <ActionIcon
+                variant="filled"
+                color="blue"
+                onClick={openAlbums}
+                data-cy="add-album-button"
+              >
+                +
+              </ActionIcon>
+            </>
           </Group>
+
           <TextInput
             label="fileName - with .extension"
             placeholder="fileName.webp"
             key={form.key("fileName")}
             {...form.getInputProps("fileName")}
-            data-cy="photo-fileName"
+            data-cy="fileName"
           />
 
           <Group justify="flex-end" mt="md">
@@ -131,8 +175,8 @@ const Form = ({ title, url, categoryUrl, photoTrue }: Props) => {
         </form>
       </Grid.Col>
       <Modal
-        opened={opened}
-        onClose={close}
+        opened={openedCategories}
+        onClose={closeCategories}
         title="Add new category"
         centered
         overlayProps={{
@@ -140,16 +184,35 @@ const Form = ({ title, url, categoryUrl, photoTrue }: Props) => {
           blur: 2,
         }}
       >
-        {<CategoryForm url={`${categoryUrl}`} onClose={close} />}
+        {<CategoryForm url={`${categoryUrl}`} onClose={closeCategories} />}
+      </Modal>
+
+      <Modal
+        opened={openedAlbums}
+        onClose={closeAlbums}
+        title={form.values.categoryId}
+        centered
+        overlayProps={{
+          backgroundOpacity: 0.55,
+          blur: 2,
+        }}
+      >
+        {
+          <AlbumForm
+            albumUrl={albumUrl}
+            categories={categories ?? []}
+            onClose={closeAlbums}
+          />
+        }
       </Modal>
 
       <Grid.Col span={6}>
-    <Flex justify="center" align="center" style={{ height: "100%" }}>
-      <UploadFile path={url} type={title} photoTrue={photoTrue} />
-    </Flex>
-  </Grid.Col>
+        <Flex justify="center" align="center" style={{ height: "100%" }}>
+          <UploadFile path={url} type={title} photoTrue={true} />
+        </Flex>
+      </Grid.Col>
     </Grid>
   );
 };
 
-export default Form;
+export default PhotoForm;

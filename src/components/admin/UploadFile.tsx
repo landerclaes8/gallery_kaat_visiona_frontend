@@ -27,6 +27,7 @@ const UploadFile = ({ path, type, photoTrue }: Props) => {
     if (!file) return;
 
     const formData = new FormData();
+    // naam om file op te halen in server
     formData.append(`${type}`, file);
 
     try {

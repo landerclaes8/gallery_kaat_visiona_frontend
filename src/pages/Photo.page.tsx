@@ -3,11 +3,11 @@ import { Link, Navigate } from "react-router";
 import useSWR from "swr";
 import { LoadingInfo } from "../components/LoadingInfo";
 import CategorySelector from "../components/CategorySelector";
-import { PhotoOverview } from "../components/photo/PhotoOverview";
 import { fetcher } from "../lib/api";
 import { categoryProps } from "../types/category";
 import { useMediaQuery } from "@mantine/hooks";
 import "../styles/general.scss";
+import PhotoAlbumOverview from "../components/photo/PhotoAlbumOverview";
 
 export const Photopage = () => {
   const isSmallScreen = useMediaQuery("(max-width: 768px)");
@@ -55,7 +55,7 @@ export const Photopage = () => {
           </Title>
         </Center>
         <CategorySelector type="photo" categories={data} />
-        <PhotoOverview />
+        <PhotoAlbumOverview />
       </Flex>
     </>
   );

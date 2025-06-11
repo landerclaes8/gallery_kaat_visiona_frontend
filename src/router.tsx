@@ -12,6 +12,7 @@ import { AuthProvider } from "./lib/context/auth";
 import PhotoAdmin from "./components/admin/PhotoAdmin";
 import VideoAdmin from "./components/admin/VideoAdmin";
 import OfferPage from "./pages/Offer.Page";
+import PhotoOverviewPage from "./pages/PhotoOverview.page";
 
 export const Router = () => {
   return (
@@ -26,6 +27,8 @@ export const Router = () => {
         <Route path="video" element={<VideoPage />} />
 
         <Route path="photo" element={<Photopage />} />
+
+        <Route path="album" element={<PhotoOverviewPage />} />
 
         <Route path="offer" element={<OfferPage />} />
 
