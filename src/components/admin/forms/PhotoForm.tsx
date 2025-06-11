@@ -13,14 +13,14 @@ import { zodResolver } from "mantine-form-zod-resolver";
 import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
 import { z } from "zod";
-import { fetcher, post } from "../../lib/api";
-import { addPhotoSchema } from "../../lib/schemas";
-import { categoryProps } from "../../types/category";
+import { fetcher, post } from "../../../lib/api";
+import { addPhotoSchema } from "../../../lib/schemas";
+import { categoryProps } from "../../../types/category";
 import { useDisclosure } from "@mantine/hooks";
 import CategoryForm from "./CategoryForm";
 import { ActionIcon } from "@mantine/core";
-import UploadFile from "./UploadFile";
-import { albumProps } from "../../types/album";
+import UploadFile from "../UploadFile";
+import { albumProps } from "../../../types/album";
 import AlbumForm from "./AlbumForm";
 
 interface Props {

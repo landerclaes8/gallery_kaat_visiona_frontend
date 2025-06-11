@@ -1,12 +1,11 @@
 import useSWRMutation from "swr/mutation";
-import { post } from "../../lib/api";
+import { post } from "../../../lib/api";
 import { z } from "zod";
 import { useForm } from "@mantine/form";
 import { zodResolver } from "mantine-form-zod-resolver";
-import { addAlbumSchema } from "../../lib/schemas";
 import { Grid } from "@mantine/core";
 import { TextInput, Group, Button, Select } from "@mantine/core";
-import UploadFile from "./UploadFile";
+import UploadFile from "../UploadFile";
 
 interface categoryProps {
   id: number;
@@ -38,7 +37,11 @@ const AlbumForm = ({ albumUrl, categories, onClose }: Props) => {
     validate: zodResolver(schema),
   });
 
-  const addAlbum = async (values: { name: string; thumbnail: string; categoryPhotoId: string }) => {
+  const addAlbum = async (values: {
+    name: string;
+    thumbnail: string;
+    categoryPhotoId: string;
+  }) => {
     await doAddAlbum({
       name: values.name,
       thumbnail: values.thumbnail,

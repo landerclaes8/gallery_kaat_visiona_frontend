@@ -1,4 +1,4 @@
-import VideoForm from "./VideoForm";
+import VideoForm from "./forms/VideoForm";
 
 const VideoAdmin = () => {
   return (

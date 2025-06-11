@@ -1,4 +1,4 @@
-import PhotoForm from "./PhotoForm";
+import PhotoForm from "./forms/PhotoForm";
 
 const PhotoAdmin = () => {
   return (

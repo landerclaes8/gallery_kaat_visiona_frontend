@@ -1,9 +1,9 @@
 import useSWRMutation from "swr/mutation";
-import { post } from "../../lib/api";
+import { post } from "../../../lib/api";
 import { z } from "zod";
 import { useForm } from "@mantine/form";
 import { zodResolver } from "mantine-form-zod-resolver";
-import { addCategorySchema } from "../../lib/schemas";
+import { addCategorySchema } from "../../../lib/schemas";
 import { TextInput, Group, Button } from "@mantine/core";
 
 interface Props {
