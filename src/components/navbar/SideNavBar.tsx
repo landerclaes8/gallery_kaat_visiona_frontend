@@ -24,6 +24,10 @@ const navbarData = [
     link: "/offer",
   },
   {
+    title: "About Visiona",
+    link: "/about",
+  },
+  {
     title: "Contact",
     link: "/contact",
   },

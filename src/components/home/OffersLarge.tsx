@@ -1,30 +1,39 @@
-import { Box, Card, Center, SimpleGrid, Text, Title } from "@mantine/core";
+import {
+  Box,
+  Button,
+  Card,
+  Center,
+  SimpleGrid,
+  Text,
+  Title,
+} from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
+import { Link } from "react-router";
 
 const offerData = [
   {
     title: "Brands",
     videoId: 4,
     description:
-      "Visiona is Kaat Verrycken's creative video and photo production house, specialising in cinematic videos and atmospheric photography for brands, events and hospitality. What makes Visiona unique? The mix of passion, storytelling and strategy - and the fact that we don't just make videos, but videos that deliver results. We don't just create pretty images. We create content that strengthens your brand, that sticks and contributes to growth.",
+      "We create high-quality videos for your business, adding personality and impact to your branding. Our work goes beyond typical social media content by delivering standout visuals that capture your audience's attention.",
   },
   {
     title: "Events",
     videoId: 4,
     description:
-      "Visiona is Kaat Verrycken's creative video and photo production house, specialising in cinematic videos and atmospheric photography for brands, events and hospitality. What makes Visiona unique? The mix of passion, storytelling and strategy - and the fact that we don't just make videos, but videos that deliver results. We don't just create pretty images. We create content that strengthens your brand, that sticks and contributes to growth.",
+      "Aftermovies, recaps, DJ sets,… We capture every highlight of your event.From the energy on stage to the atmosphere in the crowd, we turn key moments into high-quality visuals that reflect the atmosphere of your event. Whether it’s a festival, corporate gathering, or private celebration, we make sure your audience remembers it.",
   },
   {
     title: "Hospitality",
     videoId: 4,
     description:
-      "Visiona is Kaat Verrycken's creative video and photo production house, specialising in cinematic videos and atmospheric photography for brands, events and hospitality. What makes Visiona unique? The mix of passion, storytelling and strategy - and the fact that we don't just make videos, but videos that deliver results. We don't just create pretty images. We create content that strengthens your brand, that sticks and contributes to growth.",
+      "Hospitality experiences, captured with feeling. From elegant dining moments to behind-the-scenes excellence, we film the essence of your venue and service. Our videos highlight the atmosphere, attention to detail, and unique guest experience.",
   },
   {
     title: "Sports",
     videoId: 4,
     description:
-      "Visiona is Kaat Verrycken's creative video and photo production house, specialising in cinematic videos and atmospheric photography for brands, events and hospitality. What makes Visiona unique? The mix of passion, storytelling and strategy - and the fact that we don't just make videos, but videos that deliver results. We don't just create pretty images. We create content that strengthens your brand, that sticks and contributes to growth.",
+      "Highlights from your game or practice? We're here to capture every exciting moment. Visiona has already worked with the Jupiler Pro League and the Belgian Olympic Interfederal Committee.",
   },
 ];
 
@@ -47,6 +56,7 @@ const OffersLarge = () => {
         >
           {offerData.map((offer, index) => (
             <Card
+              className="background-color-text"
               key={index}
               radius="md"
               p={isSmallScreen ? "xs" : "md"}
@@ -87,6 +97,18 @@ const OffersLarge = () => {
             </Card>
           ))}
         </SimpleGrid>
+      </Center>
+      <Center>
+        <Button
+          className="aboutVisionaButton"
+          variant="transparent"
+          component={Link}
+          to="/offer"
+          mt={50}
+          mb={50}
+        >
+          <Title fz={20}>Explore all our services</Title>
+        </Button>
       </Center>
     </Box>
   );

@@ -8,7 +8,7 @@ import { useMediaQuery } from "@mantine/hooks";
 const links = [
   { id: 1, link: "/home", label: "Home" },
   { id: 2, link: "#", label: "Privacy" },
-  { id: 3, link: "#", label: "About" },
+  { id: 3, link: "/about", label: "About" },
   { id: 4, link: "/contact", label: "Contact" },
 ];
 

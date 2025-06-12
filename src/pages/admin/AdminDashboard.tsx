@@ -7,11 +7,9 @@ export const AdminDashboard = () => {
 
   return (
     <>
-      <Title pt={60}>Admin Dashboard</Title>
-      <Flex gap={10} pt={20}>
-        <Button onClick={() => logout()}>
-          Logout
-        </Button>
+    <Title pt={60} pl={20}>Admin Dashboard</Title>
+      <Flex gap={10} p={20} h="100vh">
+        <Button onClick={() => logout()}>Logout</Button>
         <Button component={Link} to="/admin/photo">
           Photo
         </Button>

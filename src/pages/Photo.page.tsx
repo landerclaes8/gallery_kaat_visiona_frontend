@@ -1,4 +1,4 @@
-import { Button, Card, Center, Flex, Space, Title } from "@mantine/core";
+import { Button, Card, Center, Flex, Space, Title, Text } from "@mantine/core";
 import { Link, Navigate } from "react-router";
 import useSWR from "swr";
 import { LoadingInfo } from "../components/LoadingInfo";
@@ -50,9 +50,15 @@ export const Photopage = () => {
         pt={isSmallScreen ? 60 : 100}
       >
         <Center>
-          <Title className="title font-family-text" p="md" mb="md">
+          <Title fz={isSmallScreen ? 25 : 50} className="title font-family-text" p="md" mb="md">
             Explore all our photo services
           </Title>
+        </Center>
+        <Center>
+          <Text pb={50}>
+            "A photo isn’t just a snapshot, it’s a feeling, a mood, a message. We
+            bring your story to life with visuals that speak louder than words."
+          </Text>
         </Center>
         <CategorySelector type="photo" categories={data} />
         <PhotoAlbumOverview />

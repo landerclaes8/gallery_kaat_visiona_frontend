@@ -29,7 +29,7 @@ const VisionaInformationLarge = () => {
         </Title>
         <Space h="xl" />
         <Title size={20} p={60}>
-          Creating content that strengthens your brand, that sticks and
+          Creating content that strengthens your brand, sticks to people and
           contributes to growth.
         </Title>
       </Box>

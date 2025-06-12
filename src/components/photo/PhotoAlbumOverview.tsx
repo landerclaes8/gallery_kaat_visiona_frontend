@@ -18,9 +18,9 @@ const PhotoAlbumOverview = () => {
     setCategoryId(0);
   }, [setCategoryId]);
 
-
-  function handleOnClick(id: number) {
-    localStorage.setItem('selectedAlbumId', id.toString());
+  function handleOnClick(id: number, name: string) {
+    localStorage.setItem("selectedAlbumId", id.toString());
+    localStorage.setItem("currentAlbumName", name);
   }
 
   const filteredAlbums = id
@@ -56,44 +56,49 @@ const PhotoAlbumOverview = () => {
   }
 
   return isSmallScreen ? (
-    <Center>
+    <Grid>
       {filteredAlbums?.map((album) => (
-        <Card
-          pt={20}
-          p={3}
-          key={album.id}
-          onClick={() => handleOnClick(album.id)}
-        >
-          <Card.Section>
-            <img
-              style={{
-                width: "100%",
-                maxWidth: "600px",
-                height: "auto",
-                borderRadius: "15px",
-              }}
-              src={`/api/photosAlbum/${id}`}
-              loading="lazy"
-            ></img>
-          </Card.Section>
-          <Card.Section>
-            <Flex direction="column">
-              <Title>{album.name}</Title>
-            </Flex>
-          </Card.Section>
-        </Card>
+        <Grid.Col span={12} key={album.id}>
+          <Card
+            p={40}
+            className="background-color-text font-family-text"
+            key={album.id}
+            component={Link}
+            to="/album"
+            onClick={() => handleOnClick(album.id, album.name)}
+          >
+            <Card.Section>
+              <img
+                style={{
+                  width: "100%",
+                  maxWidth: "600px",
+                  height: "auto",
+                  borderRadius: "15px",
+                }}
+                src={`/api/photoAlbum/${id}`}
+                loading="lazy"
+              ></img>
+            </Card.Section>
+            <Card.Section>
+              <Flex direction="column" align="center">
+                <Title fz={25}>{album.name}</Title>
+              </Flex>
+            </Card.Section>
+          </Card>
+        </Grid.Col>
       ))}
-    </Center>
+    </Grid>
   ) : (
     <Grid>
       {filteredAlbums?.map((album) => (
         <Grid.Col span={4} key={album.id}>
           <Card
-            w="100%"
+            p={25}
+            className="background-color-text font-family-text"
             key={album.id}
             component={Link}
             to="/album"
-            onClick={() => handleOnClick(album.id)}
+            onClick={() => handleOnClick(album.id, album.name)}
           >
             <Card.Section>
               <img
@@ -107,7 +112,7 @@ const PhotoAlbumOverview = () => {
               ></img>
             </Card.Section>
             <Card.Section>
-              <Flex direction="column">
+              <Flex direction="column" align="center">
                 <Title>{album.name}</Title>
               </Flex>
             </Card.Section>

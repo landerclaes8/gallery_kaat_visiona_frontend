@@ -1,4 +1,13 @@
-import { Box, Button, Card, Center, Grid, Space, Title } from "@mantine/core";
+import {
+  Box,
+  Button,
+  Card,
+  Center,
+  Grid,
+  Space,
+  Title,
+  Flex,
+} from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { Link, Navigate } from "react-router";
 import useSWR from "swr";
@@ -6,20 +15,30 @@ import { LoadingInfo } from "../LoadingInfo";
 import Photo from "./Photo";
 import { photoProps } from "../../types/photo";
 import { useAlbumIdStore } from "../../store";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const PhotoOverview = () => {
   const isSmallScreen = useMediaQuery("(max-width: 768px)");
   const { data, error, isLoading } = useSWR<photoProps[]>(`/api/photos`);
 
   const { albumId, setAlbumId } = useAlbumIdStore();
+  const [albumName, setAlbumName] = useState("");
 
   useEffect(() => {
-    const savedAlbumId = localStorage.getItem('selectedAlbumId');
+    const savedAlbumId = localStorage.getItem("selectedAlbumId");
     if (savedAlbumId) {
       setAlbumId(Number(savedAlbumId));
     }
   }, [setAlbumId]);
+
+  useEffect(() => {
+    const currentAlbumName = localStorage.getItem("currentAlbumName");
+    if (currentAlbumName) {
+      setAlbumName(currentAlbumName);
+    }
+  }, [setAlbumName]);
+
+  console.log(albumName);
 
   const filteredPhotos = data?.filter((photo) => photo.albumId === albumId);
 
@@ -64,7 +83,13 @@ const PhotoOverview = () => {
       ))}
     </Center>
   ) : (
-    <>
+    <Flex
+      className="background-color-text "
+      direction="column"
+      align="center"
+      p={50}
+    >
+      <Title p={50}>{albumName}</Title>
       <Grid>
         {filteredPhotos?.map((photo) => (
           <Grid.Col span={4} key={photo.id}>
@@ -76,7 +101,7 @@ const PhotoOverview = () => {
           </Grid.Col>
         ))}
       </Grid>
-    </>
+    </Flex>
   );
 };
 

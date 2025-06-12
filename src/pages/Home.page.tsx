@@ -10,7 +10,6 @@ export function HomePage() {
       <HeaderHomeLarge />
       <VisionaInformationLarge />
       <OffersLarge />
-      <LogoGrid />
     </>
   );
 }

@@ -13,6 +13,7 @@ import PhotoAdmin from "./components/admin/PhotoAdmin";
 import VideoAdmin from "./components/admin/VideoAdmin";
 import OfferPage from "./pages/Offer.Page";
 import PhotoOverviewPage from "./pages/PhotoOverview.page";
+import AboutPage from "./pages/About.page";
 
 export const Router = () => {
   return (
@@ -29,6 +30,8 @@ export const Router = () => {
         <Route path="photo" element={<Photopage />} />
 
         <Route path="album" element={<PhotoOverviewPage />} />
+
+        <Route path="about" element={<AboutPage />} />
 
         <Route path="offer" element={<OfferPage />} />
 

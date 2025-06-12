@@ -190,7 +190,7 @@ const PhotoForm = ({ title, url, categoryUrl, albumUrl }: Props) => {
       <Modal
         opened={openedAlbums}
         onClose={closeAlbums}
-        title={form.values.categoryId}
+        title="Add new album"
         centered
         overlayProps={{
           backgroundOpacity: 0.55,
