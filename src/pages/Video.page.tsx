@@ -8,6 +8,7 @@ import { fetcher } from "../lib/api";
 import { categoryProps } from "../types/category";
 import { useMediaQuery } from "@mantine/hooks";
 import "../styles/general.scss";
+import ContactDirection from "../components/contactComponents/contactDirection";
 
 export const VideoPage = () => {
   const isSmallScreen = useMediaQuery("(max-width: 768px)");
@@ -41,33 +42,36 @@ export const VideoPage = () => {
   }
 
   return (
-    <Flex
-      className="background-color-text font-family-text"
-      justify="center"
-      direction="column"
-      p={isSmallScreen ? 5 : 75}
-      pt={isSmallScreen ? 60 : 100}
-    >
-      <Center>
-        <Title
-          fz={isSmallScreen ? 25 : 50}
-          className="title font-family-text"
-          p="md"
-          mb="md"
-        >
-          Explore all our video services
-        </Title>
-      </Center>
-      <Center>
-        <Text pb={50}>
-          "A video is more than just visuals, it’s an experience. We craft
-          cinematic content that captures the heart of your message and leaves a
-          lasting impression."
-        </Text>
-      </Center>
+    <>
+      <Flex
+        className="background-color-text font-family-text"
+        justify="center"
+        direction="column"
+        p={isSmallScreen ? 5 : 75}
+        pt={isSmallScreen ? 60 : 100}
+      >
+        <Center>
+          <Title
+            fz={isSmallScreen ? 25 : 50}
+            className="title font-family-text"
+            p="md"
+            mb="md"
+          >
+            Explore all our video services
+          </Title>
+        </Center>
+        <Center>
+          <Text pb={50}>
+            "A video is more than just visuals, it’s an experience. We craft
+            cinematic content that captures the heart of your message and leaves
+            a lasting impression."
+          </Text>
+        </Center>
 
-      <CategorySelector type="video" categories={data} />
-      <VideoOverview />
-    </Flex>
+        <CategorySelector type="video" categories={data} />
+        <VideoOverview />
+      </Flex>
+      <ContactDirection />
+    </>
   );
 };

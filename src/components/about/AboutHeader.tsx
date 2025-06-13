@@ -14,7 +14,7 @@ const aboutList = [
   {
     title: "50+ projects",
     description:
-      "Visiona has earned the trust of leading names like Corendon, Jongerentravel, Belgium’s Pro League Football, Studio 100, and the Belgian Olympic Interfederal Committee.",
+      "Visiona has earned the trust of leading names like Corendon, Jongerentravel, Belgium’s Pro League Football, Studio 100, the Belgian Olympic Interfederal Committee and many more.",
     icon: <GrMultiple size={50} />,
   },
   {
@@ -35,7 +35,14 @@ const icons = aboutList.map((element, index) => (
   <Flex key={index} align="center" gap={20}>
     <Box>{element.icon}</Box>
     <Box p={25}>
-      <Title className="font-family-text" fz={25}>
+      <Title
+        className="font-family-text"
+        fz={25}
+        style={{
+          textDecoration: "underline",
+          textDecorationColor: "lightskyblue",
+        }}
+      >
         {element.title}
       </Title>
       <Text>{element.description}</Text>

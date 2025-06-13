@@ -21,7 +21,7 @@ const offerData = [
     title: "Events",
     videoId: 4,
     description:
-      "Aftermovies, recaps, DJ sets,… We capture every highlight of your event.From the energy on stage to the atmosphere in the crowd, we turn key moments into high-quality visuals that reflect the atmosphere of your event. Whether it’s a festival, corporate gathering, or private celebration, we make sure your audience remembers it.",
+      "Aftermovies, recaps, DJ sets,… We capture every highlight of your event. From the energy on stage to the atmosphere in the crowd, we turn key moments into high-quality visuals that reflect the atmosphere of your event. Whether it’s a festival, corporate gathering, or private celebration, we make sure your audience remembers it.",
   },
   {
     title: "Hospitality",

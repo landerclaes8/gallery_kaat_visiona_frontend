@@ -13,9 +13,8 @@ const OfferComponent = ({ title, icon, description, imageUrl }: Props) => {
   const isSmallScreen = useMediaQuery("(max-width: 768px)");
   return (
     <Paper
-      //shadow="xl"
       radius="md"
-      p={isSmallScreen ? 10 : 50}
+      p={isSmallScreen ? 10 : 35}
       h={300}
       style={{
         backgroundImage: `${imageUrl}`,
@@ -28,12 +27,13 @@ const OfferComponent = ({ title, icon, description, imageUrl }: Props) => {
         e.currentTarget.style.transform = "scale(1.05)";
         if (!isSmallScreen) {
           e.currentTarget.style.filter = "grayscale(0%)";
+          e.currentTarget.style.filter = "contrast(110%)"
         }
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.transform = "scale(1)";
         if (!isSmallScreen) {
-          e.currentTarget.style.filter = "grayscale(100%)";
+          e.currentTarget.style.filter = "grayscale(70%)";
         }
       }}
     >

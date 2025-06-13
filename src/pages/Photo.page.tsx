@@ -8,6 +8,7 @@ import { categoryProps } from "../types/category";
 import { useMediaQuery } from "@mantine/hooks";
 import "../styles/general.scss";
 import PhotoAlbumOverview from "../components/photo/PhotoAlbumOverview";
+import ContactDirection from "../components/contactComponents/contactDirection";
 
 export const Photopage = () => {
   const isSmallScreen = useMediaQuery("(max-width: 768px)");
@@ -50,19 +51,27 @@ export const Photopage = () => {
         pt={isSmallScreen ? 60 : 100}
       >
         <Center>
-          <Title fz={isSmallScreen ? 25 : 50} className="title font-family-text" p="md" mb="md">
+          <Title
+            fz={isSmallScreen ? 25 : 50}
+            className="title font-family-text"
+            p="md"
+            mb="md"
+          >
             Explore all our photo services
           </Title>
         </Center>
         <Center>
           <Text pb={50}>
-            "A photo isn’t just a snapshot, it’s a feeling, a mood, a message. We
-            bring your story to life with visuals that speak louder than words."
+            "A photo isn’t just a snapshot, it’s a feeling, a mood, a message.
+            We bring your story to life with visuals that speak louder than
+            words."
           </Text>
         </Center>
         <CategorySelector type="photo" categories={data} />
         <PhotoAlbumOverview />
+        
       </Flex>
+      <ContactDirection />
     </>
   );
 };

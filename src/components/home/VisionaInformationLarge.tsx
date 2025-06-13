@@ -1,5 +1,6 @@
 import { Box, Button, Center, Flex, Space, Text, Title } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
+import { Link } from "react-router";
 
 const VisionaInformationLarge = () => {
   const isSmallScreen = useMediaQuery("(max-width: 900px)");
@@ -63,6 +64,8 @@ const VisionaInformationLarge = () => {
           </Center>
         ) : (
           <Button
+            component={Link}
+            to="/about"
             className="aboutVisionaButton"
             variant="transparent"
             mt={50}

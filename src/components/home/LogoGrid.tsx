@@ -60,7 +60,7 @@ const logoData = [
 
 const LogoGrid = () => {
   return (
-    <Box className="background-text-color" pt={50} pb={50} h={{ lg: "100vh" }}>
+    <Box className="background-text-color" pt={100} pb={50} h={{ lg: "100vh" }}>
       <Center>
         <Title p={50}>Brands we have worked with</Title>
       </Center>

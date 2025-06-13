@@ -1,11 +1,13 @@
-
-import OfferGrid from "../components/offers/OfferGrid"
-
+import ContactDirection from "../components/contactComponents/contactDirection";
+import OfferGrid from "../components/offers/OfferGrid";
 
 const OfferPage = () => {
   return (
-    <OfferGrid/>
-  )
-}
+    <>
+      <OfferGrid />
+      <ContactDirection />
+    </>
+  );
+};
 
-export default OfferPage
+export default OfferPage;
