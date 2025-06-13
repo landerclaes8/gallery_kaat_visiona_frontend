@@ -8,7 +8,7 @@ import { fetcher } from "../lib/api";
 import { categoryProps } from "../types/category";
 import { useMediaQuery } from "@mantine/hooks";
 import "../styles/general.scss";
-import ContactDirection from "../components/contactComponents/contactDirection";
+import ContactDirection from "../components/contactComponents/ContactDirection";
 
 export const VideoPage = () => {
   const isSmallScreen = useMediaQuery("(max-width: 768px)");

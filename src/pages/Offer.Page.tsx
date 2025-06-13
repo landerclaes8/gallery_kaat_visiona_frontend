@@ -1,4 +1,4 @@
-import ContactDirection from "../components/contactComponents/contactDirection";
+import ContactDirection from "../components/contactComponents/ContactDirection";
 import OfferGrid from "../components/offers/OfferGrid";
 
 const OfferPage = () => {
