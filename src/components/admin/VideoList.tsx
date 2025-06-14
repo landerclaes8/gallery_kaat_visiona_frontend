@@ -39,7 +39,7 @@ const VideoList = () => {
   }
 
   if (isLoading) {
-    return <LoadingInfo what={"photos"} />;
+    return <LoadingInfo what={"videos"} />;
   }
 
   if (!data) {

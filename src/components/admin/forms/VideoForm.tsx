@@ -19,7 +19,9 @@ import { categoryProps } from "../../../types/category";
 import { useDisclosure } from "@mantine/hooks";
 import CategoryForm from "./CategoryForm";
 import { ActionIcon } from "@mantine/core";
-import UploadFile from "../UploadFile";
+import UploadFile, { UploadFileRef } from "../UploadFile";
+import { useRef, useState, useEffect } from "react";
+import { useSWRConfig } from "swr";
 
 interface Props {
   title: string;
@@ -34,9 +36,19 @@ const VideoForm = ({ title, url, categoryUrl }: Props) => {
     isLoading: categoryIsLoading,
   } = useSWR<categoryProps[]>(`/api/${categoryUrl}`, fetcher);
 
+  const uploadFileRef = useRef<UploadFileRef>(null);
   const { trigger: doAddVideo } = useSWRMutation(`/api/${url}`, post);
   const [openedCategories, { open: openCategories, close: closeCategories }] =
     useDisclosure(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
+  const { mutate } = useSWRConfig();
+
+  useEffect(() => {
+    if (uploadFileRef.current) {
+      setIsUploading(uploadFileRef.current.isLoading);
+    }
+  }, [uploadFileRef.current?.isLoading]);
 
   const schema = z.object({
     title: z.string(),
@@ -56,23 +68,40 @@ const VideoForm = ({ title, url, categoryUrl }: Props) => {
     validate: zodResolver(schema),
   });
 
-  const addVideo = async (values: z.infer<typeof addVideoSchema>) => {
-    await doAddVideo({
-      title: values.title,
-      description: values.description,
-      categoryId: values.categoryId,
-      fileName: values.fileName,
-    });
+  const handleSubmit = async (values: z.infer<typeof addVideoSchema>) => {
+    try {
+      setIsSubmitting(true);
+      await doAddVideo({
+        title: values.title,
+        description: values.description,
+        categoryId: values.categoryId,
+        fileName: values.fileName,
+      });
+      if (uploadFileRef.current) {
+        await uploadFileRef.current.handleUpload();
+      }
 
-    form.reset();
+      // Refresh the video list
+      await mutate(`/api/${url}`);
+
+      form.reset();
+    } catch (error) {
+      console.error("Error submitting form", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
   return (
     <Grid p={20}>
       <Grid.Col span={6}>
         <Title mb={20} size={25}>
           Add new {title}
         </Title>
-        <form onSubmit={form.onSubmit(addVideo)} data-cy="video-create-form">
+        <form
+          onSubmit={form.onSubmit(handleSubmit)}
+          data-cy="video-create-form"
+        >
           <TextInput
             label="Title"
             placeholder="Title"
@@ -125,7 +154,12 @@ const VideoForm = ({ title, url, categoryUrl }: Props) => {
           />
 
           <Group justify="flex-end" mt="md">
-            <Button type="submit" data-cy="video-form-submit">
+            <Button 
+              type="submit" 
+              data-cy="video-form-submit"
+              loading={isSubmitting || isUploading}
+              disabled={isSubmitting || isUploading}
+            >
               Toevoegen
             </Button>
           </Group>
@@ -145,7 +179,12 @@ const VideoForm = ({ title, url, categoryUrl }: Props) => {
       </Modal>
       <Grid.Col span={6}>
         <Flex justify="center" align="center" style={{ height: "100%" }}>
-          <UploadFile path={url} type={title} photoTrue={false} />
+          <UploadFile
+            path={url}
+            type={title}
+            photoTrue={false}
+            ref={uploadFileRef}
+          />
         </Flex>
       </Grid.Col>
     </Grid>

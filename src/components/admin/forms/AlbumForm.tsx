@@ -5,7 +5,8 @@ import { useForm } from "@mantine/form";
 import { zodResolver } from "mantine-form-zod-resolver";
 import { Grid } from "@mantine/core";
 import { TextInput, Group, Button, Select } from "@mantine/core";
-import UploadFile from "../UploadFile";
+import UploadFile, { UploadFileRef } from "../UploadFile";
+import { useRef, useState, useEffect } from "react";
 
 interface categoryProps {
   id: number;
@@ -20,6 +21,15 @@ interface Props {
 
 const AlbumForm = ({ albumUrl, categories, onClose }: Props) => {
   const { trigger: doAddAlbum } = useSWRMutation(`/api/${albumUrl}`, post);
+  const uploadFileRef = useRef<UploadFileRef>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
+
+  useEffect(() => {
+    if (uploadFileRef.current) {
+      setIsUploading(uploadFileRef.current.isLoading);
+    }
+  }, [uploadFileRef.current?.isLoading]);
 
   const schema = z.object({
     name: z.string().min(2, { message: "Must be longer." }),
@@ -37,25 +47,36 @@ const AlbumForm = ({ albumUrl, categories, onClose }: Props) => {
     validate: zodResolver(schema),
   });
 
-  const addAlbum = async (values: {
+  const handleSubmit = async (values: {
     name: string;
     thumbnail: string;
     categoryPhotoId: string;
   }) => {
-    await doAddAlbum({
-      name: values.name,
-      thumbnail: values.thumbnail,
-      categoryPhotoId: Number(values.categoryPhotoId),
-    });
+    try {
+      setIsSubmitting(true);
+      await doAddAlbum({
+        name: values.name,
+        thumbnail: values.thumbnail,
+        categoryPhotoId: Number(values.categoryPhotoId),
+      });
 
-    form.reset();
-    onClose();
+      if (uploadFileRef.current) {
+        await uploadFileRef.current.handleUpload();
+      }
+
+      form.reset();
+      onClose();
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <Grid>
       <Grid.Col span={4}>
-        <form onSubmit={form.onSubmit(addAlbum)} data-cy="album-create-form">
+        <form onSubmit={form.onSubmit(handleSubmit)} data-cy="album-create-form">
           <TextInput
             label="Album"
             placeholder="album"
@@ -88,14 +109,24 @@ const AlbumForm = ({ albumUrl, categories, onClose }: Props) => {
           />
 
           <Group justify="flex-end" mt="md">
-            <Button type="submit" data-cy="album-form-submit">
+            <Button 
+              type="submit" 
+              data-cy="album-form-submit"
+              loading={isSubmitting || isUploading}
+              disabled={isSubmitting || isUploading}
+            >
               Toevoegen
             </Button>
           </Group>
         </form>
       </Grid.Col>
       <Grid.Col span={8}>
-        <UploadFile path={albumUrl} type="photoAlbum" photoTrue={true} />
+        <UploadFile 
+          path={albumUrl} 
+          type="photoAlbum" 
+          photoTrue={true} 
+          ref={uploadFileRef}
+        />
       </Grid.Col>
     </Grid>
   );

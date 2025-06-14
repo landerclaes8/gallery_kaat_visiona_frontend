@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, forwardRef, useImperativeHandle } from "react";
 import { Dropzone, MIME_TYPES } from "@mantine/dropzone";
 import { Group, Text, Button, Box } from "@mantine/core";
 import { IconDownload, IconX, IconCloudUpload } from "@tabler/icons-react";
@@ -10,11 +10,17 @@ interface Props {
   photoTrue: boolean;
 }
 
-const UploadFile = ({ path, type, photoTrue }: Props) => {
+export interface UploadFileRef {
+  handleUpload: () => Promise<void>;
+  isLoading: boolean;
+}
+
+const UploadFile = forwardRef<UploadFileRef, Props>(({ path, type, photoTrue }, ref) => {
   const openRef = useRef<() => void>(null);
   const [file, setFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [status, setStatus] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleFile = (files: File[]) => {
     const selected = files[0];
@@ -26,11 +32,11 @@ const UploadFile = ({ path, type, photoTrue }: Props) => {
   const handleUpload = async () => {
     if (!file) return;
 
-    const formData = new FormData();
-    // naam om file op te halen in server
-    formData.append(`${type}`, file);
-
     try {
+      setIsLoading(true);
+      const formData = new FormData();
+      formData.append(`${type}`, file);
+
       const response = await axios.post(`/api/${path}/upload`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
@@ -39,11 +45,23 @@ const UploadFile = ({ path, type, photoTrue }: Props) => {
 
       setStatus("✅ Upload gelukt!");
       console.log("Response:", response.data);
+      setIsLoading(false);
+      return response.data;
     } catch (err) {
       console.error(err);
       setStatus("❌ Upload mislukt");
+      throw err;
+    } finally {
+      setIsLoading(false);
+      setFile(null);
+      setPreviewUrl(null);
     }
   };
+
+  useImperativeHandle(ref, () => ({
+    handleUpload,
+    isLoading
+  }));
 
   return (
     <div style={{ padding: 20 }}>
@@ -53,6 +71,7 @@ const UploadFile = ({ path, type, photoTrue }: Props) => {
         accept={photoTrue ? [MIME_TYPES.webp] : [MIME_TYPES.mp4]}
         multiple={false}
         radius="md"
+        disabled={isLoading}
       >
         <div style={{ pointerEvents: "none" }}>
           <Group justify="center">
@@ -97,11 +116,11 @@ const UploadFile = ({ path, type, photoTrue }: Props) => {
           <Text ta="center" fz="sm" mt="xs" c="dimmed">
             {photoTrue ? (
               <>
-                Drag’n’drop a <i>.webp</i> image here to upload.
+                Drag'n'drop a <i>.webp</i> image here to upload.
               </>
             ) : (
               <>
-                Drag’n’drop a <i>.mp4</i> video here to upload.
+                Drag'n'drop a <i>.mp4</i> video here to upload.
               </>
             )}
             {status && <Text mt="md">{status}</Text>}
@@ -110,13 +129,12 @@ const UploadFile = ({ path, type, photoTrue }: Props) => {
       </Dropzone>
 
       <Group justify="center" mt="md">
-        <Button onClick={() => openRef.current?.()}>Kies bestand</Button>
-        <Button onClick={handleUpload} disabled={!file}>
-          Upload
-        </Button>
+        <Button onClick={() => openRef.current?.()} disabled={isLoading}>Kies bestand</Button>
       </Group>
     </div>
   );
-};
+});
+
+UploadFile.displayName = 'UploadFile';
 
 export default UploadFile;

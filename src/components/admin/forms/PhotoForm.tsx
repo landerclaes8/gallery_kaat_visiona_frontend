@@ -19,9 +19,10 @@ import { categoryProps } from "../../../types/category";
 import { useDisclosure } from "@mantine/hooks";
 import CategoryForm from "./CategoryForm";
 import { ActionIcon } from "@mantine/core";
-import UploadFile from "../UploadFile";
+import UploadFile, { UploadFileRef } from "../UploadFile";
 import { albumProps } from "../../../types/album";
 import AlbumForm from "./AlbumForm";
+import { useRef, useState, useEffect } from "react";
 
 interface Props {
   title: string;
@@ -43,9 +44,18 @@ const PhotoForm = ({ title, url, categoryUrl, albumUrl }: Props) => {
     isLoading: albumIsLoading,
   } = useSWR<albumProps[]>(`/api/${albumUrl}`, fetcher);
 
+  const uploadFileRef = useRef<UploadFileRef>(null);
   const { trigger: doAddPhoto } = useSWRMutation(`/api/${url}`, post);
   const [openedCategories, { open: openCategories, close: closeCategories }] =
     useDisclosure(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
+
+  useEffect(() => {
+    if (uploadFileRef.current) {
+      setIsUploading(uploadFileRef.current.isLoading);
+    }
+  }, [uploadFileRef.current?.isLoading]);
 
   const [openedAlbums, { open: openAlbums, close: closeAlbums }] =
     useDisclosure(false);
@@ -70,15 +80,26 @@ const PhotoForm = ({ title, url, categoryUrl, albumUrl }: Props) => {
     validate: zodResolver(schema),
   });
 
-  const addPhoto = async (values: z.infer<typeof addPhotoSchema>) => {
-    await doAddPhoto({
-      title: values.title,
-      description: values.description,
-      albumId: values.albumId,
-      fileName: values.fileName,
-    });
+  const handleSubmit = async (values: z.infer<typeof addPhotoSchema>) => {
+    try {
+      setIsSubmitting(true);
+      await doAddPhoto({
+        title: values.title,
+        description: values.description,
+        albumId: values.albumId,
+        fileName: values.fileName,
+      });
 
-    form.reset();
+      if (uploadFileRef.current) {
+        await uploadFileRef.current.handleUpload();
+      }
+
+      form.reset();
+    } catch (error) {
+      console.log("error submitting form", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -87,7 +108,10 @@ const PhotoForm = ({ title, url, categoryUrl, albumUrl }: Props) => {
         <Title mb={20} size={25}>
           Add new {title}
         </Title>
-        <form onSubmit={form.onSubmit(addPhoto)} data-cy="photo-create-form">
+        <form
+          onSubmit={form.onSubmit(handleSubmit)}
+          data-cy="photo-create-form"
+        >
           <TextInput
             label="Title"
             placeholder="Title"
@@ -168,7 +192,12 @@ const PhotoForm = ({ title, url, categoryUrl, albumUrl }: Props) => {
           />
 
           <Group justify="flex-end" mt="md">
-            <Button type="submit" data-cy="photo-form-submit">
+            <Button 
+              type="submit" 
+              data-cy="photo-form-submit"
+              loading={isSubmitting || isUploading}
+              disabled={isSubmitting || isUploading}
+            >
               Toevoegen
             </Button>
           </Group>
@@ -209,7 +238,12 @@ const PhotoForm = ({ title, url, categoryUrl, albumUrl }: Props) => {
 
       <Grid.Col span={6}>
         <Flex justify="center" align="center" style={{ height: "100%" }}>
-          <UploadFile path={url} type={title} photoTrue={true} />
+          <UploadFile
+            path={url}
+            type={title}
+            photoTrue={true}
+            ref={uploadFileRef}
+          />
         </Flex>
       </Grid.Col>
     </Grid>
