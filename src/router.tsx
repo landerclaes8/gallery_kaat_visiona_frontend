@@ -7,13 +7,14 @@ import { VideoPage } from "./pages/Video.page";
 import { ContactPage } from "./pages/Contact.page";
 import { Photopage } from "./pages/Photo.page";
 import { RoleLayout } from "./components/auth/RoleLayout";
-import { AdminDashboard } from "./pages/admin/AdminDashboard";
 import { AuthProvider } from "./lib/context/auth";
-import PhotoAdmin from "./components/admin/PhotoAdmin";
-import VideoAdmin from "./components/admin/VideoAdmin";
 import OfferPage from "./pages/Offer.Page";
 import PhotoOverviewPage from "./pages/PhotoOverview.page";
 import AboutPage from "./pages/About.page";
+import { lazy, Suspense } from "react";
+const AdminDashboard = lazy(() => import("./pages/admin/AdminDashboard"));
+const PhotoAdmin = lazy(() => import("./components/admin/PhotoAdmin"));
+const VideoAdmin = lazy(() => import("./components/admin/VideoAdmin"));
 
 export const Router = () => {
   return (
@@ -45,9 +46,30 @@ export const Router = () => {
             </AuthProvider>
           }
         >
-          <Route index element={<AdminDashboard />}></Route>
-          <Route path="photo" element={<PhotoAdmin />} />
-          <Route path="video" element={<VideoAdmin />} />
+          <Route
+            index
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <AdminDashboard />
+              </Suspense>
+            }
+          ></Route>
+          <Route
+            path="photo"
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <PhotoAdmin />
+              </Suspense>
+            }
+          />
+          <Route
+            path="video"
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <VideoAdmin />
+              </Suspense>
+            }
+          />
         </Route>
       </Route>
     </Routes>

@@ -53,7 +53,10 @@ const VideoList = () => {
       <Table.Td>{element.categoryId}</Table.Td>
       <Table.Td>{element.fileName}</Table.Td>
       <Table.Td>
-        <Button onClick={() => handleDeleteVideo(element.id)}>
+        <Button
+          data-cy="video-delete-button"
+          onClick={() => handleDeleteVideo(element.id)}
+        >
           <FaRegTrashAlt />
         </Button>
       </Table.Td>
@@ -61,7 +64,7 @@ const VideoList = () => {
   ));
 
   return (
-    <Table>
+    <Table data-cy="video-list">
       <Table.Thead>
         <Table.Tr>
           <Table.Th>Title</Table.Th>

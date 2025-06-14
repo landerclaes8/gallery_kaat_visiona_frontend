@@ -72,20 +72,20 @@ const VideoForm = ({ title, url, categoryUrl }: Props) => {
         <Title mb={20} size={25}>
           Add new {title}
         </Title>
-        <form onSubmit={form.onSubmit(addVideo)} data-cy="photo-create-form">
+        <form onSubmit={form.onSubmit(addVideo)} data-cy="video-create-form">
           <TextInput
             label="Title"
             placeholder="Title"
             key={form.key("title")}
             {...form.getInputProps("title")}
-            data-cy="photo-title"
+            data-cy="video-form-title"
           />
           <TextInput
             label="Description"
             placeholder="Description"
             key={form.key("description")}
             {...form.getInputProps("description")}
-            data-cy="photo-description"
+            data-cy="video-form-description"
           />
 
           <Group align="flex-end">
@@ -102,7 +102,7 @@ const VideoForm = ({ title, url, categoryUrl }: Props) => {
               {...form.getInputProps("categoryId", {
                 parse: (value: string) => Number(value),
               })}
-              data-cy="photo-category"
+              data-cy="video-form-category"
               disabled={categoryIsLoading || !!categoryError}
               style={{ flex: 1 }}
             />
@@ -121,11 +121,11 @@ const VideoForm = ({ title, url, categoryUrl }: Props) => {
             placeholder="fileName.webp"
             key={form.key("fileName")}
             {...form.getInputProps("fileName")}
-            data-cy="fileName"
+            data-cy="video-form-filename"
           />
 
           <Group justify="flex-end" mt="md">
-            <Button type="submit" data-cy="photo-form-submit">
+            <Button type="submit" data-cy="video-form-submit">
               Toevoegen
             </Button>
           </Group>

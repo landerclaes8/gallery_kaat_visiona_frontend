@@ -1,6 +1,6 @@
 import PhotoForm from "./forms/PhotoForm";
 import PhotoList from "./PhotoList";
-import { Box } from "@mantine/core";
+import { Box, Flex } from "@mantine/core";
 
 const PhotoAdmin = () => {
   return (
@@ -11,7 +11,9 @@ const PhotoAdmin = () => {
         albumUrl="photoAlbum"
         title="photo"
       />
-      <PhotoList />
+      <Flex>
+        <PhotoList />
+      </Flex>
     </Box>
   );
 };

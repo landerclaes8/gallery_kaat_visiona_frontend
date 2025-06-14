@@ -1,5 +1,5 @@
 describe("General", () => {
   it("draait de applicatie", () => {
-    cy.visit("/");
+    cy.visit("/home");
   });
 });

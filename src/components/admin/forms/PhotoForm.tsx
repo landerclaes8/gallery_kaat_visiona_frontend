@@ -93,14 +93,14 @@ const PhotoForm = ({ title, url, categoryUrl, albumUrl }: Props) => {
             placeholder="Title"
             key={form.key("title")}
             {...form.getInputProps("title")}
-            data-cy="photo-title"
+            data-cy="photo-form-title"
           />
           <TextInput
             label="Description"
             placeholder="Description"
             key={form.key("description")}
             {...form.getInputProps("description")}
-            data-cy="photo-description"
+            data-cy="photo-form-description"
           />
 
           <Group align="flex-end">
@@ -117,7 +117,7 @@ const PhotoForm = ({ title, url, categoryUrl, albumUrl }: Props) => {
               {...form.getInputProps("categoryId", {
                 parse: (value: string) => Number(value),
               })}
-              data-cy="photo-category"
+              data-cy="photo-form-category"
               disabled={categoryIsLoading || !!categoryError}
               style={{ flex: 1 }}
             />
@@ -144,7 +144,7 @@ const PhotoForm = ({ title, url, categoryUrl, albumUrl }: Props) => {
                 {...form.getInputProps("albumId", {
                   parse: (value: string) => Number(value),
                 })}
-                data-cy="album"
+                data-cy="photo-form-album"
                 disabled={albumIsLoading || !!albumError}
                 style={{ flex: 1 }}
               />
@@ -164,7 +164,7 @@ const PhotoForm = ({ title, url, categoryUrl, albumUrl }: Props) => {
             placeholder="fileName.webp"
             key={form.key("fileName")}
             {...form.getInputProps("fileName")}
-            data-cy="fileName"
+            data-cy="photo-form-filename"
           />
 
           <Group justify="flex-end" mt="md">
@@ -188,6 +188,7 @@ const PhotoForm = ({ title, url, categoryUrl, albumUrl }: Props) => {
       </Modal>
 
       <Modal
+        size={"55rem"}
         opened={openedAlbums}
         onClose={closeAlbums}
         title="Add new album"
