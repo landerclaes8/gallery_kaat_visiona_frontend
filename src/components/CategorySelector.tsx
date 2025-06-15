@@ -4,7 +4,7 @@ import {
   Flex,
   Menu,
   Card,
-  Text,
+  Title,
   SimpleGrid,
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
@@ -12,6 +12,7 @@ import { useState } from "react";
 import useCategoryIdStore from "../store";
 import { categoryProps } from "../types/category";
 import { useEffect } from "react";
+import { Link } from "react-router";
 
 interface Props {
   categories: categoryProps[];
@@ -38,57 +39,35 @@ const CategorySelector = ({ categories, type }: Props) => {
         <SimpleGrid cols={isSmallScreen ? 2 : 3} spacing="xl" mt={50}>
           {categories.map((categorie) => (
             <Card
-              withBorder
+              p={40}
+              className="background-color-text font-family-text"
               key={categorie.id}
-              shadow="md"
-              radius="md"
-              padding="xl"
               onClick={() => handleOnClick(categorie.id)}
-              style={{
-                cursor: "pointer",
-                backgroundImage: `url(../../public/images/${type}/categorie${categorie.name}.webp)`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                height: "300px",
-                color: "black",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
+              style={{ transition: "transform 0.3s ease" }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "scale(1.05)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "scale(1)";
               }}
             >
-              <div
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  width: "100%",
-                  height: "100%",
-                  backgroundImage: `url(../../public/images/${type}/categorie${categorie.name}.webp)`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  transition: "transform 0.3s ease", // Smooth zoom effect
-                }}
-                className="card-background"
-              ></div>
-              <Text
-                fz={isSmallScreen ? 16 : 30}
-                fw={750}
-                style={{
-                  zIndex: 1,
-                  whiteSpace: "normal",
-                  overflow: "visible",
-                  wordWrap: "break-word",
-                }}
-              >
-                {categorie.name}
-              </Text>
-              <style>
-                {`
-                .card-background:hover {
-                  transform: scale(1.1); // Zoom in on hover
-                }
-              `}
-              </style>
+              <Card.Section>
+                <img
+                  style={{
+                    width: "100%",
+                    maxWidth: "600px",
+                    height: "auto",
+                    borderRadius: "15px",
+                  }}
+                  src={`/api/${type}Categories/${categorie.id}`}
+                  loading="lazy"
+                ></img>
+              </Card.Section>
+              <Card.Section>
+                <Flex direction="column" align="center">
+                  <Title fz={25}>{categorie.name}</Title>
+                </Flex>
+              </Card.Section>
             </Card>
           ))}
         </SimpleGrid>
