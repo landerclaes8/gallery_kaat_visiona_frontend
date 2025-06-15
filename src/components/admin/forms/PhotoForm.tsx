@@ -192,8 +192,8 @@ const PhotoForm = ({ title, url, categoryUrl, albumUrl }: Props) => {
           />
 
           <Group justify="flex-end" mt="md">
-            <Button 
-              type="submit" 
+            <Button
+              type="submit"
               data-cy="photo-form-submit"
               loading={isSubmitting || isUploading}
               disabled={isSubmitting || isUploading}
@@ -213,7 +213,13 @@ const PhotoForm = ({ title, url, categoryUrl, albumUrl }: Props) => {
           blur: 2,
         }}
       >
-        {<CategoryForm url={`${categoryUrl}`} onClose={closeCategories} />}
+        {
+          <CategoryForm
+            url={`${categoryUrl}`}
+            photoTrue={true}
+            onClose={closeCategories}
+          />
+        }
       </Modal>
 
       <Modal

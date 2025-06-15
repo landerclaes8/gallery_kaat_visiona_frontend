@@ -75,7 +75,7 @@ const PhotoAlbumOverview = () => {
                   height: "auto",
                   borderRadius: "15px",
                 }}
-                src={`/api/photoAlbum/${id}`}
+                src={`/api/photoAlbum/${album.id}`}
                 loading="lazy"
               ></img>
             </Card.Section>
@@ -107,7 +107,7 @@ const PhotoAlbumOverview = () => {
                   maxWidth: "600px",
                   height: "auto",
                 }}
-                src={`/api/photoAlbum/${id}`}
+                src={`/api/photoAlbum/${album.id}`}
                 loading="lazy"
               ></img>
             </Card.Section>

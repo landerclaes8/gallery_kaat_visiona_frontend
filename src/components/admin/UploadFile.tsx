@@ -37,7 +37,6 @@ const UploadFile = ({ path, type, photoTrue, ref }: Props) => {
       setIsLoading(true);
       const formData = new FormData();
       formData.append(`${type}`, file);
-
       const response = await axios.post(`/api/${path}/upload`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",

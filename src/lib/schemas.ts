@@ -21,6 +21,7 @@ export const addVideoSchema = z.object({
 
 export const addCategorySchema = z.object({
   name: z.string(),
+  fileName: z.string(),
 });
 
 export const addAlbumSchema = z.object({

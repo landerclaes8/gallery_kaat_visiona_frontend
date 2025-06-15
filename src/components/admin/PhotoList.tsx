@@ -20,6 +20,7 @@ import { deleteReq } from "../../lib/api";
 import { albumProps } from "../../types/album";
 import { useState } from "react";
 import { TbChevronDown } from "react-icons/tb";
+import { categoryProps } from "../../types/category";
 
 const PhotoList = () => {
   const {
@@ -32,6 +33,11 @@ const PhotoList = () => {
     error: albumsError,
     isLoading: albumsIsLoading,
   } = useSWR<albumProps[]>(`/api/photoAlbum`);
+  const {
+    data: allCategories,
+    error: categoriesError,
+    isLoading: cateogriesLoading,
+  } = useSWR<categoryProps[]>(`/api/photoCategories`);
 
   const { trigger: doDeletePhoto } = useSWRMutation(
     `/api/photos`,
@@ -41,6 +47,12 @@ const PhotoList = () => {
 
   const { trigger: doDeleteAlbum } = useSWRMutation(
     `/api/photoAlbum`,
+    (url, { arg }: { arg: number }) =>
+      deleteReq(`${url}/${arg}`, { arg: undefined })
+  );
+
+  const { trigger: doDeleteCategory } = useSWRMutation(
+    `/api/photoCategories`,
     (url, { arg }: { arg: number }) =>
       deleteReq(`${url}/${arg}`, { arg: undefined })
   );
@@ -55,12 +67,17 @@ const PhotoList = () => {
     mutate(`/api/photoAlbum`);
   }
 
+  async function handleDeleteCategory(id: number) {
+    await doDeleteCategory(id);
+    mutate(`/api/photoCategories`);
+  }
+
   const [selectedAlbum, setSelectedAlbum] = useState<albumProps | null>(null);
   const handleAlbumSelect = (album: albumProps) => {
     setSelectedAlbum(album);
   };
 
-  if (photosError || albumsError) {
+  if (photosError || albumsError || categoriesError) {
     return (
       <Center style={{ padding: "1.5rem" }}>
         <Card padding="lg" radius="md" withBorder w="100%">
@@ -76,11 +93,11 @@ const PhotoList = () => {
     );
   }
 
-  if (photosIsLoading || albumsIsLoading) {
+  if (photosIsLoading || albumsIsLoading || cateogriesLoading) {
     return <LoadingInfo what={"photos"} />;
   }
 
-  if (!allPhotos || !allAlbums) {
+  if (!allPhotos || !allAlbums || !allCategories) {
     return <Navigate to={"/notfound"} />;
   }
 
@@ -88,7 +105,7 @@ const PhotoList = () => {
     ? allPhotos.filter((photo) => photo.albumId === selectedAlbum.id)
     : allPhotos;
 
-  const iets = filteredPhotos.map((element) => (
+  const photos = filteredPhotos.map((element) => (
     <Table.Tr key={element.id}>
       <Table.Td>{element.title}</Table.Td>
       <Table.Td>{element.description}</Table.Td>
@@ -98,6 +115,21 @@ const PhotoList = () => {
         <Button
           data-cy="photo-delete-button"
           onClick={() => handleDeletePhoto(element.id)}
+        >
+          <FaRegTrashAlt />
+        </Button>
+      </Table.Td>
+    </Table.Tr>
+  ));
+
+  const categories = allCategories?.map((element) => (
+    <Table.Tr key={element.id}>
+      <Table.Td>{element.name}</Table.Td>
+      <Table.Td>{element.fileName}</Table.Td>
+      <Table.Td>
+        <Button
+          data-cy="photo-delete-button"
+          onClick={() => handleDeleteCategory(element.id)}
         >
           <FaRegTrashAlt />
         </Button>
@@ -184,7 +216,17 @@ const PhotoList = () => {
                 <Table.Th>Delete photo</Table.Th>
               </Table.Tr>
             </Table.Thead>
-            <Table.Tbody>{iets}</Table.Tbody>
+            <Table.Tbody>{photos}</Table.Tbody>
+          </Table>
+          <Table data-cy="category-list">
+            <Table.Thead>
+              <Table.Tr>
+                <Table.Th>Title</Table.Th>
+                <Table.Th>filename</Table.Th>
+                <Table.Th>Delete photo</Table.Th>
+              </Table.Tr>
+            </Table.Thead>
+            <Table.Tbody>{categories}</Table.Tbody>
           </Table>
         </Flex>
       </Grid.Col>

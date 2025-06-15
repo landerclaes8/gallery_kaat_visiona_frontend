@@ -81,7 +81,6 @@ const VideoForm = ({ title, url, categoryUrl }: Props) => {
         await uploadFileRef.current.handleUpload();
       }
 
-      // Refresh the video list
       await mutate(`/api/${url}`);
 
       form.reset();
@@ -154,8 +153,8 @@ const VideoForm = ({ title, url, categoryUrl }: Props) => {
           />
 
           <Group justify="flex-end" mt="md">
-            <Button 
-              type="submit" 
+            <Button
+              type="submit"
               data-cy="video-form-submit"
               loading={isSubmitting || isUploading}
               disabled={isSubmitting || isUploading}
@@ -175,7 +174,13 @@ const VideoForm = ({ title, url, categoryUrl }: Props) => {
           blur: 2,
         }}
       >
-        {<CategoryForm url={`${categoryUrl}`} onClose={closeCategories} />}
+        {
+          <CategoryForm
+            url={`${categoryUrl}`}
+            photoTrue={false}
+            onClose={closeCategories}
+          />
+        }
       </Modal>
       <Grid.Col span={6}>
         <Flex justify="center" align="center" style={{ height: "100%" }}>
