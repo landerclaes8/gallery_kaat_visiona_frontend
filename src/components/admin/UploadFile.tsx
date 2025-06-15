@@ -1,4 +1,4 @@
-import { useRef, useState, forwardRef, useImperativeHandle } from "react";
+import { useRef, useState, useImperativeHandle } from "react";
 import { Dropzone, MIME_TYPES } from "@mantine/dropzone";
 import { Group, Text, Button, Box } from "@mantine/core";
 import { IconDownload, IconX, IconCloudUpload } from "@tabler/icons-react";
@@ -8,6 +8,7 @@ interface Props {
   path: string;
   type: string;
   photoTrue: boolean;
+  ref: React.Ref<UploadFileRef>;
 }
 
 export interface UploadFileRef {
@@ -15,7 +16,7 @@ export interface UploadFileRef {
   isLoading: boolean;
 }
 
-const UploadFile = forwardRef<UploadFileRef, Props>(({ path, type, photoTrue }, ref) => {
+const UploadFile = ({ path, type, photoTrue, ref }: Props) => {
   const openRef = useRef<() => void>(null);
   const [file, setFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
@@ -60,7 +61,7 @@ const UploadFile = forwardRef<UploadFileRef, Props>(({ path, type, photoTrue }, 
 
   useImperativeHandle(ref, () => ({
     handleUpload,
-    isLoading
+    isLoading,
   }));
 
   return (
@@ -129,12 +130,14 @@ const UploadFile = forwardRef<UploadFileRef, Props>(({ path, type, photoTrue }, 
       </Dropzone>
 
       <Group justify="center" mt="md">
-        <Button onClick={() => openRef.current?.()} disabled={isLoading}>Kies bestand</Button>
+        <Button onClick={() => openRef.current?.()} disabled={isLoading}>
+          Kies bestand
+        </Button>
       </Group>
     </div>
   );
-});
+};
 
-UploadFile.displayName = 'UploadFile';
+UploadFile.displayName = "UploadFile";
 
 export default UploadFile;

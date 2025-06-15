@@ -76,7 +76,10 @@ const AlbumForm = ({ albumUrl, categories, onClose }: Props) => {
   return (
     <Grid>
       <Grid.Col span={4}>
-        <form onSubmit={form.onSubmit(handleSubmit)} data-cy="album-create-form">
+        <form
+          onSubmit={form.onSubmit(handleSubmit)}
+          data-cy="album-create-form"
+        >
           <TextInput
             label="Album"
             placeholder="album"
@@ -109,8 +112,8 @@ const AlbumForm = ({ albumUrl, categories, onClose }: Props) => {
           />
 
           <Group justify="flex-end" mt="md">
-            <Button 
-              type="submit" 
+            <Button
+              type="submit"
               data-cy="album-form-submit"
               loading={isSubmitting || isUploading}
               disabled={isSubmitting || isUploading}
@@ -121,10 +124,10 @@ const AlbumForm = ({ albumUrl, categories, onClose }: Props) => {
         </form>
       </Grid.Col>
       <Grid.Col span={8}>
-        <UploadFile 
-          path={albumUrl} 
-          type="photoAlbum" 
-          photoTrue={true} 
+        <UploadFile
+          path={albumUrl}
+          type="photoAlbum"
+          photoTrue={true}
           ref={uploadFileRef}
         />
       </Grid.Col>
