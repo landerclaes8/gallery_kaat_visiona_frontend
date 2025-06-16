@@ -1,4 +1,4 @@
-import { Flex, Grid, Title, Text, Box, Button } from "@mantine/core";
+import { Flex, Grid, Title, Text, Box, Button, Card } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { TfiWorld } from "react-icons/tfi";
 import { GrMultiple } from "react-icons/gr";
@@ -31,7 +31,28 @@ const aboutList = [
   },
 ];
 
-const icons = aboutList.map((element, index) => (
+const iconsLarge = aboutList.map((element, index) => (
+  <Grid.Col span={4}>
+    <Flex key={index} align="center" gap={20}>
+      <Box>{element.icon}</Box>
+      <Box p={25}>
+        <Title
+          className="font-family-text"
+          fz={25}
+          style={{
+            textDecoration: "underline",
+            textDecorationColor: "lightskyblue",
+          }}
+        >
+          {element.title}
+        </Title>
+        <Text>{element.description}</Text>
+      </Box>
+    </Flex>
+  </Grid.Col>
+));
+
+const iconsSmall = aboutList.map((element, index) => (
   <Flex key={index} align="center" gap={20}>
     <Box>{element.icon}</Box>
     <Box p={25}>
@@ -49,7 +70,6 @@ const icons = aboutList.map((element, index) => (
     </Box>
   </Flex>
 ));
-
 const AboutHeader = ({ title, imageSrc }: Props) => {
   const isSmallScreen = useMediaQuery("(max-width: 1024px)");
   return isSmallScreen ? (
@@ -65,7 +85,7 @@ const AboutHeader = ({ title, imageSrc }: Props) => {
         loading="lazy"
         style={{ borderRadius: "10px" }}
       />
-      <Box pt={50}>{icons}</Box>
+      <Box pt={50}>{iconsSmall}</Box>
       <Box m={5} style={{ backgroundColor: "white" }} h={3}></Box>
       <Text pt={50}>
         {" "}
@@ -123,56 +143,60 @@ const AboutHeader = ({ title, imageSrc }: Props) => {
       </Button>
     </Flex>
   ) : (
-    <Grid className="background-color-text font-family-text" p={40}>
-      <Grid.Col span={6}>
-        <Flex direction="column" p={50}>
-          <Title className="font-family-text" fz={60} p={50}>
-            {title}
-          </Title>
-          <Text p={10}>
-            Visiona Productions is a creative video and photo production house
-            based in Antwerp, Belgium. We’re here to capture your most exciting
-            moments and turn them into high-quality visual stories.
-          </Text>
-          <Text p={10}>
-            We offer full-service production, managing your project from concept
-            to final delivery. Whether it’s a brand film, event aftermovie, or
-            campaign content, we take care of every step, always on time, always
-            with impact.
-          </Text>
-          <Text p={10}>
-            At Visiona, we push the boundaries of content creation. Our work
-            stands out far beyond the average socialmedia posts. We craft
-            high-quality visuals created for your brand, event, or organization.
-            It’s content that leaves a lasting impression on your audience.
-          </Text>
-          <Text p={10}>
-            We think big, no matter the size of the project. Whether you're
-            launching a product or hosting a major event, we're here to help you
-            make an impact.
-          </Text>
-          <Text p={10}>
-            Brands like Corendon, Jongerentravel, Belgium’s Pro League Football,
-            Studio 100, and the Belgian Olympic Interfederal Committee have
-            already placed their trust in us.
-          </Text>
-          <Text p={10}>
-            For more information, send us a message on whatsapp or call us. We
-            will help you as soon as possible.
-          </Text>
-        </Flex>
-      </Grid.Col>
-      <Grid.Col span={6}>
-        <Flex direction="column" gap={25}>
-          <img
-            src={imageSrc}
-            alt=""
-            loading="lazy"
-            style={{ borderRadius: "10px", paddingTop: "200px" }}
-          ></img>
-
-          <Box>{icons}</Box>
-          <Flex gap={10}>
+    <>
+      <Grid className="background-color-text font-family-text" p={40}>
+        <Grid.Col span={6}>
+          <Flex direction="column" p={50}>
+            <Title className="font-family-text" fz={60} p={50}>
+              {title}
+            </Title>
+            <Text p={10}>
+              Visiona Productions is a creative video and photo production house
+              based in Antwerp, Belgium. We’re here to capture your most
+              exciting moments and turn them into high-quality visual stories.
+            </Text>
+            <Text p={10}>
+              We offer full-service production, managing your project from
+              concept to final delivery. Whether it’s a brand film, event
+              aftermovie, or campaign content, we take care of every step,
+              always on time, always with impact.
+            </Text>
+            <Text p={10}>
+              At Visiona, we push the boundaries of content creation. Our work
+              stands out far beyond the average socialmedia posts. We craft
+              high-quality visuals created for your brand, event, or
+              organization. It’s content that leaves a lasting impression on
+              your audience.
+            </Text>
+            <Text p={10}>
+              We think big, no matter the size of the project. Whether you're
+              launching a product or hosting a major event, we're here to help
+              you make an impact.
+            </Text>
+            <Text p={10}>
+              Brands like Corendon, Jongerentravel, Belgium’s Pro League
+              Football, Studio 100, and the Belgian Olympic Interfederal
+              Committee have already placed their trust in us.
+            </Text>
+            <Text p={10}>
+              For more information, send us a message on whatsapp or call us. We
+              will help you as soon as possible.
+            </Text>
+          </Flex>
+        </Grid.Col>
+        <Grid.Col span={6}>
+          <Flex direction="column" gap={25}>
+            <img
+              src={imageSrc}
+              alt=""
+              loading="lazy"
+              style={{ borderRadius: "10px", paddingTop: "200px" }}
+            ></img>
+          </Flex>
+        </Grid.Col>
+        <Grid.Col span={12}>
+          <Grid>{iconsLarge}</Grid>
+          <Flex justify={"center"} gap={10}>
             <Button
               className="aboutVisionaButton"
               variant="transparent"
@@ -194,9 +218,9 @@ const AboutHeader = ({ title, imageSrc }: Props) => {
               <Text fw={700}>Explore photo projects</Text>
             </Button>
           </Flex>
-        </Flex>
-      </Grid.Col>
-    </Grid>
+        </Grid.Col>
+      </Grid>
+    </>
   );
 };
 
