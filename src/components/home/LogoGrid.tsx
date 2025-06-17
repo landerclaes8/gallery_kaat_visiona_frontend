@@ -60,12 +60,19 @@ const logoData = [
 
 const LogoGrid = () => {
   return (
-    <Box className="background-text-color" pt={100} pb={50} h={{ lg: "100vh" }}>
+    <Box
+      style={{ backgroundColor: "black" }}
+      pt={100}
+      pb={50}
+      h={{ lg: "100vh" }}
+    >
       <Center>
-        <Title p={50}>Brands we have worked with</Title>
+        <Title style={{ color: "white" }} p={50}>
+          Brands we have worked with
+        </Title>
       </Center>
       <Center>
-        <SimpleGrid cols={{xs: 2, sm: 4, md: 4, lg: 6 }}>
+        <SimpleGrid cols={{ xs: 2, sm: 4, md: 4, lg: 6 }}>
           {logoData.map((element, index) => (
             <Box
               m={{ xs: 0, sm: 20, md: 25, lg: 25 }}

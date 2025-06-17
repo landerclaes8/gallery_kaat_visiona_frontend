@@ -2,7 +2,7 @@ import { Box, Flex } from "@mantine/core";
 import { IconBrandInstagram } from "@tabler/icons-react";
 import { Link } from "react-router";
 import Socials from "./contactComponents/Socials";
-import "../styles/general.scss";
+import "../styles/footer.scss";
 import { useMediaQuery } from "@mantine/hooks";
 
 const links = [
@@ -18,7 +18,7 @@ const Footer = () => {
     <>
       <Flex
         direction={isSmallScreen ? "column" : "row"}
-        className="background-color-text"
+        className="background-color-text-footer"
         justify={isSmallScreen ? "center" : "space-between"}
         align={"center"}
         pt={isSmallScreen ? 10 : 0}
@@ -32,7 +32,7 @@ const Footer = () => {
       </Flex>
 
       <Flex
-        className="background-color-text"
+        className="background-color-text-footer"
         justify="center"
         gap={20}
         pb={20}

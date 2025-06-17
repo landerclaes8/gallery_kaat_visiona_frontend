@@ -6,6 +6,15 @@ import path from "path";
 //hier staat het adres vd server
 export default defineConfig({
   plugins: [react()],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ["react", "react-dom"], // Separate React into its own chunk
+        },
+      },
+    },
+  },
   server: {
     port: 3000,
     proxy: {

@@ -110,7 +110,7 @@ const SideNavBar = () => {
               ))}
             </Flex>
 
-            <Socials margin={5} color="white" gap={0} />
+            <Socials margin={5} color="black" gap={0} />
           </Flex>
         </div>
       </Drawer>
@@ -137,7 +137,7 @@ const SideNavBar = () => {
 
         <Group>
           {isSmallScreen ? null : drawerOpened ? null : (
-            <Socials margin={5} color="white" gap={0} />
+            <Socials margin={5} color="black" gap={0} />
           )}
 
           <Box

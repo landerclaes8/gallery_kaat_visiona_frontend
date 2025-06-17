@@ -73,6 +73,7 @@ const PhotoList = () => {
   }
 
   const [selectedAlbum, setSelectedAlbum] = useState<albumProps | null>(null);
+
   const handleAlbumSelect = (album: albumProps) => {
     setSelectedAlbum(album);
   };
@@ -122,20 +123,35 @@ const PhotoList = () => {
     </Table.Tr>
   ));
 
-  const categories = allCategories?.map((element) => (
-    <Table.Tr key={element.id}>
-      <Table.Td>{element.name}</Table.Td>
-      <Table.Td>{element.fileName}</Table.Td>
-      <Table.Td>
-        <Button
-          data-cy="photo-delete-button"
-          onClick={() => handleDeleteCategory(element.id)}
-        >
-          <FaRegTrashAlt />
-        </Button>
-      </Table.Td>
-    </Table.Tr>
-  ));
+  const categories = allCategories?.map((element) => {
+    const albumsInCategory = (allAlbums ?? []).filter(
+      (album) => album.id === element.id
+    );
+
+    const isCategoryEmpty = albumsInCategory.length === 0;
+
+    return (
+      <Table.Tr key={element.id}>
+        <Table.Td>{element.name}</Table.Td>
+        <Table.Td>{element.fileName}</Table.Td>
+        <Table.Td>
+          <Tooltip
+            label="Categorie mag geen albums meer hebben om te verwijderen"
+            disabled={isCategoryEmpty}
+            withArrow
+          >
+            <Button
+              disabled={!isCategoryEmpty}
+              data-cy="photo-delete-button"
+              onClick={() => handleDeleteCategory(element.id)}
+            >
+              <FaRegTrashAlt />
+            </Button>
+          </Tooltip>
+        </Table.Td>
+      </Table.Tr>
+    );
+  });
 
   const albums = allAlbums.map((element) => {
     const photosInAlbum = (allPhotos ?? []).filter(
@@ -176,6 +192,16 @@ const PhotoList = () => {
   return (
     <Grid p={50} w={"100%"}>
       <Grid.Col span={6}>
+        <Table data-cy="category-list">
+          <Table.Thead>
+            <Table.Tr>
+              <Table.Th>Title</Table.Th>
+              <Table.Th>filename</Table.Th>
+              <Table.Th>Delete photo</Table.Th>
+            </Table.Tr>
+          </Table.Thead>
+          <Table.Tbody>{categories}</Table.Tbody>
+        </Table>
         <Table data-cy="album-list">
           <Table.Thead>
             <Table.Tr>
@@ -217,16 +243,6 @@ const PhotoList = () => {
               </Table.Tr>
             </Table.Thead>
             <Table.Tbody>{photos}</Table.Tbody>
-          </Table>
-          <Table data-cy="category-list">
-            <Table.Thead>
-              <Table.Tr>
-                <Table.Th>Title</Table.Th>
-                <Table.Th>filename</Table.Th>
-                <Table.Th>Delete photo</Table.Th>
-              </Table.Tr>
-            </Table.Thead>
-            <Table.Tbody>{categories}</Table.Tbody>
           </Table>
         </Flex>
       </Grid.Col>

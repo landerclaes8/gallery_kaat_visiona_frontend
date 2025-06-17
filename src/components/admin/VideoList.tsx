@@ -1,6 +1,14 @@
-import { Flex, Table } from "@mantine/core";
+import { Flex, Menu, Table } from "@mantine/core";
 import useSWR, { mutate } from "swr";
-import { Button, Card, Center, Space, Title } from "@mantine/core";
+import {
+  Button,
+  Card,
+  Center,
+  Space,
+  Title,
+  Text,
+  Tooltip,
+} from "@mantine/core";
 import { Link, Navigate } from "react-router";
 import { LoadingInfo } from "../LoadingInfo";
 import { videoProps } from "../../types/video";
@@ -8,9 +16,15 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import useSWRMutation from "swr/mutation";
 import { deleteReq } from "../../lib/api";
 import { categoryProps } from "../../types/category";
+import { useState } from "react";
+import { TbChevronDown } from "react-icons/tb";
 
 const VideoList = () => {
-  const { data, error, isLoading } = useSWR<videoProps[]>(`/api/videos`);
+  const {
+    data: allVideos,
+    error: videosError,
+    isLoading: videosIsLoading,
+  } = useSWR<videoProps[]>(`/api/videos`);
 
   const { trigger: doDeleteVideo } = useSWRMutation(
     `/api/videos`,
@@ -40,7 +54,14 @@ const VideoList = () => {
     mutate(`/api/videos`);
   }
 
-  if (error || categoriesError) {
+  const [selectedCategory, setSelectedCategory] =
+    useState<categoryProps | null>(null);
+
+  const handleCategorySelect = (category: categoryProps) => {
+    setSelectedCategory(category);
+  };
+
+  if (videosError || categoriesError) {
     return (
       <Center style={{ padding: "1.5rem" }}>
         <Card padding="lg" radius="md" withBorder w="100%">
@@ -56,15 +77,19 @@ const VideoList = () => {
     );
   }
 
-  if (isLoading || cateogriesLoading) {
+  if (videosIsLoading || cateogriesLoading) {
     return <LoadingInfo what={"videos"} />;
   }
 
-  if (!data || !allCategories) {
+  if (!allVideos || !allCategories) {
     return <Navigate to={"/notfound"} />;
   }
 
-  const videos = data.map((element) => (
+  const filteredVideos = selectedCategory
+    ? allVideos.filter((video) => video.categoryId === selectedCategory.id)
+    : allVideos;
+
+  const videos = filteredVideos.map((element) => (
     <Table.Tr key={element.id}>
       <Table.Td>{element.title}</Table.Td>
       <Table.Td>{element.description}</Table.Td>
@@ -81,47 +106,88 @@ const VideoList = () => {
     </Table.Tr>
   ));
 
-  const categories = allCategories.map((element) => (
-    <Table.Tr key={element.id}>
-      <Table.Td>{element.name}</Table.Td>
-      <Table.Td>{element.fileName}</Table.Td>
-      <Table.Td>
-        <Button
-          data-cy="video-delete-button"
-          onClick={() => handleDeleteCategory(element.id)}
-        >
-          <FaRegTrashAlt />
-        </Button>
-      </Table.Td>
-    </Table.Tr>
+  const categories = allCategories.map((element) => {
+    const videosInAlbum = (allVideos ?? []).filter(
+      (video) => video.categoryId === element.id
+    );
+
+    const isCategoryEmpty = videosInAlbum.length === 0;
+
+    return (
+      <Table.Tr key={element.id}>
+        <Table.Td>{element.name}</Table.Td>
+        <Table.Td>{element.fileName}</Table.Td>
+        <Table.Td>
+          <Tooltip
+            label="Categorie moet leeg zijn om te verwijderen"
+            disabled={isCategoryEmpty}
+            withArrow
+          >
+            <Button
+              disabled={!isCategoryEmpty}
+              data-cy="video-delete-button"
+              onClick={() => handleDeleteCategory(element.id)}
+            >
+              <FaRegTrashAlt />
+            </Button>
+          </Tooltip>
+        </Table.Td>
+      </Table.Tr>
+    );
+  });
+
+  const categoryMenu = allCategories.map((element, index) => (
+    <Menu.Item onClick={() => handleCategorySelect(element)} key={index}>
+      {element.name}
+    </Menu.Item>
   ));
 
   return (
     <Flex>
-      <Table data-cy="video-list">
-        <Table.Thead>
-          <Table.Tr>
-            <Table.Th>Title</Table.Th>
-            <Table.Th>Description</Table.Th>
-            <Table.Th>Category</Table.Th>
-            <Table.Th>filename</Table.Th>
-            <Table.Th>Delete video</Table.Th>
-          </Table.Tr>
-        </Table.Thead>
-        <Table.Tbody>{videos}</Table.Tbody>
-      </Table>
       <Table data-cy="category-list">
         <Table.Thead>
           <Table.Tr>
             <Table.Th>Title</Table.Th>
-            <Table.Th>Description</Table.Th>
-            <Table.Th>Category</Table.Th>
             <Table.Th>filename</Table.Th>
-            <Table.Th>Delete video</Table.Th>
+            <Table.Th>Delete category</Table.Th>
           </Table.Tr>
         </Table.Thead>
         <Table.Tbody>{categories}</Table.Tbody>
       </Table>
+      <Flex direction="column" w="100%">
+        <Menu>
+          <Menu.Target>
+            <Button>
+              <Text>
+                {selectedCategory
+                  ? selectedCategory.name
+                  : "Sorteer op categorie"}
+              </Text>
+              <TbChevronDown size={16} />
+            </Button>
+          </Menu.Target>
+          <Menu.Dropdown>
+            <Menu.Label>Alle albums</Menu.Label>
+            <Menu.Item onClick={() => setSelectedCategory(null)} key="all">
+              All
+            </Menu.Item>
+            {categoryMenu}
+          </Menu.Dropdown>
+        </Menu>
+
+        <Table data-cy="video-list">
+          <Table.Thead>
+            <Table.Tr>
+              <Table.Th>Title</Table.Th>
+              <Table.Th>Description</Table.Th>
+              <Table.Th>Category</Table.Th>
+              <Table.Th>filename</Table.Th>
+              <Table.Th>Delete video</Table.Th>
+            </Table.Tr>
+          </Table.Thead>
+          <Table.Tbody>{videos}</Table.Tbody>
+        </Table>
+      </Flex>
     </Flex>
   );
 };
