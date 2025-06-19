@@ -61,7 +61,7 @@ const PhotoAlbumOverview = () => {
         <Grid.Col span={12} key={album.id}>
           <Card
             p={40}
-            className="background-color-text font-family-text"
+            className="background-color-text"
             key={album.id}
             component={Link}
             to="/album"
@@ -94,7 +94,7 @@ const PhotoAlbumOverview = () => {
         <Grid.Col span={4} key={album.id}>
           <Card
             p={25}
-            className="background-color-text font-family-text"
+            className="background-color-text"
             key={album.id}
             component={Link}
             to="/album"

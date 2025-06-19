@@ -44,7 +44,7 @@ const Photo = ({ id, title, description }: Props) => {
       </Card.Section>
       <Card.Section>
         <Center>
-          <Text className="font-family-text">{description}</Text>
+          <Text>{description}</Text>
         </Center>
       </Card.Section>
     </Card>

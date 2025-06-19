@@ -9,7 +9,7 @@ import { useNavigate } from "react-router";
 import { roleToUrlPrefix } from "../../lib/auth";
 import { Link } from "react-router";
 
-export const LoginPage = () => {
+const LoginPage = () => {
   const {
     isMutating: loginLoading,
     error: loginError,
@@ -82,3 +82,5 @@ export const LoginPage = () => {
     </Flex>
   );
 };
+
+export default LoginPage;

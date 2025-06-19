@@ -10,7 +10,7 @@ import { useMediaQuery } from "@mantine/hooks";
 import "../styles/general.scss";
 import ContactDirection from "../components/contactComponents/ContactDirection";
 
-export const VideoPage = () => {
+const VideoPage = () => {
   const isSmallScreen = useMediaQuery("(max-width: 768px)");
   const { data, error, isLoading } = useSWR<categoryProps[]>(
     `/api/videoCategories`,
@@ -44,7 +44,7 @@ export const VideoPage = () => {
   return (
     <>
       <Flex
-        className="background-color-text font-family-text"
+        className="background-color-text"
         justify="center"
         direction="column"
         p={isSmallScreen ? 5 : 75}
@@ -53,7 +53,6 @@ export const VideoPage = () => {
         <Center>
           <Title
             fz={isSmallScreen ? 25 : 50}
-            className="title font-family-text"
             p="md"
             mb="md"
           >
@@ -75,3 +74,5 @@ export const VideoPage = () => {
     </>
   );
 };
+
+export default VideoPage;

@@ -12,7 +12,6 @@ import { useState } from "react";
 import useCategoryIdStore from "../store";
 import { categoryProps } from "../types/category";
 import { useEffect } from "react";
-import { Link } from "react-router";
 
 interface Props {
   categories: categoryProps[];
@@ -40,7 +39,7 @@ const CategorySelector = ({ categories, type }: Props) => {
           {categories.map((categorie) => (
             <Card
               p={40}
-              className="background-color-text font-family-text"
+              className="background-color-text"
               key={categorie.id}
               onClick={() => handleOnClick(categorie.id)}
               style={{ transition: "transform 0.3s ease" }}

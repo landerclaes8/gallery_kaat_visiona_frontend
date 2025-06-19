@@ -64,7 +64,6 @@ const SideNavBar = () => {
     <>
       <Drawer
         padding={0}
-        className="font-family-text"
         withCloseButton={false}
         position="right"
         opened={drawerOpened}

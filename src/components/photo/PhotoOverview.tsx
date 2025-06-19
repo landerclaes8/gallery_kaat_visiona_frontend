@@ -84,7 +84,7 @@ const PhotoOverview = () => {
     </Center>
   ) : (
     <Flex
-      className="background-color-text "
+      className="background-color-text"
       direction="column"
       align="center"
       p={50}

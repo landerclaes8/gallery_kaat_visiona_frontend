@@ -1,4 +1,4 @@
-import { Flex, Grid, Title, Text, Box, Button, Card } from "@mantine/core";
+import { Flex, Grid, Title, Text, Box, Button } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { TfiWorld } from "react-icons/tfi";
 import { GrMultiple } from "react-icons/gr";
@@ -37,7 +37,6 @@ const iconsLarge = aboutList.map((element, index) => (
       <Box>{element.icon}</Box>
       <Box p={25}>
         <Title
-          className="font-family-text"
           fz={25}
           style={{
             textDecoration: "underline",
@@ -57,7 +56,6 @@ const iconsSmall = aboutList.map((element, index) => (
     <Box>{element.icon}</Box>
     <Box p={25}>
       <Title
-        className="font-family-text"
         fz={25}
         style={{
           textDecoration: "underline",
@@ -74,7 +72,7 @@ const AboutHeader = ({ title, imageSrc }: Props) => {
   const isSmallScreen = useMediaQuery("(max-width: 1024px)");
   return isSmallScreen ? (
     <Flex
-      className="background-color-text font-family-text"
+      className="background-color-text"
       direction="column"
       p={25}
     >
@@ -144,10 +142,10 @@ const AboutHeader = ({ title, imageSrc }: Props) => {
     </Flex>
   ) : (
     <>
-      <Grid className="background-color-text font-family-text" p={40}>
+      <Grid className="background-color-text" p={40}>
         <Grid.Col span={6}>
           <Flex direction="column" p={50}>
-            <Title className="font-family-text" fz={60} p={50}>
+            <Title fz={60} p={50}>
               {title}
             </Title>
             <Text p={10}>

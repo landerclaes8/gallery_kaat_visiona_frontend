@@ -10,7 +10,7 @@ import "../styles/general.scss";
 import PhotoAlbumOverview from "../components/photo/PhotoAlbumOverview";
 import ContactDirection from "../components/contactComponents/ContactDirection";
 
-export const Photopage = () => {
+const PhotoPage = () => {
   const isSmallScreen = useMediaQuery("(max-width: 768px)");
   const { data, error, isLoading } = useSWR<categoryProps[]>(
     `/api/photoCategories`,
@@ -44,7 +44,7 @@ export const Photopage = () => {
   return (
     <>
       <Flex
-        className="background-color-text font-family-text"
+        className="background-color-text"
         justify="center"
         direction="column"
         p={isSmallScreen ? 5 : 75}
@@ -53,7 +53,6 @@ export const Photopage = () => {
         <Center>
           <Title
             fz={isSmallScreen ? 25 : 50}
-            className="title font-family-text"
             p="md"
             mb="md"
           >
@@ -69,9 +68,10 @@ export const Photopage = () => {
         </Center>
         <CategorySelector type="photo" categories={data} />
         <PhotoAlbumOverview />
-        
       </Flex>
       <ContactDirection />
     </>
   );
 };
+
+export default PhotoPage;

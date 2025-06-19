@@ -1,11 +1,12 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
+import { visualizer } from "rollup-plugin-visualizer";
 
 // https://vite.dev/config/
 //hier staat het adres vd server
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), visualizer({ open: true })],
   build: {
     rollupOptions: {
       output: {

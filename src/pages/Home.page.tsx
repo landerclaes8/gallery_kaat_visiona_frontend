@@ -3,7 +3,7 @@ import OffersLarge from "../components/home/OffersLarge";
 import VisionaInformationLarge from "../components/home/VisionaInformationLarge";
 import "../styles/home.page.scss";
 
-export function HomePage() {
+const HomePage = () => {
   return (
     <>
       <HeaderHomeLarge />
@@ -11,4 +11,6 @@ export function HomePage() {
       <OffersLarge />
     </>
   );
-}
+};
+
+export default HomePage;

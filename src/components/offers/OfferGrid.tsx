@@ -19,6 +19,7 @@ import {
 import OfferComponent from "./OfferComponent";
 import "../../styles/general.scss";
 import { Link } from "react-router";
+
 const offerData = [
   {
     title: "Festival Aftermovies",
@@ -82,7 +83,7 @@ const OfferGrid = () => {
     <Box
       p={20}
       pb={200}
-      className="background-color-text font-family-text"
+      className="background-color-text"
       h={{ xs: "100%", lg: "130vh" }}
     >
       <Center>

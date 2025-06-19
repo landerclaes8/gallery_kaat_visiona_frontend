@@ -12,7 +12,7 @@ const Video = ({ id, title, description }: Props) => {
     <Card className="background-color-text" radius="md" w="100%" mb="md">
       <Card.Section>
         <Center>
-          <Title className="font-family-text" size={25}>
+          <Title size={25}>
             {title}
           </Title>
         </Center>
@@ -27,7 +27,7 @@ const Video = ({ id, title, description }: Props) => {
       </Card.Section>
       <Card.Section>
         <Center>
-          <Text className="font-family-text">{description}</Text>
+          <Text>{description}</Text>
         </Center>
       </Card.Section>
     </Card>

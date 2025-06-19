@@ -11,12 +11,12 @@ const HeaderHomeLarge = () => {
         style={{ position: "relative", top: 0, overflow: "hidden" }}
       >
         <Flex
-          className="text-color font-family-text"
+          className="text-color"
           direction="column"
           justify="center"
           align="center"
         >
-          <Title className="font-family-text" size={100}>
+          <Title size={100}>
             Visiona
           </Title>
           <Space h="xl"></Space>
@@ -35,7 +35,7 @@ const HeaderHomeLarge = () => {
             }}
           >
             <Text
-              className="text-color font-family-text"
+              className="text-color"
               component="a"
               href="https://wa.me/32468108158"
               target="_blank"

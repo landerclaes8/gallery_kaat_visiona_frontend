@@ -55,12 +55,11 @@ const ContactCards = () => {
     <Box>
       <Center>
         <Flex direction="column" pl={10}>
-          <Title className="font-family-text" fz={isSmallScreen ? 50 : 120}>
+          <Title fz={isSmallScreen ? 50 : 120}>
             Get in touch
           </Title>
           <Center>
             <Text
-              className="font-family-text"
               pt={40}
               fz={isSmallScreen ? 15 : 25}
             >

@@ -25,7 +25,7 @@ const ContactDirection = () => {
           }}
         >
           <Text
-            className="text-color font-family-text"
+            className="text-color"
             component="a"
             href="https://wa.me/32468108158"
             target="_blank"
