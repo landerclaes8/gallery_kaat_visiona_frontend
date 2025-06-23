@@ -15,7 +15,7 @@ const VisionaInformationLarge = () => {
     >
       <Box>
         <Title
-          size={isSmallScreen ? 60 : 75}
+          size={isSmallScreen ? 50 : 75}
           pl={60}
           pr={5}
           mt={isSmallScreen ? 75 : 0}

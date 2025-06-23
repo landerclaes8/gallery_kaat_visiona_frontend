@@ -6,6 +6,7 @@ import {
   Card,
   Title,
   SimpleGrid,
+  Text,
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { useState } from "react";
@@ -35,7 +36,7 @@ const CategorySelector = ({ categories, type }: Props) => {
   if (selectedId === 0) {
     return (
       <>
-        <SimpleGrid cols={isSmallScreen ? 2 : 3} spacing="xl" mt={50}>
+        <SimpleGrid cols={isSmallScreen ? 1 : 3} spacing="xl" mt={50}>
           {categories.map((categorie) => (
             <Card
               p={40}
@@ -87,7 +88,7 @@ const CategorySelector = ({ categories, type }: Props) => {
             key={category.id}
             onClick={() => handleOnClick(category.id)}
           >
-            {category.name}
+            <Text>{category.name}</Text>
           </Menu.Item>
         ))}
       </Menu.Dropdown>
@@ -96,27 +97,42 @@ const CategorySelector = ({ categories, type }: Props) => {
     <Center>
       <Flex gap="xs" pb={20}>
         <Button
-          color="gray"
           onClick={() => handleOnClick(0)}
           style={{
-            backgroundColor: selectedId === 0 ? "#gray" : "lightgray",
-            color: selectedId === 0 ? "#fff" : "#000",
+            textDecoration: selectedId === 0 ? "underline" : "none",
+            backgroundColor: "black",
+            color: "white",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = "white";
+            e.currentTarget.style.color = "black";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = "black";
+            e.currentTarget.style.color = "white  ";
           }}
         >
           All
         </Button>
         {categories.map((category) => (
           <Button
-            color="lightgray"
             key={category.id}
             onClick={() => handleOnClick(category.id)}
             style={{
-              backgroundColor:
-                selectedId === category.id ? "#gray" : "lightgray",
-              color: selectedId === category.id ? "#fff" : "#000",
+              textDecoration: selectedId === category.id ? "underline" : "none",
+              backgroundColor: "black",
+              color: "white",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = "white";
+              e.currentTarget.style.color = "black";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "black";
+              e.currentTarget.style.color = "white  ";
             }}
           >
-            {category.name}
+            <Text fz={17}>{category.name}</Text>
           </Button>
         ))}
       </Flex>

@@ -7,7 +7,6 @@ import { useMediaQuery } from "@mantine/hooks";
 export interface MenuItemProps {
   link: string;
   text: string;
-  image: string;
 }
 //image kan perfect nog worden toegevoegd
 const VideoPhotoMenuItem = ({ link, text }: MenuItemProps) => {
@@ -29,6 +28,8 @@ const VideoPhotoMenuItem = ({ link, text }: MenuItemProps) => {
       w={isSmallScreen ? "100vh" : "500px"}
       h={100}
       style={{
+        backgroundColor:"black",
+        color: "white",
         alignContent: "center",
         justifyItems: "center",
         textDecoration: "none",

@@ -7,12 +7,10 @@ const items = [
   {
     link: "/video",
     text: "EXPLORE VIDEO PROJECTS",
-    image: "https://picsum.photos/600/400?random=1",
   },
   {
     link: "/photo",
     text: "EXPLORE PHOTO PROJECTS",
-    image: "https://picsum.photos/600/400?random=2",
   },
 ];
 
