@@ -16,9 +16,7 @@ const HeaderHomeLarge = () => {
           justify="center"
           align="center"
         >
-          <Title size={100}>
-            Visiona
-          </Title>
+          <Title size={100}>Visiona</Title>
           <Space h="xl"></Space>
           <Title className="font-family-text" size={35} p={20}>
             Creative video and photo production house
@@ -66,10 +64,7 @@ const HeaderHomeLarge = () => {
               zIndex: -1,
             }}
           >
-            <source
-              src={`/api/videos/4`}
-              type="video/mp4"
-            />
+            <source src={`/api/videos/4`} type="video/mp4" />
             Je browser ondersteunt geen HTML5 video.
           </video>
         </Box>

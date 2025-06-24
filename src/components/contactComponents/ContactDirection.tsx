@@ -1,4 +1,4 @@
-import { Box, Flex, Title, Button, Text } from "@mantine/core";
+import { Box, Flex, Title, Button } from "@mantine/core";
 
 const ContactDirection = () => {
   return (
@@ -15,25 +15,15 @@ const ContactDirection = () => {
       <Flex direction="column" align={"center"} justify={"center"} h={"60vh"}>
         <Title p={50}>Like what we've done? Get in touch</Title>
         <Button
-          variant="transparent"
-          style={{ border: "solid white 1px" }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.scale = "1.05";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.scale = "1.00";
-          }}
+          style={{ backgroundColor: "transparent" }}
+          className="aboutVisionaButton"
+          component="a"
+          href="https://wa.me/32468108158"
+          target="_blank"
+          rel="noopener noreferrer"
+          fz={20}
         >
-          <Text
-            className="text-color"
-            component="a"
-            href="https://wa.me/32468108158"
-            target="_blank"
-            rel="noopener noreferrer"
-            fz={20}
-          >
-            Ask anything
-          </Text>
+          Ask anything
         </Button>
       </Flex>
     </Box>

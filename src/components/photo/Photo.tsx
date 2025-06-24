@@ -35,6 +35,7 @@ const Photo = ({ id, title, description }: Props) => {
                 height: "auto",
                 borderRadius: "15px",
               }}
+              alt={`${title}`}
               src={`/api/photos/${id}`}
               loading="lazy"
               onLoad={handleImageLoad}

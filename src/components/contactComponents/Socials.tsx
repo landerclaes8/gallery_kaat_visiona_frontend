@@ -2,7 +2,6 @@ import { ActionIcon, Flex } from "@mantine/core";
 import {
   IconBrandWhatsapp,
   IconBrandInstagram,
-  IconBrandTiktok,
   IconAt,
   IconBrandLinkedin,
   IconPhone,
@@ -27,12 +26,6 @@ const navbarLinkData = [
     description: "Contacteer ons nu",
     link: "",
     icon: <IconBrandInstagram />,
-  },
-  {
-    title: "Tiktok",
-    description: "Contacteer ons nu",
-    link: "",
-    icon: <IconBrandTiktok />,
   },
   {
     title: "Mail",

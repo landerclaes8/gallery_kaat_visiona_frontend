@@ -1,38 +1,48 @@
-import { SimpleGrid, Box, Center, Text, Flex } from "@mantine/core";
+import { Box, Text, Flex, Grid, Center } from "@mantine/core";
 import ContactCards from "./ContactCards";
 import { useMediaQuery } from "@mantine/hooks";
 
 const ContactOverview = () => {
   const isSmallScreen = useMediaQuery("(max-width: 1024px)");
+
+  /*const socials = () => {
+   return isSmallScreen ? (<Simple):(<Box></Box>)
+  };
+
+  */
+
   return (
     <Box className="background-color-text" pt={70} pb={70}>
-      <SimpleGrid h="85vh" cols={isSmallScreen ? 1 : 2}>
+      <Flex direction={"column"}>
         <ContactCards />
-        <Box
-          style={{
-            alignContent: "center",
-          }}
-        >
-          <Center>
-            <Flex direction="column" gap={20}>
-              <img
-                style={{
-                  borderRadius: "15px",
-                  width: isSmallScreen ? "90%" : "100%",
-                  height: "auto",
-                  maxWidth: "600px",
-                }}
-                src="/public/images/backgrounds/backgroundContact.jpg"
-                loading="lazy"
-              ></img>
+        <Box>
+          <Grid>
+            <Grid.Col span={isSmallScreen ? 12 : 6}>
+              <Center>
+                <Box>formulier</Box>
+              </Center>
+            </Grid.Col>
+            <Grid.Col span={isSmallScreen ? 12 : 6}>
+              <Flex direction={"column"} align={"center"} gap={20}>
+                <img
+                  style={{
+                    borderRadius: "15px",
+                    width: isSmallScreen ? "90%" : "100%",
+                    height: "auto",
+                    maxWidth: "600px",
+                  }}
+                  src="/public/images/backgrounds/backgroundContact.jpg"
+                  loading="lazy"
+                ></img>
 
-              <Text>Visiona Productions</Text>
-              <Text>VAT: BE97 986 858 528</Text>
-              <Text>Meir 326 - 2000 Antwerp, Belguim</Text>
-            </Flex>
-          </Center>
+                <Text>Visiona Productions</Text>
+                <Text>VAT: BE97 986 858 528</Text>
+                <Text>Meir 326 - 2000 Antwerp, Belguim</Text>
+              </Flex>
+            </Grid.Col>
+          </Grid>
         </Box>
-      </SimpleGrid>
+      </Flex>
     </Box>
   );
 };

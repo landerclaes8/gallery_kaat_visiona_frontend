@@ -117,7 +117,7 @@ const SideNavBar = () => {
       <Box
         style={{
           //dit is de balk die je ziet vanaf je naar beneden scrollt
-          backgroundColor: isTop ? "transparent" : "lightskyblue",
+          backgroundColor: isTop ? "transparent" : "black",
           position: "fixed",
           top: "0px",
           right: "0px",
@@ -131,12 +131,19 @@ const SideNavBar = () => {
         }}
       >
         <Box
-          style={{ color: "black", fontSize: "20px", fontWeight: "bold" }}
-        ></Box>
+          style={{
+            visibility: isTop ? "hidden" : "visible",
+            color: "black",
+            fontSize: "20px",
+            fontWeight: "bold",
+          }}
+        >
+          <img src="/images/photo/logo.webp" width={"60%"}></img>
+        </Box>
 
         <Group>
           {isSmallScreen ? null : drawerOpened ? null : (
-            <Socials margin={5} color="black" gap={0} />
+            <Socials margin={5} color={isTop ? "black" : "white"} gap={0} />
           )}
 
           <Box

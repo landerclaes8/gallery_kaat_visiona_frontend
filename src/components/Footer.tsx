@@ -1,5 +1,4 @@
 import { Box, Flex } from "@mantine/core";
-import { IconBrandInstagram } from "@tabler/icons-react";
 import { Link } from "react-router";
 import Socials from "./contactComponents/Socials";
 import "../styles/footer.scss";
@@ -24,8 +23,17 @@ const Footer = () => {
         pt={isSmallScreen ? 10 : 0}
         style={{ padding: "20px 20px 0px 20px" }}
       >
-        <Box p={isSmallScreen ? 10 : 0}>
-          <IconBrandInstagram size={28} />
+        <Box
+          w={"100%"}
+          p={isSmallScreen ? 10 : 0}
+          style={{
+            textAlign: isSmallScreen ? "center" : "start",
+          }}
+        >
+          <img
+            src={`/images/photo/logo${isSmallScreen ? "" : "Footer"}.webp`}
+            width={isSmallScreen ? "40%" : "7%"}
+          />
         </Box>
 
         <Socials margin={isSmallScreen ? 5 : 0} color="white" gap={20} />

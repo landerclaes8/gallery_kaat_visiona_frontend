@@ -1,8 +1,7 @@
-import { Flex, Text, SimpleGrid, Center, Box, Title } from "@mantine/core";
+import { Flex, Text, Center, Box, Title, SimpleGrid } from "@mantine/core";
 import {
   IconBrandWhatsapp,
   IconBrandInstagram,
-  IconBrandTiktok,
   IconAt,
   IconBrandLinkedin,
   IconPhone,
@@ -23,12 +22,6 @@ const ContactCards = () => {
       description: "Contacteer ons nu",
       link: "",
       icon: <IconBrandInstagram />,
-    },
-    {
-      title: "Tiktok",
-      description: "Contacteer ons nu",
-      link: "",
-      icon: <IconBrandTiktok />,
     },
     {
       title: "Mail",
@@ -55,14 +48,9 @@ const ContactCards = () => {
     <Box>
       <Center>
         <Flex direction="column" pl={10}>
-          <Title fz={isSmallScreen ? 50 : 120}>
-            Get in touch
-          </Title>
+          <Title fz={isSmallScreen ? 50 : 120}>Get in touch</Title>
           <Center>
-            <Text
-              pt={40}
-              fz={isSmallScreen ? 15 : 25}
-            >
+            <Text pt={40} fz={isSmallScreen ? 15 : 25}>
               Slide in our dm's, we'll help you within 24 hours.
             </Text>
           </Center>
@@ -70,7 +58,7 @@ const ContactCards = () => {
       </Center>
 
       <Center>
-        <SimpleGrid spacing={5} cols={2} pt={50}>
+        <SimpleGrid cols={isSmallScreen ? 2 : 5}>
           <ContactCardComponent data={contactData} />
         </SimpleGrid>
       </Center>

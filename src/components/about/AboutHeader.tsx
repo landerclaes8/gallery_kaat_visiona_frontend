@@ -68,6 +68,8 @@ const iconsSmall = aboutList.map((element, index) => (
     </Box>
   </Flex>
 ));
+
+
 const AboutHeader = ({ title, imageSrc }: Props) => {
   const isSmallScreen = useMediaQuery("(max-width: 1024px)");
   return isSmallScreen ? (
