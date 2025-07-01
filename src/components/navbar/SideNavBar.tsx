@@ -131,6 +131,8 @@ const SideNavBar = () => {
         }}
       >
         <Box
+          component={Link}
+          to={"/home"}
           style={{
             visibility: isTop ? "hidden" : "visible",
             color: "black",

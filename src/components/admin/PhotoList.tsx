@@ -197,7 +197,7 @@ const PhotoList = () => {
             <Table.Tr>
               <Table.Th>Title</Table.Th>
               <Table.Th>filename</Table.Th>
-              <Table.Th>Delete photo</Table.Th>
+              <Table.Th>Delete category</Table.Th>
             </Table.Tr>
           </Table.Thead>
           <Table.Tbody>{categories}</Table.Tbody>
@@ -207,7 +207,7 @@ const PhotoList = () => {
             <Table.Tr>
               <Table.Th>Id</Table.Th>
               <Table.Th>Album name</Table.Th>
-              <Table.Th>Delete</Table.Th>
+              <Table.Th>Delete album</Table.Th>
             </Table.Tr>
           </Table.Thead>
           <Table.Tbody>{albums}</Table.Tbody>

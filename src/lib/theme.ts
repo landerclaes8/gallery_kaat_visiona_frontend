@@ -2,7 +2,6 @@ import { createTheme } from "@mantine/core";
 
 export const theme = createTheme({
   fontFamily: "Russo One, sans-serif",
-  //fontFamily: 'Super Brigade 3D, sans-serif',
 
   //snel fontsizes aanpassen, zet ook nog rem bij imports
   /* 

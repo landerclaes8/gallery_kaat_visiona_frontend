@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Space, Title, Text } from "@mantine/core";
+import { Box, Button, Flex, Space, Title, Text, Center } from "@mantine/core";
 import VideoPhotoMenu from "./VideoPhotoMenu";
 import { useMediaQuery } from "@mantine/hooks";
 
@@ -16,9 +16,11 @@ const HeaderHomeLarge = () => {
           justify="center"
           align="center"
         >
-          <Title size={100}>Visiona</Title>
+          <Center>
+            <img src="/images/photo/logo_zwart.webp" width={isSmallScreen ? "60%" : "35%"}></img>
+          </Center>
           <Space h="xl"></Space>
-          <Title className="font-family-text" size={35} p={20}>
+          <Title className="font-family-text" size={isSmallScreen ? 25 : 35} p={20}>
             Creative video and photo production house
           </Title>
           <Space h="70"></Space>
@@ -49,24 +51,18 @@ const HeaderHomeLarge = () => {
           </Box>
         </Flex>
         <Box>
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
+          <img
             style={{
               position: "absolute",
               top: 0,
               left: 0,
               width: "100%",
-              height: "100%",
+              height: "100vh",
               objectFit: "cover",
               zIndex: -1,
             }}
-          >
-            <source src={`/api/videos/4`} type="video/mp4" />
-            Je browser ondersteunt geen HTML5 video.
-          </video>
+            src="/images/backgrounds/backgroundContact.JPG"
+          ></img>
         </Box>
       </Box>
     </>
