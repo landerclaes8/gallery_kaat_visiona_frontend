@@ -1,15 +1,10 @@
 import { Box, Text, Flex, Grid, Center } from "@mantine/core";
 import ContactCards from "./ContactCards";
 import { useMediaQuery } from "@mantine/hooks";
+import ContactForm from "./ContactForm";
 
 const ContactOverview = () => {
   const isSmallScreen = useMediaQuery("(max-width: 1024px)");
-
-  /*const socials = () => {
-   return isSmallScreen ? (<Simple):(<Box></Box>)
-  };
-
-  */
 
   return (
     <Box className="background-color-text" pt={70} pb={70}>
@@ -19,7 +14,9 @@ const ContactOverview = () => {
           <Grid>
             <Grid.Col span={isSmallScreen ? 12 : 6}>
               <Center>
-                <Box>formulier</Box>
+                <Box w={"90%"} p={50}>
+                  <ContactForm />
+                </Box>
               </Center>
             </Grid.Col>
             <Grid.Col span={isSmallScreen ? 12 : 6}>

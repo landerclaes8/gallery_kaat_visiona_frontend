@@ -31,7 +31,6 @@ const Photo = ({ id, title, description }: Props) => {
             <img
               style={{
                 width: isVertical ? "50%" : "100%",
-                maxWidth: "600px", // of een andere maximale waarde
                 height: "auto",
                 borderRadius: "15px",
               }}

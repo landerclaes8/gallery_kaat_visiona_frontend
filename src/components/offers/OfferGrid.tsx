@@ -102,7 +102,7 @@ const OfferGrid = () => {
       </SimpleGrid>
       <Flex gap={10} justify={"center"}>
         <Button
-          className="aboutVisionaButton"
+          className="button"
           variant="transparent"
           component={Link}
           to="/video"
@@ -112,7 +112,7 @@ const OfferGrid = () => {
           <Text fw={700}>Explore video projects</Text>
         </Button>
         <Button
-          className="aboutVisionaButton"
+          className="button"
           variant="transparent"
           component={Link}
           to="/photo"

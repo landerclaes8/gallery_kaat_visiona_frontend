@@ -123,7 +123,7 @@ const AboutHeader = ({ title, imageSrc }: Props) => {
       </Text>
 
       <Button
-        className="aboutVisionaButton"
+        className="button"
         variant="transparent"
         component={Link}
         to="/video"
@@ -132,7 +132,7 @@ const AboutHeader = ({ title, imageSrc }: Props) => {
         <Text fw={700}>Explore video projects</Text>
       </Button>
       <Button
-        className="aboutVisionaButton"
+        className="button"
         variant="transparent"
         component={Link}
         to="/photo"

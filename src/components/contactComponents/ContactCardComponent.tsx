@@ -44,7 +44,7 @@ const ContactCardComponent = ({ data }: ContactCardData) => {
               variant="default"
               style={{ border: "none", backgroundColor: "transparent" }}
             >
-              {React.cloneElement(element.icon, { size: 75 })}
+              {React.cloneElement(element.icon, { size: 55 })}
             </ActionIcon>
             <Text fw={700} style={{ fontSize: isSmallScreen ? 20 : 25 }}>
               {element.title}

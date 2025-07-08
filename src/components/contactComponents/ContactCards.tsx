@@ -47,7 +47,7 @@ const ContactCards = () => {
   return (
     <Box>
       <Center>
-        <Flex direction="column" pl={10}>
+        <Flex direction="column">
           <Title fz={isSmallScreen ? 50 : 120}>Get in touch</Title>
           <Center>
             <Text pt={40} fz={isSmallScreen ? 15 : 25}>
