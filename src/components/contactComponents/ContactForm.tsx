@@ -14,13 +14,14 @@ const ContactForm = () => {
     name: z.string().min(2, { message: "fill in at least two characters." }),
     email: z
       .string()
-      .min(5, { message: "make sure email is correct: example@visiona.com" }),
+      .email({ message: "make sure email is valid: example@visiona.com" }),
     message: z
       .string()
       .min(10, { message: "message should be at least 10 characters" })
-      .max(500),
+      .max(2000),
   });
 
+  
   const form = useForm({
     mode: "uncontrolled",
     initialValues: {
@@ -43,7 +44,7 @@ const ContactForm = () => {
         email: values.email,
         message: values.message,
       });
-      
+
       form.reset();
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -56,34 +57,36 @@ const ContactForm = () => {
     <>
       <form onSubmit={form.onSubmit(handleSubmit)}>
         <TextInput
-          label="name"
+          label="Name or company"
           placeholder="name or company"
           key={form.key("name")}
           {...form.getInputProps("name")}
         ></TextInput>
         <TextInput
-          label="email"
+          label="E-mail"
           placeholder="example@visiona.com"
           key={form.key("email")}
           {...form.getInputProps("email")}
         ></TextInput>
         <Textarea
-          label="message"
+          label="Message"
           placeholder="message"
+          autosize
+          minRows={3}
+          maxRows={10}
           key={form.key("message")}
           {...form.getInputProps("message")}
         ></Textarea>
+        <Button
+          mt={20}
+          type="submit"
+          data-cy="contact-form-submit"
+          className="button"
+          disabled={isSubmitting}
+        >
+          Send
+        </Button>
       </form>
-
-      <Button
-        mt={20}
-        type="submit"
-        data-cy="contact-form-submit"
-        className="button"
-        disabled={isSubmitting}
-      >
-        Send
-      </Button>
     </>
   );
 };

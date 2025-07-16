@@ -42,7 +42,7 @@ const ContactCards = () => {
       icon: <IconPhone />,
     },
   ];
-  const isSmallScreen = useMediaQuery("(max-width: 1024px)");
+  const isSmallScreen = useMediaQuery("(max-width: 1350px)");
 
   return (
     <Box>

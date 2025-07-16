@@ -4,7 +4,7 @@ import { useMediaQuery } from "@mantine/hooks";
 import ContactForm from "./ContactForm";
 
 const ContactOverview = () => {
-  const isSmallScreen = useMediaQuery("(max-width: 1024px)");
+  const isSmallScreen = useMediaQuery("(max-width: 1350px)");
 
   return (
     <Box className="background-color-text" pt={70} pb={70}>
