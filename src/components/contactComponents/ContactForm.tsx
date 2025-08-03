@@ -1,4 +1,4 @@
-import { Textarea, TextInput, Button } from "@mantine/core";
+import { Textarea, TextInput, Button, Box } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { zodResolver } from "@mantine/form";
 import useSWRMutation from "swr/mutation";
@@ -9,6 +9,7 @@ import { useState } from "react";
 const ContactForm = () => {
   const { trigger: doSendMessage } = useSWRMutation(`/api/contact`, post);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
 
   const schema = z.object({
     name: z.string().min(2, { message: "fill in at least two characters." }),
@@ -21,7 +22,6 @@ const ContactForm = () => {
       .max(2000),
   });
 
-  
   const form = useForm({
     mode: "uncontrolled",
     initialValues: {
@@ -39,6 +39,7 @@ const ContactForm = () => {
   }) => {
     try {
       setIsSubmitting(true);
+      setSuccessMessage("");
       await doSendMessage({
         name: values.name,
         email: values.email,
@@ -46,6 +47,9 @@ const ContactForm = () => {
       });
 
       form.reset();
+      setSuccessMessage(
+        "Thankyou for your request, you can expect an answer soon!"
+      );
     } catch (error) {
       console.error("Error submitting form:", error);
     } finally {
@@ -86,6 +90,11 @@ const ContactForm = () => {
         >
           Send
         </Button>
+        {successMessage && (
+          <Box style={{ color: "green", marginTop: "1rem" }}>
+            {successMessage}
+          </Box>
+        )}
       </form>
     </>
   );
