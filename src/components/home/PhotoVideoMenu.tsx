@@ -14,7 +14,7 @@ const items = [
   },
 ];
 
-const VideoPhotoMenu = () => {
+const PhotoVideoMenu = () => {
   const isSmallScreen = useMediaQuery("(max-width: 768px)");
   return (
     <Flex direction={isSmallScreen ? "column" : "row"}>
@@ -25,4 +25,4 @@ const VideoPhotoMenu = () => {
   );
 };
 
-export default VideoPhotoMenu;
+export default PhotoVideoMenu;

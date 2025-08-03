@@ -1,5 +1,5 @@
 import { Box, Button, Flex, Space, Title, Text, Center } from "@mantine/core";
-import VideoPhotoMenu from "./VideoPhotoMenu";
+import PhotoVideoMenu from "./PhotoVideoMenu";
 import { useMediaQuery } from "@mantine/hooks";
 
 const HeaderHomeLarge = () => {
@@ -17,10 +17,17 @@ const HeaderHomeLarge = () => {
           align="center"
         >
           <Center>
-            <img src="/images/photo/logo_zwart.webp" width={isSmallScreen ? "60%" : "35%"}></img>
+            <img
+              src="/images/photo/logo_zwart.webp"
+              width={isSmallScreen ? "60%" : "35%"}
+            ></img>
           </Center>
           <Space h="xl"></Space>
-          <Title className="font-family-text" size={isSmallScreen ? 25 : 35} p={20}>
+          <Title
+            className="font-family-text"
+            size={isSmallScreen ? 25 : 35}
+            p={20}
+          >
             Creative video and photo production house
           </Title>
           <Space h="70"></Space>
@@ -47,7 +54,7 @@ const HeaderHomeLarge = () => {
           </Button>
 
           <Box pt={isSmallScreen ? 100 : 300}>
-            <VideoPhotoMenu />
+            <PhotoVideoMenu />
           </Box>
         </Flex>
         <Box>
