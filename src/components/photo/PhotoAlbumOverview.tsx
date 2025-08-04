@@ -6,11 +6,14 @@ import { useCategoryIdStore } from "../../store";
 import { LoadingInfo } from "../LoadingInfo";
 import { useEffect } from "react";
 import { albumProps } from "../../types/album";
+import { API_URL } from "../../lib/apiConfig";
 
 const PhotoAlbumOverview = () => {
   const isSmallScreen = useMediaQuery("(max-width: 768px)");
 
-  const { data, error, isLoading } = useSWR<albumProps[]>(`/api/photoAlbum`);
+  const { data, error, isLoading } = useSWR<albumProps[]>(
+    `${API_URL}/api/photoAlbum`
+  );
 
   const { id, setCategoryId } = useCategoryIdStore();
 
@@ -75,7 +78,7 @@ const PhotoAlbumOverview = () => {
                   height: "auto",
                   borderRadius: "15px",
                 }}
-                src={`/api/photoAlbum/${album.id}`}
+                src={`${API_URL}/api/photoAlbum/${album.id}`}
                 loading="lazy"
               ></img>
             </Card.Section>
@@ -107,7 +110,7 @@ const PhotoAlbumOverview = () => {
                   maxWidth: "600px",
                   height: "auto",
                 }}
-                src={`/api/photoAlbum/${album.id}`}
+                src={`${API_URL}/api/photoAlbum/${album.id}`}
                 loading="lazy"
               ></img>
             </Card.Section>

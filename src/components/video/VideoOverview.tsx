@@ -7,10 +7,13 @@ import { videoProps } from "../../types/video";
 import { LoadingInfo } from "../LoadingInfo";
 import Video from "./Video";
 import { useEffect } from "react";
+import { API_URL } from "../../lib/apiConfig";
 
 export const VideoOverview = () => {
   const isSmallScreen = useMediaQuery("(max-width: 768px)");
-  const { data, error, isLoading } = useSWR<videoProps[]>(`/api/videos`);
+  const { data, error, isLoading } = useSWR<videoProps[]>(
+    `${API_URL}/api/videos`
+  );
 
   const { id, setCategoryId } = useCategoryIdStore();
 

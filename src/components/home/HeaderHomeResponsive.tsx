@@ -28,7 +28,7 @@ const HeaderHomeLarge = () => {
             size={isSmallScreen ? 25 : 35}
             p={20}
           >
-            Creative video and photo production house
+            Creative video and photo agency
           </Title>
           <Space h="70"></Space>
           <Button
@@ -44,7 +44,7 @@ const HeaderHomeLarge = () => {
             <Text
               className="text-color"
               component="a"
-              href="https://wa.me/32468108158"
+              href="https://wa.me/32471212423"
               target="_blank"
               rel="noopener noreferrer"
               fz={20}

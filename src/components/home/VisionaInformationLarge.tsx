@@ -1,6 +1,7 @@
 import { Box, Button, Center, Flex, Space, Text, Title } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { Link } from "react-router";
+import { API_URL } from "../../lib/apiConfig";
 
 const VisionaInformationLarge = () => {
   const isSmallScreen = useMediaQuery("(max-width: 900px)");
@@ -47,7 +48,7 @@ const VisionaInformationLarge = () => {
             height: "auto",
           }}
         >
-          <source src={`/api/videos/4`} type="video/mp4" />
+          <source src={`${API_URL}/api/videos/4`} type="video/mp4" />
           Je browser ondersteunt de video tag niet.
         </video>
 

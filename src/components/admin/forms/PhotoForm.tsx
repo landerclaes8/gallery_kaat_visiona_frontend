@@ -23,6 +23,7 @@ import UploadFile, { UploadFileRef } from "../UploadFile";
 import { albumProps } from "../../../types/album";
 import AlbumForm from "./AlbumForm";
 import { useRef, useState, useEffect } from "react";
+import { API_URL } from "../../../lib/apiConfig";
 
 interface Props {
   title: string;
@@ -36,7 +37,7 @@ const PhotoForm = ({ title, url, categoryUrl, albumUrl }: Props) => {
     data: categories,
     error: categoryError,
     isLoading: categoryIsLoading,
-  } = useSWR<categoryProps[]>(`/api/${categoryUrl}`, fetcher);
+  } = useSWR<categoryProps[]>(`${API_URL}/api/${categoryUrl}`, fetcher);
 
   const {
     data: albums,

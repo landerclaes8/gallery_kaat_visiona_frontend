@@ -3,6 +3,7 @@ import { Dropzone, MIME_TYPES } from "@mantine/dropzone";
 import { Group, Text, Button, Box } from "@mantine/core";
 import { IconDownload, IconX, IconCloudUpload } from "@tabler/icons-react";
 import axios from "axios";
+import { API_URL } from "../../lib/apiConfig";
 
 interface Props {
   path: string;
@@ -37,11 +38,15 @@ const UploadFile = ({ path, type, photoTrue, ref }: Props) => {
       setIsLoading(true);
       const formData = new FormData();
       formData.append(`${type}`, file);
-      const response = await axios.post(`/api/${path}/upload`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const response = await axios.post(
+        `${API_URL}/api/${path}/upload`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
       setStatus("✅ Upload gelukt!");
       console.log("Response:", response.data);

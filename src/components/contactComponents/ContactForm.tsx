@@ -5,9 +5,13 @@ import useSWRMutation from "swr/mutation";
 import { z } from "zod";
 import { post } from "../../lib/api";
 import { useState } from "react";
+import { API_URL } from "../../lib/apiConfig";
 
 const ContactForm = () => {
-  const { trigger: doSendMessage } = useSWRMutation(`/api/contact`, post);
+  const { trigger: doSendMessage } = useSWRMutation(
+    `${API_URL}/api/contact`,
+    post
+  );
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
 

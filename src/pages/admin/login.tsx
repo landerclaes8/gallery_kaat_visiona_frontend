@@ -8,13 +8,14 @@ import { zodResolver } from "mantine-form-zod-resolver";
 import { useNavigate } from "react-router";
 import { roleToUrlPrefix } from "../../lib/auth";
 import { Link } from "react-router";
+import { API_URL } from "../../lib/apiConfig";
 
 const LoginPage = () => {
   const {
     isMutating: loginLoading,
     error: loginError,
     trigger: doLogin,
-  } = useSWRMutation("/api/auth/login", post);
+  } = useSWRMutation(`${API_URL}/api/auth/login`, post);
   const navigate = useNavigate();
 
   const form = useForm({

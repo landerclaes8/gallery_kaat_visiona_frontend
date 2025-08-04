@@ -9,6 +9,7 @@ import UploadFile, { UploadFileRef } from "../UploadFile";
 import { useState } from "react";
 import { useRef } from "react";
 import { useEffect } from "react";
+import { API_URL } from "../../../lib/apiConfig";
 
 interface Props {
   url: string;
@@ -17,7 +18,10 @@ interface Props {
 }
 
 const CategoryForm = ({ url, photoTrue, onClose }: Props) => {
-  const { trigger: doAddCategory } = useSWRMutation(`/api/${url}`, post);
+  const { trigger: doAddCategory } = useSWRMutation(
+    `${API_URL}/api/${url}`,
+    post
+  );
   const uploadFileRef = useRef<UploadFileRef>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
@@ -102,7 +106,7 @@ const CategoryForm = ({ url, photoTrue, onClose }: Props) => {
       <Grid.Col span={8}>
         <UploadFile
           path={url}
-          type= {photoTrue ? "photoCategory" : "videoCategory"}
+          type={photoTrue ? "photoCategory" : "videoCategory"}
           photoTrue={true}
           ref={uploadFileRef}
         />

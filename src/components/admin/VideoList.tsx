@@ -18,22 +18,23 @@ import { deleteReq } from "../../lib/api";
 import { categoryProps } from "../../types/category";
 import { useState } from "react";
 import { TbChevronDown } from "react-icons/tb";
+import { API_URL } from "../../lib/apiConfig";
 
 const VideoList = () => {
   const {
     data: allVideos,
     error: videosError,
     isLoading: videosIsLoading,
-  } = useSWR<videoProps[]>(`/api/videos`);
+  } = useSWR<videoProps[]>(`${API_URL}/api/videos`);
 
   const { trigger: doDeleteVideo } = useSWRMutation(
-    `/api/videos`,
+    `${API_URL}/api/videos`,
     (url, { arg }: { arg: number }) =>
       deleteReq(`${url}/${arg}`, { arg: undefined })
   );
 
   const { trigger: doDeleteCategory } = useSWRMutation(
-    `/api/photoCategories`,
+    `${API_URL}/api/photoCategories`,
     (url, { arg }: { arg: number }) =>
       deleteReq(`${url}/${arg}`, { arg: undefined })
   );
@@ -42,16 +43,16 @@ const VideoList = () => {
     data: allCategories,
     error: categoriesError,
     isLoading: cateogriesLoading,
-  } = useSWR<categoryProps[]>(`/api/videoCategories`);
+  } = useSWR<categoryProps[]>(`${API_URL}/api/videoCategories`);
 
   async function handleDeleteCategory(id: number) {
     await doDeleteCategory(id);
-    mutate(`/api/videoCategories`);
+    mutate(`${API_URL}/api/videoCategories`);
   }
 
   async function handleDeleteVideo(id: number) {
     await doDeleteVideo(id);
-    mutate(`/api/videos`);
+    mutate(`${API_URL}/api/videos`);
   }
 
   const [selectedCategory, setSelectedCategory] =

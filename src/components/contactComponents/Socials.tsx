@@ -18,31 +18,31 @@ const navbarLinkData = [
   {
     title: "WhatsApp",
     description: "Contacteer ons nu",
-    link: "",
+    link: "https://wa.me/32471212423",
     icon: <IconBrandWhatsapp />,
   },
   {
     title: "Instagram",
     description: "Contacteer ons nu",
-    link: "",
+    link: "https://www.instagram.com/visiona.productions?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
     icon: <IconBrandInstagram />,
   },
   {
     title: "Mail",
     description: "Contacteer ons nu",
-    link: "",
+    link: "mailto:visiona.productions@outlook.com",
     icon: <IconAt />,
   },
   {
     title: "Linked In",
     description: "Contacteer ons nu",
-    link: "",
+    link: "https://www.linkedin.com/in/kaat-verrycken-522560292/",
     icon: <IconBrandLinkedin />,
   },
   {
     title: "Call us",
     description: "Contacteer ons nu",
-    link: "",
+    link: "tel:+32471212423",
     icon: <IconPhone />,
   },
 ];

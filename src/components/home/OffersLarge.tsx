@@ -9,6 +9,7 @@ import {
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { Link } from "react-router";
+import { API_URL } from "../../lib/apiConfig";
 
 const offerData = [
   {
@@ -74,7 +75,7 @@ const OffersLarge = () => {
                   }}
                 >
                   <source
-                    src={`/api/videos/${offer.videoId}`}
+                    src={`${API_URL}/api/videos/${offer.videoId}`}
                     type="video/mp4"
                   />
                   Je browser ondersteunt de video tag niet.

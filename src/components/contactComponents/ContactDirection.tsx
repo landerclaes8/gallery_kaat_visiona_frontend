@@ -18,7 +18,7 @@ const ContactDirection = () => {
           style={{ backgroundColor: "transparent" }}
           className="aboutVisionaButton"
           component="a"
-          href="https://wa.me/32468108158"
+          href="https://wa.me/32471212423"
           target="_blank"
           rel="noopener noreferrer"
           fz={20}

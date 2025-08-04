@@ -51,19 +51,19 @@ const MOCKDATA = [
     title: "WhatsApp",
     description: "Contacteer ons nu",
     icon: IconBrandWhatsapp,
-    link: "https://wa.me/32468108158",
+    link: "https://wa.me/32471212423",
   },
   {
     title: "Email",
-    description: "lander.claes@telenet.be",
+    description: "visiona.productions@outlook.com",
     icon: IconAt,
-    link: "mailto:lander.claes@telenet.be",
+    link: "mailto:visiona.productions@outlook.com",
   },
   {
     title: "Phone",
-    description: "+32 468 10 81 58",
+    description: "+32 471 21 24 23",
     icon: IconPhone,
-    link: "tel:+32468108158",
+    link: "tel:+32471212423",
   },
 ];
 

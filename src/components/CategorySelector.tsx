@@ -13,6 +13,7 @@ import { useState } from "react";
 import useCategoryIdStore from "../store";
 import { categoryProps } from "../types/category";
 import { useEffect } from "react";
+import { API_URL } from "../lib/apiConfig";
 
 interface Props {
   categories: categoryProps[];
@@ -59,7 +60,7 @@ const CategorySelector = ({ categories, type }: Props) => {
                     height: "auto",
                     borderRadius: "15px",
                   }}
-                  src={`/api/${type}Categories/${categorie.id}`}
+                  src={`${API_URL}/api/${type}Categories/${categorie.id}`}
                   loading="lazy"
                 ></img>
               </Card.Section>

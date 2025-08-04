@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../../styles/video.scss";
 import { useMediaQuery } from "@mantine/hooks";
+import { API_URL } from "../../lib/apiConfig";
 
 interface Props {
   videoId: number;
@@ -30,7 +31,7 @@ const VideoPlayer: React.FC<Props> = ({ videoId }) => {
         controls
         controlsList="nodownload"
       >
-        <source src={`/api/videos/${videoId}`} type="video/mp4" />
+        <source src={`${API_URL}/api/videos/${videoId}`} type="video/mp4" />
         Je browser ondersteunt de video tag niet.
       </video>
     </div>
@@ -44,7 +45,7 @@ const VideoPlayer: React.FC<Props> = ({ videoId }) => {
         controls
         controlsList="nodownload"
       >
-        <source src={`/api/videos/${videoId}`} type="video/mp4" />
+        <source src={`${API_URL}/videos/${videoId}`} type="video/mp4" />
         Je browser ondersteunt de video tag niet.
       </video>
     </div>

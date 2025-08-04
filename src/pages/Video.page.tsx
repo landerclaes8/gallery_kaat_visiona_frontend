@@ -9,11 +9,12 @@ import { categoryProps } from "../types/category";
 import { useMediaQuery } from "@mantine/hooks";
 import "../styles/general.scss";
 import ContactDirection from "../components/contactComponents/ContactDirection";
+import { API_URL } from "../lib/apiConfig";
 
 const VideoPage = () => {
   const isSmallScreen = useMediaQuery("(max-width: 768px)");
   const { data, error, isLoading } = useSWR<categoryProps[]>(
-    `/api/videoCategories`,
+    `${API_URL}/api/videoCategories`,
     fetcher
   );
 
@@ -51,11 +52,7 @@ const VideoPage = () => {
         pt={isSmallScreen ? 60 : 100}
       >
         <Center>
-          <Title
-            fz={isSmallScreen ? 25 : 50}
-            p="md"
-            mb="md"
-          >
+          <Title fz={isSmallScreen ? 25 : 50} p="md" mb="md">
             Explore all our video services
           </Title>
         </Center>

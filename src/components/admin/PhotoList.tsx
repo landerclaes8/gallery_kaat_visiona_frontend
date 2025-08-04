@@ -21,55 +21,56 @@ import { albumProps } from "../../types/album";
 import { useState } from "react";
 import { TbChevronDown } from "react-icons/tb";
 import { categoryProps } from "../../types/category";
+import { API_URL } from "../../lib/apiConfig";
 
 const PhotoList = () => {
   const {
     data: allPhotos,
     error: photosError,
     isLoading: photosIsLoading,
-  } = useSWR<photoProps[]>(`/api/photos`);
+  } = useSWR<photoProps[]>(`${API_URL}/api/photos`);
   const {
     data: allAlbums,
     error: albumsError,
     isLoading: albumsIsLoading,
-  } = useSWR<albumProps[]>(`/api/photoAlbum`);
+  } = useSWR<albumProps[]>(`${API_URL}/api/photoAlbum`);
   const {
     data: allCategories,
     error: categoriesError,
     isLoading: cateogriesLoading,
-  } = useSWR<categoryProps[]>(`/api/photoCategories`);
+  } = useSWR<categoryProps[]>(`${API_URL}/api/photoCategories`);
 
   const { trigger: doDeletePhoto } = useSWRMutation(
-    `/api/photos`,
+    `${API_URL}/api/photos`,
     (url, { arg }: { arg: number }) =>
       deleteReq(`${url}/${arg}`, { arg: undefined })
   );
 
   const { trigger: doDeleteAlbum } = useSWRMutation(
-    `/api/photoAlbum`,
+    `${API_URL}/api/photoAlbum`,
     (url, { arg }: { arg: number }) =>
       deleteReq(`${url}/${arg}`, { arg: undefined })
   );
 
   const { trigger: doDeleteCategory } = useSWRMutation(
-    `/api/photoCategories`,
+    `${API_URL}/api/photoCategories`,
     (url, { arg }: { arg: number }) =>
       deleteReq(`${url}/${arg}`, { arg: undefined })
   );
 
   async function handleDeletePhoto(id: number) {
     await doDeletePhoto(id);
-    mutate(`/api/photos`);
+    mutate(`${API_URL}/api/photos`);
   }
 
   async function handleDeleteAlbum(id: number) {
     await doDeleteAlbum(id);
-    mutate(`/api/photoAlbum`);
+    mutate(`${API_URL}/api/photoAlbum`);
   }
 
   async function handleDeleteCategory(id: number) {
     await doDeleteCategory(id);
-    mutate(`/api/photoCategories`);
+    mutate(`${API_URL}/api/photoCategories`);
   }
 
   const [selectedAlbum, setSelectedAlbum] = useState<albumProps | null>(null);

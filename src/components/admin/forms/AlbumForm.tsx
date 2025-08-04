@@ -7,6 +7,7 @@ import { Grid } from "@mantine/core";
 import { TextInput, Group, Button, Select } from "@mantine/core";
 import UploadFile, { UploadFileRef } from "../UploadFile";
 import { useRef, useState, useEffect } from "react";
+import { API_URL } from "../../../lib/apiConfig";
 
 interface categoryProps {
   id: number;
@@ -20,7 +21,10 @@ interface Props {
 }
 
 const AlbumForm = ({ albumUrl, categories, onClose }: Props) => {
-  const { trigger: doAddAlbum } = useSWRMutation(`/api/${albumUrl}`, post);
+  const { trigger: doAddAlbum } = useSWRMutation(
+    `${API_URL}/api/${albumUrl}`,
+    post
+  );
   const uploadFileRef = useRef<UploadFileRef>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isUploading, setIsUploading] = useState(false);

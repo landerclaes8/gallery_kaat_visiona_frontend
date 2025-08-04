@@ -16,10 +16,13 @@ import Photo from "./Photo";
 import { photoProps } from "../../types/photo";
 import { useAlbumIdStore } from "../../store";
 import { useEffect, useState } from "react";
+import { API_URL } from "../../lib/apiConfig";
 
 const PhotoOverview = () => {
   const isSmallScreen = useMediaQuery("(max-width: 768px)");
-  const { data, error, isLoading } = useSWR<photoProps[]>(`/api/photos`);
+  const { data, error, isLoading } = useSWR<photoProps[]>(
+    `${API_URL}/api/photos`
+  );
 
   const { albumId, setAlbumId } = useAlbumIdStore();
   const [albumName, setAlbumName] = useState("");

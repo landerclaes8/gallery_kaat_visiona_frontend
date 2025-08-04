@@ -9,11 +9,12 @@ import { useMediaQuery } from "@mantine/hooks";
 import "../styles/general.scss";
 import PhotoAlbumOverview from "../components/photo/PhotoAlbumOverview";
 import ContactDirection from "../components/contactComponents/ContactDirection";
+import { API_URL } from "../lib/apiConfig";
 
 const PhotoPage = () => {
   const isSmallScreen = useMediaQuery("(max-width: 768px)");
   const { data, error, isLoading } = useSWR<categoryProps[]>(
-    `/api/photoCategories`,
+    `${API_URL}/api/photoCategories`,
     fetcher
   );
 
@@ -51,11 +52,7 @@ const PhotoPage = () => {
         pt={isSmallScreen ? 60 : 100}
       >
         <Center>
-          <Title
-            fz={isSmallScreen ? 25 : 50}
-            p="md"
-            mb="md"
-          >
+          <Title fz={isSmallScreen ? 25 : 50} p="md" mb="md">
             Explore all our photo services
           </Title>
         </Center>

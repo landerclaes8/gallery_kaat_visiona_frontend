@@ -1,5 +1,6 @@
 import { AspectRatio, Card, Center, Space, Text, Title } from "@mantine/core";
 import { useState } from "react";
+import { API_URL } from "../../lib/apiConfig";
 
 interface Props {
   id: number;
@@ -35,7 +36,7 @@ const Photo = ({ id, title, description }: Props) => {
                 borderRadius: "15px",
               }}
               alt={`${title}`}
-              src={`/api/photos/${id}`}
+              src={`${API_URL}/api/photos/${id}`}
               loading="lazy"
               onLoad={handleImageLoad}
             ></img>
