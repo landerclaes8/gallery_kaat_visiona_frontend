@@ -84,7 +84,6 @@ const AboutHeader = ({ title, imageSrc }: Props) => {
       <Box pt={50}>{iconsSmall}</Box>
       <Box m={5} style={{ backgroundColor: "white" }} h={3}></Box>
       <Text pt={50}>
-        <ShowApiUrl />
         <Text p={10}>
           Visiona Productions is a creative video and photo production house
           based in Antwerp, Belgium. We’re here to capture your most exciting
