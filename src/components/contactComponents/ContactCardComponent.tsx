@@ -23,6 +23,7 @@ const ContactCardComponent = ({ data }: ContactCardData) => {
           className="background-color-text"
           key={index}
           component="a"
+          target="blank"
           href={element.link}
           p={isSmallScreen ? 20 : 35}
           style={{

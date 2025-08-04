@@ -4,6 +4,8 @@ import { TfiWorld } from "react-icons/tfi";
 import { GrMultiple } from "react-icons/gr";
 import { GoGoal } from "react-icons/go";
 import { Link } from "react-router";
+import ShowApiUrl from "./ShowApiUrl";
+import { API_URL } from "../../lib/apiConfig";
 
 interface Props {
   title: string;
@@ -12,7 +14,7 @@ interface Props {
 
 const aboutList = [
   {
-    title: "50+ projects",
+    title: `50+ projects ${API_URL}`,
     description:
       "Visiona has earned the trust of leading names like Corendon, Jongerentravel, Belgium’s Pro League Football, Studio 100, the Belgian Olympic Interfederal Committee and many more.",
     icon: <GrMultiple size={50} />,
@@ -69,15 +71,10 @@ const iconsSmall = aboutList.map((element, index) => (
   </Flex>
 ));
 
-
 const AboutHeader = ({ title, imageSrc }: Props) => {
   const isSmallScreen = useMediaQuery("(max-width: 1024px)");
   return isSmallScreen ? (
-    <Flex
-      className="background-color-text"
-      direction="column"
-      p={25}
-    >
+    <Flex className="background-color-text" direction="column" p={25}>
       <Title p={60}>{title}</Title>
       <img
         src={imageSrc}
@@ -88,7 +85,7 @@ const AboutHeader = ({ title, imageSrc }: Props) => {
       <Box pt={50}>{iconsSmall}</Box>
       <Box m={5} style={{ backgroundColor: "white" }} h={3}></Box>
       <Text pt={50}>
-        {" "}
+        <ShowApiUrl />
         <Text p={10}>
           Visiona Productions is a creative video and photo production house
           based in Antwerp, Belgium. We’re here to capture your most exciting
