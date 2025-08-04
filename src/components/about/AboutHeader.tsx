@@ -4,7 +4,6 @@ import { TfiWorld } from "react-icons/tfi";
 import { GrMultiple } from "react-icons/gr";
 import { GoGoal } from "react-icons/go";
 import { Link } from "react-router";
-import ShowApiUrl from "./ShowApiUrl";
 import { API_URL } from "../../lib/apiConfig";
 
 interface Props {
