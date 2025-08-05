@@ -31,7 +31,7 @@ const Footer = () => {
           }}
         >
           <img
-            src={`/images/photo/logo${isSmallScreen ? "" : "Footer"}.webp`}
+            src={`/images/photo/logo.webp`}
             width={isSmallScreen ? "40%" : "7%"}
           />
         </Box>

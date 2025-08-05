@@ -1,4 +1,4 @@
-import { Box, Button, Center, Flex, Space, Text, Title } from "@mantine/core";
+import { Box, Button, Flex, Text, Title } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { Link } from "react-router";
 import { API_URL } from "../../lib/apiConfig";
@@ -8,73 +8,41 @@ const VisionaInformationLarge = () => {
 
   return (
     <Flex
+      pt={100}
+      p={20}
+      gap={50}
       className="background-text-color"
       direction={isSmallScreen ? "column" : "row"}
-      justify="center"
-      align="center"
-      h={isSmallScreen ? "" : "100vh"}
+      align={isSmallScreen ? "center" : ""}
+      h={isSmallScreen ? "100vh" : "70vh"}
     >
-      <Box>
-        <Title
-          size={isSmallScreen ? 50 : 75}
-          pl={60}
-          pr={5}
-          mt={isSmallScreen ? 75 : 0}
-        >
-          Storytelling
-        </Title>
-        <Title size={isSmallScreen ? 60 : 75} pl={60} pr={5}>
-          Passion
-        </Title>
-        <Title size={isSmallScreen ? 60 : 75} pl={60} pr={5}>
-          Strategy
-        </Title>
-        <Space h="xl" />
-        <Title size={20} p={60}>
-          Creating content that strengthens your brand, sticks to people and
-          contributes to growth.
-        </Title>
-      </Box>
+      <Flex gap={20} direction={"column"}>
+        <Title size={isSmallScreen ? 40 : 60}>Visual stories with soul</Title>
+        <Text>Video- & photography that stays with you.</Text>
+      </Flex>
 
-      <Box m={{ sx: 15, sm: 15, md: 25, lg: 50 }}>
+      <Box>
         <video
           id={`video-${1}`}
           className="responsive-video"
           autoPlay
           loop
           muted
-          style={{
-            width: "100%",
-            height: "auto",
-          }}
         >
           <source src={`${API_URL}/api/videos/4`} type="video/mp4" />
           Je browser ondersteunt de video tag niet.
         </video>
 
-        {isSmallScreen ? (
-          <Center>
-            <Button
-              className="aboutVisionaButton"
-              variant="transparent"
-              mt={25}
-              mb={25}
-            >
-              <Text fw={700}>More about Visiona</Text>
-            </Button>
-          </Center>
-        ) : (
-          <Button
-            component={Link}
-            to="/about"
-            className="aboutVisionaButton"
-            variant="transparent"
-            mt={50}
-            mb={50}
-          >
-            <Text fw={700}>More about Visiona</Text>
-          </Button>
-        )}
+        <Button
+          className="aboutVisionaButton"
+          variant="transparent"
+          component={Link}
+          to={"/about"}
+          mt={25}
+          mb={25}
+        >
+          <Text fw={700}>More about Visiona</Text>
+        </Button>
       </Box>
     </Flex>
   );

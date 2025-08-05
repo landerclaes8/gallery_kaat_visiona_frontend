@@ -4,7 +4,6 @@ import { TfiWorld } from "react-icons/tfi";
 import { GrMultiple } from "react-icons/gr";
 import { GoGoal } from "react-icons/go";
 import { Link } from "react-router";
-import { API_URL } from "../../lib/apiConfig";
 
 interface Props {
   title: string;
@@ -13,7 +12,7 @@ interface Props {
 
 const aboutList = [
   {
-    title: `50+ projects ${API_URL}`,
+    title: `50+ projects`,
     description:
       "Visiona has earned the trust of leading names like Corendon, Jongerentravel, Belgium’s Pro League Football, Studio 100, the Belgian Olympic Interfederal Committee and many more.",
     icon: <GrMultiple size={50} />,
@@ -74,7 +73,7 @@ const AboutHeader = ({ title, imageSrc }: Props) => {
   const isSmallScreen = useMediaQuery("(max-width: 1024px)");
   return isSmallScreen ? (
     <Flex className="background-color-text" direction="column" p={25}>
-      <Title p={60}>{title}</Title>
+      <Title p={50} size={30}>{title}</Title>
       <img
         src={imageSrc}
         alt=""
@@ -142,7 +141,7 @@ const AboutHeader = ({ title, imageSrc }: Props) => {
       <Grid className="background-color-text" p={40}>
         <Grid.Col span={6}>
           <Flex direction="column" p={50}>
-            <Title fz={60} p={50}>
+            <Title size={50} p={40}>
               {title}
             </Title>
             <Text p={10}>

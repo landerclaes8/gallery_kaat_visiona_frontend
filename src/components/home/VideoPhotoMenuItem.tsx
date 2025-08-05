@@ -14,21 +14,20 @@ const VideoPhotoMenuItem = ({ link, text }: MenuItemProps) => {
   const isSmallScreen = useMediaQuery("(max-width: 700px)");
 
   useEffect(() => {
-    const timer = setTimeout(() => setShow(true), 50); // wacht 50ms voor animatie
+    const timer = setTimeout(() => setShow(true), 50);
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <Box
+      p={isSmallScreen ? 25 : 50}
       className={`background-color-text background-fade-in ${
         show ? "show" : ""
       }`}
       component={Link}
       to={link}
-      w={isSmallScreen ? "100vh" : "500px"}
-      h={100}
       style={{
-        backgroundColor:"black",
+        backgroundColor: "black",
         color: "white",
         alignContent: "center",
         justifyItems: "center",

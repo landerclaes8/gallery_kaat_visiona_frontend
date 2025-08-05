@@ -19,6 +19,7 @@ import {
 import OfferComponent from "./OfferComponent";
 import "../../styles/general.scss";
 import { Link } from "react-router";
+import { useMediaQuery } from "@mantine/hooks";
 
 const offerData = [
   {
@@ -79,6 +80,7 @@ const offerData = [
 ];
 
 const OfferGrid = () => {
+  const isSmallScreen = useMediaQuery("(max-width: 768px)");
   return (
     <Box
       p={20}
@@ -100,14 +102,12 @@ const OfferGrid = () => {
           />
         ))}
       </SimpleGrid>
-      <Flex gap={10} justify={"center"}>
+      <Flex gap={20} mt={50} mb={50} justify={"center"} direction={isSmallScreen ? "column" : "row"}>
         <Button
           className="button"
           variant="transparent"
           component={Link}
           to="/video"
-          mt={50}
-          mb={50}
         >
           <Text fw={700}>Explore video projects</Text>
         </Button>
@@ -116,8 +116,6 @@ const OfferGrid = () => {
           variant="transparent"
           component={Link}
           to="/photo"
-          mt={50}
-          mb={50}
         >
           <Text fw={700}>Explore photo projects</Text>
         </Button>

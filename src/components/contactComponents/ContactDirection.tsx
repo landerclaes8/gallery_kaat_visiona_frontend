@@ -1,9 +1,10 @@
-import { Box, Flex, Title, Button } from "@mantine/core";
+import { Box, Flex, Title, Button, Text } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 
 const ContactDirection = () => {
+  const isSmallScreen = useMediaQuery("(max-width: 1024px)");
   return (
     <Box
-      className="text-color"
       h="60vh"
       style={{
         backgroundImage:
@@ -12,23 +13,43 @@ const ContactDirection = () => {
         filter: "grayscale(50%)",
       }}
     >
-      <Flex direction="column" align={"center"} justify={"center"} h={"60vh"}>
-        <Title p={50}>Like what we've done? Get in touch</Title>
+      <Flex
+        gap={20}
+        direction="column"
+        align={"center"}
+        justify={"center"}
+        h={"60vh"}
+      >
+        <Title size={isSmallScreen ? 30 : 50}>Like what we've done?</Title>
+        <Title size={isSmallScreen ? 30 : 50}>Get in touch</Title>
         <Button
-          style={{ backgroundColor: "transparent" }}
-          className="aboutVisionaButton"
-          component="a"
-          href="https://wa.me/32471212423"
-          target="_blank"
-          rel="noopener noreferrer"
-          fz={20}
+          variant="transparent"
+          style={{ border: "solid black 1px" }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.scale = "1.05";
+            e.currentTarget.style.background = "black";
+            e.currentTarget.style.color = "white";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.scale = "1.00";
+            e.currentTarget.style.background = "transparent";
+            e.currentTarget.style.color = "black";
+          }}
         >
-          Ask anything
+          <Text
+            className="text-color"
+            component="a"
+            href="https://wa.me/32471212423"
+            target="_blank"
+            rel="noopener noreferrer"
+            fz={20}
+          >
+            Ask anything
+          </Text>
         </Button>
       </Flex>
     </Box>
   );
 };
 
-//   <img src='../../../public/images/backgrounds/backgroundContact.JPG'></img>
 export default ContactDirection;

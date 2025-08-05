@@ -58,7 +58,7 @@ const ContactCards = () => {
       </Center>
 
       <Center>
-        <SimpleGrid cols={isSmallScreen ? 2 : 5}>
+        <SimpleGrid cols={isSmallScreen ? 1 : 5}>
           <ContactCardComponent data={contactData} />
         </SimpleGrid>
       </Center>
