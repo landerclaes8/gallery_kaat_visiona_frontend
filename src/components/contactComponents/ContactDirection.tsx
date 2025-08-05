@@ -7,8 +7,7 @@ const ContactDirection = () => {
     <Box
       h="60vh"
       style={{
-        backgroundImage:
-          "url(../../../public/images/photo/contactDirection.webp)",
+        backgroundImage: "url(/images/photo/contactDirection.webp)",
         backgroundSize: "cover",
       }}
     >

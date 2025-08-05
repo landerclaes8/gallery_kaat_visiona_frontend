@@ -9,30 +9,29 @@ import {
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { Link } from "react-router";
-import { API_URL } from "../../lib/apiConfig";
 
 const offerData = [
   {
     title: "Brands",
-    videoId: 4,
+    link: "brands",
     description:
       "We create high-quality videos for your business, adding personality and impact to your branding. Our work goes beyond typical social media content by delivering standout visuals that capture your audience's attention.",
   },
   {
     title: "Events",
-    videoId: 4,
+    link: "events",
     description:
       "Aftermovies, recaps, DJ sets,… We capture every highlight of your event. From the energy on stage to the atmosphere in the crowd, we turn key moments into high-quality visuals that reflect the atmosphere of your event. Whether it’s a festival, corporate gathering, or private celebration, we make sure your audience remembers it.",
   },
   {
     title: "Hospitality",
-    videoId: 4,
+    link: "hospitality",
     description:
       "Hospitality experiences, captured with feeling. From elegant dining moments to behind-the-scenes excellence, we film the essence of your venue and service. Our videos highlight the atmosphere, attention to detail, and unique guest experience.",
   },
   {
     title: "Sports",
-    videoId: 4,
+    link: "sport",
     description:
       "Highlights from your game or practice? We're here to capture every exciting moment. Visiona has already worked with the Jupiler Pro League and the Belgian Olympic Interfederal Committee.",
   },
@@ -44,7 +43,11 @@ const OffersLarge = () => {
   return (
     <Box className="background-text-color">
       <Center>
-        <Title pt={isSmallScreen ? 10 : 60} size={isSmallScreen ? 37 : 100} fw={10}>
+        <Title
+          pt={isSmallScreen ? 10 : 60}
+          size={isSmallScreen ? 37 : 100}
+          fw={10}
+        >
           What we offer
         </Title>
       </Center>
@@ -64,22 +67,16 @@ const OffersLarge = () => {
               w="100%"
             >
               <Card.Section>
-                <video
-                  id={`video-${offer.videoId}`}
-                  autoPlay
-                  loop
-                  muted
+                <img
                   style={{
-                    width: "100%",
+                    borderRadius: "15px",
+                    width: isSmallScreen ? "90%" : "100%",
                     height: "auto",
+                    maxWidth: "600px",
                   }}
-                >
-                  <source
-                    src={`${API_URL}/api/videos/${offer.videoId}`}
-                    type="video/mp4"
-                  />
-                  Je browser ondersteunt de video tag niet.
-                </video>
+                  src={`/images/video/${offer.link}.gif`}
+                  loading="lazy"
+                ></img>
               </Card.Section>
 
               <Card.Section className="background-text-color">
@@ -92,7 +89,9 @@ const OffersLarge = () => {
 
               <Card.Section className="background-text-color">
                 <Center>
-                  <Text p={25} fw={20}>{offer.description}</Text>
+                  <Text p={25} fw={20}>
+                    {offer.description}
+                  </Text>
                 </Center>
               </Card.Section>
             </Card>

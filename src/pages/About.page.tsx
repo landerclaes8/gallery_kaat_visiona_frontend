@@ -5,7 +5,7 @@ const AboutPage = () => {
   return (
     <AboutHeader
       title="About Visiona"
-      imageSrc="../../public/images/backgrounds/backgroundContact.JPG"
+      imageSrc="/images/photo/contactDirection.webp"
     />
   );
 };

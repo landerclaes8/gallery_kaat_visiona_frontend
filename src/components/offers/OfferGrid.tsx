@@ -27,55 +27,55 @@ const offerData = [
     icon: <MdOutlineFestival />,
     description:
       "From intimate gatherings to festivals with thousands, we craft powerful recaps that capture the energy, emotion, and unforgettable moments. Let your event live on through a cinematic aftermovie.",
-    imageUrl: "url('/public/images/backgrounds/backgroundContact.jpg')",
+    imageUrl: "url('/images/photo/contactDirection.webp')",
   },
   {
     title: "Corporate video's",
     icon: <MdCorporateFare />,
     description:
       "Elevate your brand with powerful corporate videos, from compelling promotional content to behind-the-scenes product process storie",
-    imageUrl: "url('/public/images/backgrounds/backgroundContact.jpg')",
+    imageUrl: "url('/images/backgrounds/backgroundContact.jpg')",
   },
   {
     title: "Events",
     icon: <BsCalendar4Event />,
     description:
       "Whether it's large scale event, a corporate event, product launch, or private celebration. We're here to capture the most exciting moments.",
-    imageUrl: "url('/public/images/backgrounds/backgroundContact.jpg')",
+    imageUrl: "url('/images/backgrounds/backgroundContact.jpg')",
   },
   {
     title: "Sport",
     icon: <MdSportsHandball />,
     description:
       "From local matches to packed stadiums, we capture the intensity, passion, and triumph of every game. Relive the action with a dynamic sports recap that keeps the adrenaline alive",
-    imageUrl: "url('/public/images/backgrounds/backgroundContact.jpg')",
+    imageUrl: "url('/images/backgrounds/backgroundContact.jpg')",
   },
   {
     title: "Weddings",
     icon: <GiDiamondRing />,
     description:
       "Celebrate the most beautifull day of your life and remeber forever with stunning images",
-    imageUrl: "url('/public/images/backgrounds/backgroundContact.jpg')",
+    imageUrl: "url('/images/backgrounds/backgroundContact.jpg')",
   },
   {
     title: "Drone",
     icon: <FaHelicopter />,
     description: "see the world from a stunning new angle.",
-    imageUrl: "url('/public/images/backgrounds/backgroundContact.jpg')",
+    imageUrl: "url('/images/backgrounds/backgroundContact.jpg')",
   },
   {
     title: "Photography",
     icon: <BsCamera />,
     description:
       "Whether it’s photos for your event, real estate, latest product, or advertisement, we handle it with expertise",
-    imageUrl: "url('/public/images/backgrounds/backgroundContact.jpg')",
+    imageUrl: "url('/images/backgrounds/backgroundContact.jpg')",
   },
   {
     title: "Much more",
     icon: <IoVideocamOutline />,
     description:
       "If you need video's or photos. You are at the right address. Contact us with your needs and we will help you. ",
-    imageUrl: "url('/public/images/backgrounds/backgroundContact.jpg')",
+    imageUrl: "url('/images/backgrounds/backgroundContact.jpg')",
   },
 ];
 

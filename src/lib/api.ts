@@ -20,6 +20,7 @@ const request = async (url: string, body: unknown, method: string) => {
     },
     body: JSON.stringify(body),
     method,
+    credentials: "include",
   });
   if (!resp.ok) {
     notifications.show({

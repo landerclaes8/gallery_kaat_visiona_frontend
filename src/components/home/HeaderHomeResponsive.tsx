@@ -10,7 +10,6 @@ const HeaderHomeLarge = () => {
         p={10}
         gap={25}
         h={"100vh"}
-        className="text-color"
         direction="column"
         justify="flex-end"
         align="center"
@@ -26,7 +25,7 @@ const HeaderHomeLarge = () => {
         </Title>
         <Button
           variant="transparent"
-          style={{ border: "solid black 1px" }}
+          style={{ border: "solid black 1px", color: "black" }}
           onMouseEnter={(e) => {
             e.currentTarget.style.scale = "1.05";
             e.currentTarget.style.background = "black";
@@ -39,7 +38,6 @@ const HeaderHomeLarge = () => {
           }}
         >
           <Text
-            className="text-color"
             component="a"
             href="https://wa.me/32471212423"
             target="_blank"
