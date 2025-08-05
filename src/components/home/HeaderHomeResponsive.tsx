@@ -50,7 +50,7 @@ const HeaderHomeLarge = () => {
           </Text>
         </Button>
 
-        <Box pt={isSmallScreen ? 50 : 100}>
+        <Box pt={isSmallScreen ? 50 : 75}>
           <PhotoVideoMenu />
         </Box>
       </Flex>

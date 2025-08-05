@@ -48,9 +48,11 @@ const ContactCards = () => {
     <Box>
       <Center>
         <Flex direction="column">
-          <Title fz={isSmallScreen ? 50 : 120}>Get in touch</Title>
+          <Title fz={isSmallScreen ? 50 : 120} fw={300}>
+            Get in touch
+          </Title>
           <Center>
-            <Text pt={40} fz={isSmallScreen ? 15 : 25}>
+            <Text pt={40} fz={isSmallScreen ? 15 : 25} fw={300}>
               Slide in our dm's, we'll help you within 24 hours.
             </Text>
           </Center>
@@ -58,7 +60,7 @@ const ContactCards = () => {
       </Center>
 
       <Center>
-        <SimpleGrid cols={isSmallScreen ? 1 : 5}>
+        <SimpleGrid cols={{ xs: 1, sm: 2, xl: 5 }}>
           <ContactCardComponent data={contactData} />
         </SimpleGrid>
       </Center>

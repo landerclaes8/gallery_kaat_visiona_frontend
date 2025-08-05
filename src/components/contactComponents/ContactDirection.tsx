@@ -8,9 +8,8 @@ const ContactDirection = () => {
       h="60vh"
       style={{
         backgroundImage:
-          "url(../../../public/images/backgrounds/backgroundContact.JPG)",
+          "url(../../../public/images/photo/contactDirection.webp)",
         backgroundSize: "cover",
-        filter: "grayscale(50%)",
       }}
     >
       <Flex
@@ -24,7 +23,7 @@ const ContactDirection = () => {
         <Title size={isSmallScreen ? 30 : 50}>Get in touch</Title>
         <Button
           variant="transparent"
-          style={{ border: "solid black 1px" }}
+          style={{ border: "solid black 1px", color: "black" }}
           onMouseEnter={(e) => {
             e.currentTarget.style.scale = "1.05";
             e.currentTarget.style.background = "black";
@@ -37,7 +36,6 @@ const ContactDirection = () => {
           }}
         >
           <Text
-            className="text-color"
             component="a"
             href="https://wa.me/32471212423"
             target="_blank"

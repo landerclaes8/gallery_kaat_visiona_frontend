@@ -25,7 +25,7 @@ const ContactCardComponent = ({ data }: ContactCardData) => {
           component="a"
           target="blank"
           href={element.link}
-          p={isSmallScreen ? 20 : 35}
+          p={isSmallScreen ? 10 : 35}
           style={{
             border: "2px solid transparent",
             transition: "transform 0.3s ease",
@@ -38,7 +38,7 @@ const ContactCardComponent = ({ data }: ContactCardData) => {
             e.currentTarget.style.transform = "scale(1)";
           }}
         >
-          <Flex gap={15} align="center">
+          <Flex gap={10} align="center">
             <ActionIcon
               className="title-text-navbar"
               size={isSmallScreen ? 30 : 75}

@@ -44,7 +44,7 @@ const OffersLarge = () => {
   return (
     <Box className="background-text-color">
       <Center>
-        <Title pt={isSmallScreen ? 10 : 60} size={isSmallScreen ? 37 : 100}>
+        <Title pt={isSmallScreen ? 10 : 60} size={isSmallScreen ? 37 : 100} fw={10}>
           What we offer
         </Title>
       </Center>
@@ -84,7 +84,7 @@ const OffersLarge = () => {
 
               <Card.Section className="background-text-color">
                 <Center>
-                  <Title size={40} p={25}>
+                  <Title size={40} p={25} fw={20}>
                     {offer.title}
                   </Title>
                 </Center>
@@ -92,7 +92,7 @@ const OffersLarge = () => {
 
               <Card.Section className="background-text-color">
                 <Center>
-                  <Text p={25}>{offer.description}</Text>
+                  <Text p={25} fw={20}>{offer.description}</Text>
                 </Center>
               </Card.Section>
             </Card>

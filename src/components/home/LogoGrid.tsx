@@ -67,7 +67,7 @@ const LogoGrid = () => {
       h={{ lg: "100vh" }}
     >
       <Center>
-        <Title style={{ color: "white" }} p={50}>
+        <Title style={{ color: "white" }} p={50} fw={10}>
           Brands we have worked with
         </Title>
       </Center>

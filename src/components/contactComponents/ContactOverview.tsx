@@ -27,7 +27,7 @@ const ContactOverview = () => {
                 height: "auto",
                 maxWidth: "600px",
               }}
-              src="/public/images/backgrounds/backgroundContact.jpg"
+              src="/public/images/photo/contactPage.webp"
               loading="lazy"
             ></img>
 
