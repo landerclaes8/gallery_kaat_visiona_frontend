@@ -23,7 +23,7 @@ const PhotoPage = () => {
       <Center style={{ padding: "1.5rem" }}>
         <Card padding="lg" radius="md" withBorder w="100%">
           <Card.Section withBorder inheritPadding py="xs">
-            <Title>Fout tijdens het ophalen van video</Title>
+            <Title>Fout tijdens het ophalen van foto's</Title>
             <Space h="lg" />
             <Link to="/home">
               <Button>Home</Button>
@@ -35,7 +35,7 @@ const PhotoPage = () => {
   }
 
   if (isLoading) {
-    return <LoadingInfo what={"videos"} />;
+    return <LoadingInfo what={"photos"} />;
   }
 
   if (!data) {

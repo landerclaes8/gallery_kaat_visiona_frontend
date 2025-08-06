@@ -1,4 +1,13 @@
-import { Box, Button, Card, Center, Grid, Space, Title } from "@mantine/core";
+import {
+  Box,
+  Button,
+  Card,
+  Center,
+  Flex,
+  Grid,
+  Space,
+  Title,
+} from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { Link, Navigate } from "react-router";
 import useSWR from "swr";
@@ -55,15 +64,17 @@ export const VideoOverview = () => {
 
   return isSmallScreen ? (
     <Center>
-      {filteredVideos?.map((video) => (
-        <Box pt={20} key={video.id}>
-          <Video
-            id={video.id}
-            title={video.title}
-            description={video.description}
-          />
-        </Box>
-      ))}
+      <Flex direction={"column"}>
+        {filteredVideos?.map((video) => (
+          <Box pt={20} key={video.id}>
+            <Video
+              id={video.id}
+              title={video.title}
+              description={video.description}
+            />
+          </Box>
+        ))}
+      </Flex>
     </Center>
   ) : (
     <Grid>

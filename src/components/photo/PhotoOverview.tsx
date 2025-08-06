@@ -75,15 +75,17 @@ const PhotoOverview = () => {
 
   return isSmallScreen ? (
     <Center>
-      {filteredPhotos?.map((photo) => (
-        <Box pt={20} p={3} key={photo.id}>
-          <Photo
-            id={photo.id}
-            title={photo.title}
-            description={photo.description}
-          />
-        </Box>
-      ))}
+      <Flex direction={"column"}>
+        {filteredPhotos?.map((photo) => (
+          <Box pt={20} p={3} key={photo.id}>
+            <Photo
+              id={photo.id}
+              title={photo.title}
+              description={photo.description}
+            />
+          </Box>
+        ))}
+      </Flex>
     </Center>
   ) : (
     <Flex
