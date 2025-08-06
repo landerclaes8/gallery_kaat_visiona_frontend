@@ -34,7 +34,7 @@ const navbarData = [
 ];
 
 const SideNavBar = () => {
-  const isSmallScreen = useMediaQuery("(max-width: 768px)");
+  const isSmallScreen = useMediaQuery("(max-width: 1016px)");
   const [drawerOpened, setDrawerOpened] = useState(false);
   const drawerRef = useRef<HTMLDivElement>(null);
   const [isTop, setIsTop] = useState(true);
@@ -147,7 +147,6 @@ const SideNavBar = () => {
           {isSmallScreen ? null : drawerOpened ? null : (
             <Socials margin={5} color={isTop ? "black" : "white"} gap={0} />
           )}
-
           <Box
             m={isSmallScreen ? 10 : 30}
             p={10} //ruimte rond burger

@@ -1,12 +1,4 @@
-import {
-  Box,
-  Center,
-  SimpleGrid,
-  Title,
-  Flex,
-  Button,
-  Text,
-} from "@mantine/core";
+import { Center, SimpleGrid, Title, Flex, Button, Text } from "@mantine/core";
 import { BsCalendar4Event, BsCamera } from "react-icons/bs";
 import { FaHelicopter } from "react-icons/fa6";
 import { GiDiamondRing } from "react-icons/gi";
@@ -27,28 +19,28 @@ const offerData = [
     icon: <MdOutlineFestival />,
     description:
       "From intimate gatherings to festivals with thousands, we craft powerful recaps that capture the energy, emotion, and unforgettable moments. Let your event live on through a cinematic aftermovie.",
-    imageUrl: "url('/images/photo/contactDirection.webp')",
+    imageUrl: "festival_aftermovies",
   },
   {
     title: "Corporate video's",
     icon: <MdCorporateFare />,
     description:
       "Elevate your brand with powerful corporate videos, from compelling promotional content to behind-the-scenes product process storie",
-    imageUrl: "url('/images/backgrounds/backgroundContact.jpg')",
+    imageUrl: "corporate",
   },
   {
     title: "Events",
     icon: <BsCalendar4Event />,
     description:
       "Whether it's large scale event, a corporate event, product launch, or private celebration. We're here to capture the most exciting moments.",
-    imageUrl: "url('/images/backgrounds/backgroundContact.jpg')",
+    imageUrl: "events",
   },
   {
     title: "Sport",
     icon: <MdSportsHandball />,
     description:
       "From local matches to packed stadiums, we capture the intensity, passion, and triumph of every game. Relive the action with a dynamic sports recap that keeps the adrenaline alive",
-    imageUrl: "url('/images/backgrounds/backgroundContact.jpg')",
+    imageUrl: "sport",
   },
   {
     title: "Weddings",
@@ -68,7 +60,7 @@ const offerData = [
     icon: <BsCamera />,
     description:
       "Whether it’s photos for your event, real estate, latest product, or advertisement, we handle it with expertise",
-    imageUrl: "url('/images/backgrounds/backgroundContact.jpg')",
+    imageUrl: "photography",
   },
   {
     title: "Much more",
@@ -80,13 +72,13 @@ const offerData = [
 ];
 
 const OfferGrid = () => {
-  const isSmallScreen = useMediaQuery("(max-width: 768px)");
+  const isSmallScreen = useMediaQuery("(max-width: 1024px)");
   return (
-    <Box
+    <Flex
+      direction={"column"}
       p={20}
-      pb={200}
       className="background-color-text"
-      h={{ xs: "100%", lg: "130vh" }}
+      h={"100%"}
     >
       <Center>
         <Title p={50}>Our Services</Title>
@@ -98,11 +90,17 @@ const OfferGrid = () => {
             title={offer.title}
             icon={offer.icon}
             description={offer.description}
-            imageUrl={offer.imageUrl}
+            imageUrl={`url('/images/photo/${offer.imageUrl}.webp')`}
           />
         ))}
       </SimpleGrid>
-      <Flex gap={20} mt={50} mb={50} justify={"center"} direction={isSmallScreen ? "column" : "row"}>
+      <Flex
+        gap={20}
+        mt={50}
+        mb={50}
+        justify={"center"}
+        direction={isSmallScreen ? "column" : "row"}
+      >
         <Button
           className="button"
           variant="transparent"
@@ -120,7 +118,7 @@ const OfferGrid = () => {
           <Text fw={700}>Explore photo projects</Text>
         </Button>
       </Flex>
-    </Box>
+    </Flex>
   );
 };
 
