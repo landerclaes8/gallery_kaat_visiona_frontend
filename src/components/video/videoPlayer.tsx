@@ -45,7 +45,7 @@ const VideoPlayer: React.FC<Props> = ({ videoId }) => {
         controls
         controlsList="nodownload"
       >
-        <source src={`${API_URL}/videos/${videoId}`} type="video/mp4" />
+        <source src={`${API_URL}/api/videos/${videoId}`} type="video/mp4" />
         Je browser ondersteunt de video tag niet.
       </video>
     </div>

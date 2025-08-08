@@ -82,7 +82,7 @@ const VideoForm = ({ title, url, categoryUrl }: Props) => {
         await uploadFileRef.current.handleUpload();
       }
 
-      await mutate(`/api/${url}`);
+      await mutate(`${API_URL}/api/${url}`);
 
       form.reset();
     } catch (error) {
