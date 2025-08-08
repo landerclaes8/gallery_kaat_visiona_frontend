@@ -38,7 +38,7 @@ const VideoForm = ({ title, url, categoryUrl }: Props) => {
   } = useSWR<categoryProps[]>(`${API_URL}/api/${categoryUrl}`, fetcher);
 
   const uploadFileRef = useRef<UploadFileRef>(null);
-  const { trigger: doAddVideo } = useSWRMutation(`/api/${url}`, post);
+  const { trigger: doAddVideo } = useSWRMutation(`${API_URL}/api/${url}`, post);
   const [openedCategories, { open: openCategories, close: closeCategories }] =
     useDisclosure(false);
   const [isSubmitting, setIsSubmitting] = useState(false);

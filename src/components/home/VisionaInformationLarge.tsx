@@ -1,7 +1,6 @@
 import { Box, Button, Flex, Text, Title } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { Link } from "react-router";
-import { API_URL } from "../../lib/apiConfig";
 
 const VisionaInformationLarge = () => {
   const isSmallScreen = useMediaQuery("(max-width: 900px)");
@@ -11,6 +10,7 @@ const VisionaInformationLarge = () => {
       pt={100}
       p={20}
       gap={50}
+      justify={"center"}
       className="background-text-color"
       direction={isSmallScreen ? "column" : "row"}
       align={isSmallScreen ? "center" : ""}
@@ -22,16 +22,16 @@ const VisionaInformationLarge = () => {
       </Flex>
 
       <Box>
-        <video
-          id={`video-${1}`}
-          className="responsive-video"
-          autoPlay
-          loop
-          muted
-        >
-          <source src={`${API_URL}/api/videos/4`} type="video/mp4" />
-          Je browser ondersteunt de video tag niet.
-        </video>
+        <img
+          style={{
+            borderRadius: "15px",
+            width: isSmallScreen ? "90%" : "100%",
+            height: "auto",
+            maxWidth: "600px",
+          }}
+          src={`/images/video/events.gif`}
+          loading="lazy"
+        ></img>
 
         <Button
           className="aboutVisionaButton"

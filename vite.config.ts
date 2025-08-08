@@ -17,13 +17,14 @@ export default defineConfig({
     },
   },
   server: {
-    port: 4000,
+    port: 3000,
     proxy: {
       "/api": {
-        target: "https://www.backend.visiona.be",
+        target: "http://localhost:4000",
         changeOrigin: true,
       },
     },
+    cors: false,
   },
   base: "/",
   resolve: {

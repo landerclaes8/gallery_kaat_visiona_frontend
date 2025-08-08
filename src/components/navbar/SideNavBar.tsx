@@ -157,7 +157,7 @@ const SideNavBar = () => {
             }}
           >
             <Burger
-              color={drawerOpened ? "black" : "white"}
+              color={drawerOpened ? (isTop ? "black" : "white") : "white"}
               opened={drawerOpened}
               onClick={drawerOpened ? closeDrawer : openDrawer}
               onMouseEnter={openDrawer}

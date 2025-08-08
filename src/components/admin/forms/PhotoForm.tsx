@@ -43,10 +43,10 @@ const PhotoForm = ({ title, url, categoryUrl, albumUrl }: Props) => {
     data: albums,
     error: albumError,
     isLoading: albumIsLoading,
-  } = useSWR<albumProps[]>(`/api/${albumUrl}`, fetcher);
+  } = useSWR<albumProps[]>(`${API_URL}/api/${albumUrl}`, fetcher);
 
   const uploadFileRef = useRef<UploadFileRef>(null);
-  const { trigger: doAddPhoto } = useSWRMutation(`/api/${url}`, post);
+  const { trigger: doAddPhoto } = useSWRMutation(`${API_URL}/api/${url}`, post);
   const [openedCategories, { open: openCategories, close: closeCategories }] =
     useDisclosure(false);
   const [isSubmitting, setIsSubmitting] = useState(false);

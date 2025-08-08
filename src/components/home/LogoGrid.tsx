@@ -64,7 +64,7 @@ const LogoGrid = () => {
       style={{ backgroundColor: "black" }}
       pt={100}
       pb={50}
-      h={{ lg: "100vh" }}
+      h={"100%"}
     >
       <Center>
         <Title style={{ color: "white" }} p={50} fw={10}>
