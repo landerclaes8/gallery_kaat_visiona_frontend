@@ -2,7 +2,7 @@ import { notifications } from "@mantine/notifications";
 import { UnauthorizedError } from "./error";
 
 export const fetcher = async (resource: string, init?: RequestInit) => {
-  const resp = await fetch(resource, init);
+  const resp = await fetch(resource, { credentials: "include", ...init });
   if (!resp.ok) {
     const errorMsg = `${resp.status} - ${resp.statusText}`;
     if (resp.status === 401 || resp.status === 403) {
@@ -20,7 +20,7 @@ const request = async (url: string, body: unknown, method: string) => {
     },
     body: JSON.stringify(body),
     method,
-    credentials: "include",
+    credentials: 'include',
   });
   if (!resp.ok) {
     notifications.show({
