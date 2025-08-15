@@ -1,6 +1,6 @@
 describe("list of video's", () => {
   beforeEach(() => {
-    cy.login("admin@example.com", "abcde12345");
+    cy.login("admin@visiona.be", "visiona258!");
     cy.visit("/admin");
 
     cy.dataCy("button-video").click();
@@ -8,7 +8,7 @@ describe("list of video's", () => {
   });
 
   it("should show a list of all videos", () => {
-    cy.get('[data-cy="video-list"] tbody tr').should("have.length", 1);
+    cy.get('[data-cy="video-list"] tbody tr').should("have.length", 2);
   });
 
   it("should add a new video", () => {
@@ -29,11 +29,11 @@ describe("list of video's", () => {
     cy.dataCy("video-form-filename").type("filename.mp4");
 
     cy.dataCy("video-form-submit").click();
-    cy.get('[data-cy="video-list"] tbody tr').should("have.length", 2);
+    cy.get('[data-cy="video-list"] tbody tr').should("have.length", 3);
   });
 
   it("should delete video", () => {
     cy.dataCy("video-delete-button").last().click();
-    cy.get('[data-cy="video-list"] tbody tr').should("have.length", 1);
+    cy.get('[data-cy="video-list"] tbody tr').should("have.length", 2);
   });
 });

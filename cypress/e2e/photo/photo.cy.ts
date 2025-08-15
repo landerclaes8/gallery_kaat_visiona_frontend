@@ -1,6 +1,6 @@
 describe("list of foto's", () => {
   beforeEach(() => {
-    cy.login("admin@example.com", "abcde12345");
+    cy.login("admin@visiona.be", "visiona258!");
     cy.visit("/admin");
 
     cy.dataCy("button-photo").click();
