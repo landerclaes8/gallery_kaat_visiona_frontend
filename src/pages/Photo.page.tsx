@@ -1,4 +1,13 @@
-import { Button, Card, Center, Flex, Space, Title, Text } from "@mantine/core";
+import {
+  Button,
+  Card,
+  Center,
+  Flex,
+  Space,
+  Title,
+  Text,
+  Box,
+} from "@mantine/core";
 import { Link, Navigate } from "react-router";
 import useSWR from "swr";
 import { LoadingInfo } from "../components/LoadingInfo";
@@ -10,6 +19,7 @@ import "../styles/general.scss";
 import PhotoAlbumOverview from "../components/photo/PhotoAlbumOverview";
 import ContactDirection from "../components/contactComponents/ContactDirection";
 import { API_URL } from "../lib/apiConfig";
+import PhotoExperiences from "../components/photo/PhotoExperiences";
 
 const PhotoPage = () => {
   const isSmallScreen = useMediaQuery("(max-width: 768px)");
@@ -45,28 +55,50 @@ const PhotoPage = () => {
   return (
     <>
       <Flex
+        h={"35vh"}
+        align="center"
+        justify="center"
+        style={{ color: "white", backgroundColor: "black" }}
+      >
+        <Title fz={isSmallScreen ? 40 : 75}>Photography</Title>
+      </Flex>
+
+      <Flex
         className="background-color-text"
         justify="center"
+        align="flex-start"
         direction="column"
-        p={isSmallScreen ? 5 : 75}
-        pt={isSmallScreen ? 60 : 100}
+        h={"65vh"}
+        style={{
+          backgroundImage: "url(/images/backgrounds/aboutHome.webp)",
+          backgroundPosition: "top",
+          backgroundSize: "cover",
+          position: "relative",
+          overflow: "hidden",
+        }}
       >
-        <Center>
+        <Box w={"50%"} p={15}>
           <Title fz={isSmallScreen ? 25 : 50} p="md" mb="md">
             Explore all our photo services
           </Title>
-        </Center>
-        <Center>
+
           <Text pb={50}>
             "A photo isn’t just a snapshot, it’s a feeling, a mood, a message.
             We bring your story to life with visuals that speak louder than
             words."
           </Text>
-        </Center>
+        </Box>
+      </Flex>
+
+      <Flex direction={"column"} p={25}>
         <CategorySelector type="photo" categories={data} />
         <PhotoAlbumOverview />
       </Flex>
+      
+      <PhotoExperiences/>
       <ContactDirection />
+
+      
     </>
   );
 };

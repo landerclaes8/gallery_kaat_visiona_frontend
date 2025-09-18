@@ -140,7 +140,7 @@ const SideNavBar = () => {
             fontWeight: "bold",
           }}
         >
-          <img src="/images/photo/logo.webp" width={"60%"}></img>
+          <img src="/images/photo/logoTrans.webp" width={"60%"}></img>
         </Box>
 
         <Group>

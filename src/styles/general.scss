@@ -3,6 +3,11 @@
   color: black;
 }
 
+.background-black-color-text-white {
+  background-color:  black;
+  color: white;
+}
+
 //navbar titels + icons in contactPage
 .title-text-navbar {
   color: black !important;
@@ -23,6 +28,22 @@
     }
   }
 
+}
+
+.button_back_black{
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  font-weight: 700;
+
+  &:hover{
+    background-color: white;
+    color: black;
+
+    * {
+      color: black
+    }
+  }
 }
 
 

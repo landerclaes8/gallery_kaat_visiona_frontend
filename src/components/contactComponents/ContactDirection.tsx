@@ -1,5 +1,6 @@
 import { Box, Flex, Title, Button, Text } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
+import { Link } from "react-router";
 
 const ContactDirection = () => {
   const isSmallScreen = useMediaQuery("(max-width: 1024px)");
@@ -7,42 +8,25 @@ const ContactDirection = () => {
     <Box
       h="60vh"
       style={{
-        backgroundImage: "url(/images/photo/contactDirection.webp)",
-        backgroundSize: "cover",
+        backgroundColor: "black",
+        color: "white",
       }}
     >
       <Flex
-        gap={20}
+        gap={30}
         direction="column"
         align={"center"}
         justify={"center"}
         h={"60vh"}
       >
         <Title size={isSmallScreen ? 30 : 50}>Like what we've done?</Title>
-        <Title size={isSmallScreen ? 30 : 50}>Get in touch</Title>
         <Button
+          className="button_back_black"
           variant="transparent"
-          style={{ border: "solid black 1px", color: "black" }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.scale = "1.05";
-            e.currentTarget.style.background = "black";
-            e.currentTarget.style.color = "white";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.scale = "1.00";
-            e.currentTarget.style.background = "transparent";
-            e.currentTarget.style.color = "black";
-          }}
+          component={Link}
+          to={"/contact"}
         >
-          <Text
-            component="a"
-            href="https://wa.me/32471212423"
-            target="_blank"
-            rel="noopener noreferrer"
-            fz={20}
-          >
-            Ask anything
-          </Text>
+          <Text fz={20}>Contact us</Text>
         </Button>
       </Flex>
     </Box>

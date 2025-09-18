@@ -1,4 +1,4 @@
-import { Button, Card, Center, Flex, Space, Title, Text } from "@mantine/core";
+import { Button, Card, Center, Space, Title } from "@mantine/core";
 import { Link, Navigate } from "react-router";
 import useSWR from "swr";
 import { LoadingInfo } from "../components/LoadingInfo";
@@ -6,13 +6,13 @@ import CategorySelector from "../components/CategorySelector";
 import { VideoOverview } from "../components/video/VideoOverview";
 import { fetcher } from "../lib/api";
 import { categoryProps } from "../types/category";
-import { useMediaQuery } from "@mantine/hooks";
 import "../styles/general.scss";
 import ContactDirection from "../components/contactComponents/ContactDirection";
 import { API_URL } from "../lib/apiConfig";
+import VideoTop from "../components/video/VideoTop";
+import VideoShowcase from "../components/video/VideoShowcase";
 
 const VideoPage = () => {
-  const isSmallScreen = useMediaQuery("(max-width: 768px)");
   const { data, error, isLoading } = useSWR<categoryProps[]>(
     `${API_URL}/api/videoCategories`,
     fetcher
@@ -44,29 +44,10 @@ const VideoPage = () => {
 
   return (
     <>
-      <Flex
-        className="background-color-text"
-        justify="center"
-        direction="column"
-        p={isSmallScreen ? 5 : 75}
-        pt={isSmallScreen ? 60 : 100}
-      >
-        <Center>
-          <Title fz={isSmallScreen ? 25 : 50} p="md" mb="md">
-            Explore all our video services
-          </Title>
-        </Center>
-        <Center>
-          <Text pb={50}>
-            "A video is more than just visuals, it’s an experience. We craft
-            cinematic content that captures the heart of your message and leaves
-            a lasting impression."
-          </Text>
-        </Center>
-
-        <CategorySelector type="video" categories={data} />
-        <VideoOverview />
-      </Flex>
+      <VideoTop />
+      <CategorySelector type="video" categories={data} />
+      <VideoOverview />
+      <VideoShowcase />
       <ContactDirection />
     </>
   );

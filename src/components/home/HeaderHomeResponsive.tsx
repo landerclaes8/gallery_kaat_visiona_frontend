@@ -1,6 +1,6 @@
-import { Box, Button, Flex, Title, Text, Center } from "@mantine/core";
-import PhotoVideoMenu from "./PhotoVideoMenu";
+import { Button, Flex, Title, Text } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
+import { Link } from "react-router";
 
 const HeaderHomeLarge = () => {
   const isSmallScreen = useMediaQuery("(max-width: 768px)");
@@ -8,49 +8,42 @@ const HeaderHomeLarge = () => {
     <>
       <Flex
         p={10}
-        gap={25}
+        gap={50}
         h={"100vh"}
         direction="column"
-        justify="flex-end"
+        justify="center"
         align="center"
+        style={{ backgroundColor: "black" }}
+        pt={isSmallScreen ? 50 : 75}
       >
-        <Center>
-          <img
-            src="/images/photo/logo_zwart.webp"
-            width={isSmallScreen ? "80%" : "40%"}
-          ></img>
-        </Center>
-        <Title className="font-family-text" size={isSmallScreen ? 25 : 35}>
-          Creative agency
+        <Flex direction={"column"} align={"flex-end"}>
+          <img src="/images/photo/logoTrans.webp" width="100%"></img>
+
+          <Title
+            className="font-family-text"
+            style={{ color: "white" }}
+            size={isSmallScreen ? 20 : 25}
+          >
+            Creative agency
+          </Title>
+        </Flex>
+
+        <Title
+          className="font-family-text"
+          style={{ color: "white" }}
+          size={isSmallScreen ? 20 : 25}
+          p={10}
+        >
+          Art is born where minds and souls connect
         </Title>
         <Button
+          className="home_button_back_black"
           variant="transparent"
-          style={{ border: "solid black 1px", color: "black" }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.scale = "1.05";
-            e.currentTarget.style.background = "black";
-            e.currentTarget.style.color = "white";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.scale = "1.00";
-            e.currentTarget.style.background = "transparent";
-            e.currentTarget.style.color = "black";
-          }}
+          component={Link}
+          to={"/contact"}
         >
-          <Text
-            component="a"
-            href="https://wa.me/32471212423"
-            target="_blank"
-            rel="noopener noreferrer"
-            fz={20}
-          >
-            Ask anything
-          </Text>
+          <Text fz={20}>Contact us</Text>
         </Button>
-
-        <Box pt={isSmallScreen ? 50 : 75}>
-          <PhotoVideoMenu />
-        </Box>
       </Flex>
     </>
   );

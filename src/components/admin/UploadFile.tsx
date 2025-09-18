@@ -74,7 +74,7 @@ const UploadFile = ({ path, type, photoTrue, ref }: Props) => {
       <Dropzone
         openRef={openRef}
         onDrop={handleFile}
-        accept={photoTrue ? [MIME_TYPES.webp] : [MIME_TYPES.mp4]}
+        accept={photoTrue ? [MIME_TYPES.webp, MIME_TYPES.gif] : [MIME_TYPES.mp4]}
         multiple={false}
         radius="md"
         disabled={isLoading}

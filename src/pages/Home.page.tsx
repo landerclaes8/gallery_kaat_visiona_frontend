@@ -1,5 +1,5 @@
 import HeaderHomeLarge from "../components/home/HeaderHomeResponsive";
-import OffersLarge from "../components/home/OffersLarge";
+import { Offers } from "../components/home/Offers";
 import VisionaInformationLarge from "../components/home/VisionaInformationLarge";
 import "../styles/home.page.scss";
 
@@ -8,7 +8,7 @@ const HomePage = () => {
     <>
       <HeaderHomeLarge />
       <VisionaInformationLarge />
-      <OffersLarge />
+      <Offers />
     </>
   );
 };
